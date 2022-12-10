@@ -60,6 +60,11 @@ USB_APP_DATA usb_appData;
 
 /* TODO:  Add any necessary callback functions.
 */
+void sendHelloWorldMessage() {
+    SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "Hello World!\r\n");
+    LED_Toggle();
+};
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -96,6 +101,9 @@ void USB_APP_Initialize ( void )
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
+    
+    // TODO temporary hello world
+    SYS_TIME_CallbackRegisterMS(sendHelloWorldMessage, (uintptr_t)0, 1000, SYS_TIME_PERIODIC);
 }
 
 
