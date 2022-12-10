@@ -55,6 +55,8 @@
 #include "peripheral/nvic/plib_nvic.h"
 #include "usb/usb_chapter_9.h"
 #include "usb/usb_device.h"
+#include "peripheral/sercom/spi_master/plib_sercom5_spi_master.h"
+#include "driver/memory/drv_memory.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "system/time/sys_time.h"
 #include "usb/usb_device_cdc.h"
@@ -63,7 +65,9 @@
 #include "driver/usb/usbfsv1/drv_usbfsv1.h"
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_usb_cdc_definitions.h"
+#include "driver/spi_flash/at25df/drv_at25df.h"
 #include "system/int/sys_int.h"
+#include "system/ports/sys_ports.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "usb_app.h"
@@ -196,9 +200,13 @@ typedef struct
     SYS_MODULE_OBJ  sysTime;
     SYS_MODULE_OBJ  sysDebug;
 
+    SYS_MODULE_OBJ  drvMemory0;
 	SYS_MODULE_OBJ  drvUSBFSV1Object;
 
     SYS_MODULE_OBJ  sysConsole0;
+
+    /* AT25DF Driver Object */
+    SYS_MODULE_OBJ drvAT25DF;
 
 
 } SYSTEM_OBJECTS;

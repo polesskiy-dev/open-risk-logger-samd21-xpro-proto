@@ -65,6 +65,15 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*** Macros for FLASH_SPI_SS pin ***/
+#define FLASH_SPI_SS_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 13U))
+#define FLASH_SPI_SS_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 13U))
+#define FLASH_SPI_SS_Toggle()            (PORT_REGS->GROUP[0].PORT_OUTTGL = ((uint32_t)1U << 13U))
+#define FLASH_SPI_SS_OutputEnable()      (PORT_REGS->GROUP[0].PORT_DIRSET = ((uint32_t)1U << 13U))
+#define FLASH_SPI_SS_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = ((uint32_t)1U << 13U))
+#define FLASH_SPI_SS_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 13U)) & 0x01U)
+#define FLASH_SPI_SS_PIN                  PORT_PIN_PA13
+
 /*** Macros for USB_VBUS_SENSE pin ***/
 #define USB_VBUS_SENSE_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 14U))
 #define USB_VBUS_SENSE_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 14U))
@@ -73,6 +82,18 @@
 #define USB_VBUS_SENSE_InputEnable()       (PORT_REGS->GROUP[0].PORT_DIRCLR = ((uint32_t)1U << 14U))
 #define USB_VBUS_SENSE_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 14U)) & 0x01U)
 #define USB_VBUS_SENSE_PIN                  PORT_PIN_PA14
+
+/*** Macros for FLASH_SPI_MISO pin ***/
+#define FLASH_SPI_MISO_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 16U)) & 0x01U)
+#define FLASH_SPI_MISO_PIN                  PORT_PIN_PB16
+
+/*** Macros for FLASH_SPI_MOSI pin ***/
+#define FLASH_SPI_MOSI_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 22U)) & 0x01U)
+#define FLASH_SPI_MOSI_PIN                  PORT_PIN_PB22
+
+/*** Macros for FLASH_SPI_SCK pin ***/
+#define FLASH_SPI_SCK_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 23U)) & 0x01U)
+#define FLASH_SPI_SCK_PIN                  PORT_PIN_PB23
 
 // *****************************************************************************
 /* PORT Group
