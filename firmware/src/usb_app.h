@@ -31,6 +31,8 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include <system/debug/sys_debug.h>
 #include <system/time/sys_time.h>
 #include <bsp/bsp.h>
@@ -49,6 +51,7 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
+#define USB_CMD_BUFFER_SIZE 32    
 
 // *****************************************************************************
 /* Application states
@@ -88,8 +91,8 @@ typedef struct
 {
     /* The application's current state */
     USB_APP_STATES state;
-
-    /* TODO: Define any additional data used by the application. */
+    // Buffer for received commands
+    char cmdBuffer[USB_CMD_BUFFER_SIZE];
 
 } USB_APP_DATA;
 

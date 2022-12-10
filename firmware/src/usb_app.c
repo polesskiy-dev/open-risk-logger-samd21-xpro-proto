@@ -60,11 +60,6 @@ USB_APP_DATA usb_appData;
 
 /* TODO:  Add any necessary callback functions.
 */
-void sendHelloWorldMessage() {
-    SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "Hello World!\r\n");
-    LED_Toggle();
-};
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -96,14 +91,12 @@ void USB_APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     usb_appData.state = USB_APP_STATE_INIT;
 
-
-
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
     
     // TODO temporary hello world
-    SYS_TIME_CallbackRegisterMS(sendHelloWorldMessage, (uintptr_t)0, 1000, SYS_TIME_PERIODIC);
+//    SYS_TIME_CallbackRegisterMS(sendHelloWorldMessage, (uintptr_t)0, 1000, SYS_TIME_PERIODIC);
 }
 
 
@@ -129,7 +122,7 @@ void USB_APP_Tasks ( void )
 
             if (appInitialized)
             {
-
+                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "USB APP started\r\n");
                 usb_appData.state = USB_APP_STATE_SERVICE_TASKS;
             }
             break;
@@ -137,9 +130,23 @@ void USB_APP_Tasks ( void )
 
         case USB_APP_STATE_SERVICE_TASKS:
         {
+            char *cmdBufferTail_p = usb_appData.cmdBuffer + strlen(usb_appData.cmdBuffer);
+            // append received chars to CMD buf
+            ssize_t readBytesAmount = SYS_CONSOLE_Read( SYS_CONSOLE_INDEX_0, cmdBufferTail_p, USB_CMD_BUFFER_SIZE);
+            if (readBytesAmount == -1)
+            {
+                SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "Unexpected Console Read error\r\n");
+            }
+
+            if (strstr(usb_appData.cmdBuffer, "\n") != NULL) {
+//                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Received CMD: %s %s\r\n", usb_appData.cmdBuffer, strstr(usb_appData.cmdBuffer, "\n"));
+                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Received CMD: %s\r\n", usb_appData.cmdBuffer);
+                memset(usb_appData.cmdBuffer,0,USB_CMD_BUFFER_SIZE);
+            }
 
             break;
         }
+
 
         /* TODO: implement your application state machine.*/
 
