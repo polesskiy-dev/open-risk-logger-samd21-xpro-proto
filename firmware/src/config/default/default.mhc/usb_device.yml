@@ -10,35 +10,35 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: usb_device, value: '67'}
+        attributes: {id: usb_device, value: '98'}
   - type: Boolean
     attributes: {id: CONFIG_USB_DEVICE_DESCRIPTOR_IAD_ENABLE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: usb_device, value: 'false'}
+        attributes: {id: usb_device, value: 'true'}
   - type: Integer
     attributes: {id: CONFIG_USB_DEVICE_ENDPOINTS_NUMBER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: usb_device, value: '2'}
+        attributes: {id: usb_device, value: '3'}
   - type: Integer
     attributes: {id: CONFIG_USB_DEVICE_FUNCTIONS_NUMBER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: usb_device, value: '1'}
+        attributes: {id: usb_device, value: '2'}
   - type: Integer
     attributes: {id: CONFIG_USB_DEVICE_INTERFACES_NUMBER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: usb_device, value: '2'}
+        attributes: {id: usb_device, value: '3'}
   - type: Boolean
     attributes: {id: CONFIG_USB_DEVICE_MSD_DISK_IMAGE}
     children:

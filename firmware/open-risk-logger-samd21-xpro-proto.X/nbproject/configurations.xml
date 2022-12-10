@@ -99,6 +99,7 @@
               <itemPath>../src/config/default/usb/src/usb_device_function_driver.h</itemPath>
               <itemPath>../src/config/default/usb/src/usb_external_dependencies.h</itemPath>
               <itemPath>../src/config/default/usb/src/usb_device_cdc_local.h</itemPath>
+              <itemPath>../src/config/default/usb/src/usb_device_msd_local.h</itemPath>
             </logicalFolder>
             <itemPath>../src/config/default/usb/usb_device.h</itemPath>
             <itemPath>../src/config/default/usb/usb_common.h</itemPath>
@@ -109,6 +110,9 @@
             <itemPath>../src/config/default/usb/usb_hub.h</itemPath>
             <itemPath>../src/config/default/usb/usb_device_cdc.h</itemPath>
             <itemPath>../src/config/default/usb/usb_cdc.h</itemPath>
+            <itemPath>../src/config/default/usb/usb_device_msd.h</itemPath>
+            <itemPath>../src/config/default/usb/usb_msd.h</itemPath>
+            <itemPath>../src/config/default/usb/scsi.h</itemPath>
           </logicalFolder>
           <itemPath>../src/config/default/device_cache.h</itemPath>
           <itemPath>../src/config/default/toolchain_specifics.h</itemPath>
@@ -301,6 +305,7 @@
               <itemPath>../src/config/default/usb/src/usb_device.c</itemPath>
               <itemPath>../src/config/default/usb/src/usb_device_cdc.c</itemPath>
               <itemPath>../src/config/default/usb/src/usb_device_cdc_acm.c</itemPath>
+              <itemPath>../src/config/default/usb/src/usb_device_msd.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <itemPath>../src/config/default/initialization.c</itemPath>
@@ -334,6 +339,7 @@
         <itemPath>../src/config/default/default.mhc/nvmctrl.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/drv_memory.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/usb_device_cdc.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/usb_device_msd.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sys_debug.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sercom5.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/BSP_SAM_D21_Xplained_Pro.yml</itemPath>

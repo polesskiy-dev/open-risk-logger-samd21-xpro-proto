@@ -43,7 +43,7 @@ children:
         - type: Values
           children:
           - type: Dynamic
-            attributes: {id: usb_device_cdc_0, value: 'false'}
+            attributes: {id: usb_device_cdc_0, value: 'true'}
     - type: Attachments
       children:
       - type: DirectCapability
