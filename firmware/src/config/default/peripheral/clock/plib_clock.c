@@ -56,6 +56,26 @@ static void SYSCTRL_Initialize(void)
     SYSCTRL_REGS->SYSCTRL_OSC32K = 0x0U;
 }
 
+static void FDPLL_Initialize(void)
+{
+
+    /****************** DPLL Initialization  *********************************/
+
+    /* Configure DPLL    */
+    SYSCTRL_REGS->SYSCTRL_DPLLCTRLB = SYSCTRL_DPLLCTRLB_FILTER(0x0U) | SYSCTRL_DPLLCTRLB_LTIME(0x0U)| SYSCTRL_DPLLCTRLB_REFCLK(0x0U) ;
+
+
+    SYSCTRL_REGS->SYSCTRL_DPLLRATIO = SYSCTRL_DPLLRATIO_LDRFRAC(11U) | SYSCTRL_DPLLRATIO_LDR(2928U);
+
+    /* Selection of the DPLL Enable */
+    SYSCTRL_REGS->SYSCTRL_DPLLCTRLA = SYSCTRL_DPLLCTRLA_ENABLE_Msk   ;
+
+    while((SYSCTRL_REGS->SYSCTRL_DPLLSTATUS & (SYSCTRL_DPLLSTATUS_LOCK_Msk | SYSCTRL_DPLLSTATUS_CLKRDY_Msk)) !=
+                (SYSCTRL_DPLLSTATUS_LOCK_Msk | SYSCTRL_DPLLSTATUS_CLKRDY_Msk))
+    {
+        /* Waiting for the Ready state */
+    }
+}
 
 static void DFLL_Initialize(void)
 {
@@ -91,8 +111,9 @@ static void DFLL_Initialize(void)
 static void GCLK0_Initialize(void)
 {
 
-    GCLK_REGS->GCLK_GENCTRL = GCLK_GENCTRL_SRC(7U) | GCLK_GENCTRL_GENEN_Msk | GCLK_GENCTRL_ID(0U);
+    GCLK_REGS->GCLK_GENCTRL = GCLK_GENCTRL_SRC(8U) | GCLK_GENCTRL_GENEN_Msk | GCLK_GENCTRL_ID(0U);
 
+    GCLK_REGS->GCLK_GENDIV = GCLK_GENDIV_DIV(2U) | GCLK_GENDIV_ID(0U);
     while((GCLK_REGS->GCLK_STATUS & GCLK_STATUS_SYNCBUSY_Msk) == GCLK_STATUS_SYNCBUSY_Msk)
     {
         /* wait for the Generator 0 synchronization */
@@ -115,13 +136,12 @@ void CLOCK_Initialize (void)
     /* Function to Initialize the Oscillators */
     SYSCTRL_Initialize();
 
+    FDPLL_Initialize();
     DFLL_Initialize();
     GCLK2_Initialize();
     GCLK0_Initialize();
 
 
-    /* Selection of the Generator and write Lock for RTC */
-    GCLK_REGS->GCLK_CLKCTRL = GCLK_CLKCTRL_ID(4U) | GCLK_CLKCTRL_GEN(0x2U)  | GCLK_CLKCTRL_CLKEN_Msk;
     /* Selection of the Generator and write Lock for USB */
     GCLK_REGS->GCLK_CLKCTRL = GCLK_CLKCTRL_ID(6U) | GCLK_CLKCTRL_GEN(0x0U)  | GCLK_CLKCTRL_CLKEN_Msk;
     /* Selection of the Generator and write Lock for TC3 TCC2 */

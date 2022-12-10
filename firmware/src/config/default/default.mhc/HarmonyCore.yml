@@ -136,12 +136,6 @@ children:
   - type: Boolean
     attributes: {id: ENABLE_SYS_MEDIA}
     children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: readOnly}
-        children:
-        - {type: Value, value: 'false'}
     - type: Values
       children:
       - type: Dynamic
@@ -149,12 +143,6 @@ children:
   - type: Boolean
     attributes: {id: ENABLE_SYS_PORTS}
     children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: readOnly}
-        children:
-        - {type: Value, value: 'false'}
     - type: Values
       children:
       - type: Dynamic
@@ -257,33 +245,6 @@ children:
         children:
         - {type: Value, value: 'true'}
   - type: File
-    attributes: {id: PORTS_DEF}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: File
-    attributes: {id: PORTS_HEADER}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: File
-    attributes: {id: PORTS_MAPPING}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: File
     attributes: {id: SYSTEM_COMMON}
     children:
     - type: Attributes
@@ -292,15 +253,6 @@ children:
         attributes: {id: enabled}
         children:
         - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: SYSTEM_MEDIA}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
   - type: File
     attributes: {id: SYSTEM_MODULE}
     children:

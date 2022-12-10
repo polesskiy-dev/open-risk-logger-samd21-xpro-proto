@@ -269,8 +269,6 @@ void SYS_Initialize ( void* data )
     NVMCTRL_Initialize( );
 
 
-    RTC_Initialize();
-
     TC3_TimerInitialize();
 
 	BSP_Initialize();
