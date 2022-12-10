@@ -83,13 +83,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: CDBE0E5D94C53410F5F34B566B5FF51F
-- generatedChecksum: 02D5EF2012AAF8FE3A0826A9DAB90B74
+- generatedChecksum: F9D98594330D1A7DD65F9E63D0038D00
   logicalPath: config/default/peripheral/port
   name: plib_port.c
   physicalPath: peripheral/port
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 02D5EF2012AAF8FE3A0826A9DAB90B74
+  userChecksum: F9D98594330D1A7DD65F9E63D0038D00
 - generatedChecksum: D8F4DCB6624A686B38510761A605DC69
   logicalPath: config/default/peripheral/tc
   name: plib_tc3.c
@@ -1091,13 +1091,13 @@ files:
   security: NON_SECURE
   type: LINKER
   userChecksum: 70E03B89B33D299773D844BF7C20E664
-- generatedChecksum: FF2C1DA3C6AAA3A15EA904C1DE1EFF97
+- generatedChecksum: 8E5545B642B5089D5553CB5D57DAAB5E
   logicalPath: ''
   name: pin_configurations.csv
   physicalPath: ''
   security: NON_SECURE
   type: IMPORTANT
-  userChecksum: FF2C1DA3C6AAA3A15EA904C1DE1EFF97
+  userChecksum: 8E5545B642B5089D5553CB5D57DAAB5E
 format_version: v1.0
 libraries: []
 settings:

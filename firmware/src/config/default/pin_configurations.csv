@@ -37,8 +37,8 @@
 42,PA21,,Available,,,,,,NORMAL
 43,PA22,,Available,,,,,,NORMAL
 44,PA23,,Available,,,,,,NORMAL
-45,PA24,,Available,,,,,,NORMAL
-46,PA25,,Available,,,,,,NORMAL
+45,PA24,,USB_DM,Digital,High Impedance,n/a,No,No,NORMAL
+46,PA25,,USB_DP,Digital,High Impedance,n/a,No,No,NORMAL
 49,PB22,,Available,,,,,,NORMAL
 50,PB23,,Available,,,,,,NORMAL
 51,PA27,,Available,,,,,,NORMAL
