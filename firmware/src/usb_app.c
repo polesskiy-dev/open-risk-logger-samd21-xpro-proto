@@ -130,6 +130,7 @@ void USB_APP_Tasks ( void )
 
         case USB_APP_STATE_SERVICE_TASKS:
         {
+            /*
             char *cmdBufferTail_p = usb_appData.cmdBuffer + strlen(usb_appData.cmdBuffer);
             // append received chars to CMD buf
             ssize_t readBytesAmount = SYS_CONSOLE_Read( SYS_CONSOLE_INDEX_0, cmdBufferTail_p, USB_CMD_BUFFER_SIZE);
@@ -143,7 +144,7 @@ void USB_APP_Tasks ( void )
                 SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Received CMD: %s\r\n", usb_appData.cmdBuffer);
                 memset(usb_appData.cmdBuffer,0,USB_CMD_BUFFER_SIZE);
             }
-
+            */
             break;
         }
 

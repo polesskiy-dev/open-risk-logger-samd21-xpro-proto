@@ -24,7 +24,7 @@
 27,PB14,,Available,,,,,,NORMAL
 28,PB15,,Available,,,,,,NORMAL
 29,PA12,,Available,,,,,,NORMAL
-30,PA13,FLASH_SPI_SS,GPIO,Digital,Out,Low,,,NORMAL
+30,PA13,FLASH_SPI_SS,GPIO,Digital,Out,High,,,NORMAL
 31,PA14,USB_VBUS_SENSE,GPIO,Digital,In,n/a,No,Yes,NORMAL
 32,PA15,SWITCH,SWITCH_AL,Digital,In,n/a,Yes,No,NORMAL
 35,PA16,,Available,,,,,,NORMAL
