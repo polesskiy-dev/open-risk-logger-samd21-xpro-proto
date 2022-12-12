@@ -19,9 +19,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/97b4ffa5ac27c2d5ee96e26b95cb4b7d14bfa528" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/fe0a9e5b00875a7a50a97fdff298f418838df548" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firmware/src/memory_app.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,33 +91,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "structure.view.defaults.are.configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Makefile Application.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="open-risk-logger-samd21-xpro-proto" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="open-risk-logger-samd21-xpro-proto" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/../samd21-xpro-usb-flash-sensor/firmware/samd21-xpro-usb-flash-sensor.X/Makefile">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="open-risk-logger-samd21-xpro-proto" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/Makefile">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -126,6 +132,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Makefile Application.all" />
       <item itemvalue="Makefile Application.build" />
@@ -143,6 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670636247482</updated>
       <workItem from="1670636250626" duration="4121000" />
+      <workItem from="1670783802145" duration="6885000" />
     </task>
     <servers />
   </component>

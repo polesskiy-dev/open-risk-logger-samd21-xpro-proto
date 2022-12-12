@@ -358,8 +358,8 @@ void SYS_Initialize ( void* data )
 
 
     sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
-
-
+    
+  
 
     /* Initialize the USB device layer */
     sysObj.usbDevObject0 = USB_DEVICE_Initialize (USB_DEVICE_INDEX_0 , ( SYS_MODULE_INIT* ) & usbDevInitData);
@@ -370,6 +370,7 @@ void SYS_Initialize ( void* data )
 
 
     USB_APP_Initialize();
+    MEMORY_APP_Initialize();
 
 
     NVIC_Initialize();

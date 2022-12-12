@@ -48,13 +48,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0D18A719A1E40A8875895284967F66D0
-- generatedChecksum: B5F3B342CED4BD96B2F252C3CFB66999
+- generatedChecksum: AF6B989A47D94001B263AF38BA83A503
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: B5F3B342CED4BD96B2F252C3CFB66999
+  userChecksum: AF6B989A47D94001B263AF38BA83A503
 - generatedChecksum: BDF0505E36437141F292B85921E619A8
   logicalPath: config/default
   name: interrupts.c
@@ -76,6 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
+- generatedChecksum: 297DF76847205DE83F7A7B467B017DF6
+  logicalPath: ''
+  name: memory_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 297DF76847205DE83F7A7B467B017DF6
 - generatedChecksum: F1B5513C07FACD20C5E815A721CEF5AF
   logicalPath: config/default/peripheral/clock
   name: plib_clock.c
@@ -195,13 +202,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B68110221BEC42FE6B718139BA64DA52
-- generatedChecksum: D976A6B20220D0CC1534055BEFCD2449
+- generatedChecksum: 7484163D21E2D5755B03C25855FFD703
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D976A6B20220D0CC1534055BEFCD2449
+  userChecksum: 7484163D21E2D5755B03C25855FFD703
 - generatedChecksum: null
   logicalPath: ''
   name: usb_app.c
@@ -236,7 +243,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 062C584F649441B15D9A254F81C1910C
+  userChecksum: EC9E2B5658BCCFC8786D7AA712ABA2A2
 - generatedChecksum: 5B2E4F04BB9E3347BD0D10242479D4F0
   logicalPath: config/default/usb/src
   name: usb_device_msd.c
@@ -370,13 +377,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CB8D4E72D581CDEFB0BB729ADC52D698
-- generatedChecksum: 0694ADC75F0F9B04EC0954EFFFFADCC5
+- generatedChecksum: 09E93C0513201935C62E887A0C3B99BE
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 0694ADC75F0F9B04EC0954EFFFFADCC5
+  userChecksum: 09E93C0513201935C62E887A0C3B99BE
 - generatedChecksum: 636DD2FCAC011D9457B3B1813AC63647
   logicalPath: config/default
   name: device.h
@@ -594,6 +601,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D3695DF0A815EAFD08A9202DDE0C5B71
+- generatedChecksum: 2ADDF2ED776BF78321F059C830C34EE8
+  logicalPath: ''
+  name: memory_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 2ADDF2ED776BF78321F059C830C34EE8
 - generatedChecksum: 47E760D36E42A7B436306A9CB4E72A0E
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: mpu_armv7.h
