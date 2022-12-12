@@ -48,6 +48,7 @@
 #include "configuration.h"
 #include "definitions.h"
 #include "usb/src/usb_device_msd_local.h"
+#include "diskImage.h"
 
 const unsigned char 
     __attribute__((keep)) __attribute__((address(DRV_MEMORY_DEVICE_START_ADDRESS)))

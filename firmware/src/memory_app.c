@@ -104,15 +104,28 @@ void memoryReadCommandHandle(
 void asyncMemoryRead(void) {
 
     // temporary
-    uint32_t blockStart = 4 - memory_appData.blocksToReadAmount;
+//    uint32_t blockStart = 4 - memory_appData.blocksToReadAmount;
 
+//    DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, memoryReadCommandHandle, (uintptr_t)NULL);
+
+//    DRV_MEMORY_AsyncRead(memory_appData.drvMemoryHandle, NULL/*&memoryReadCommandHandle*/, &memory_appData.memoryReadWriteBuffer, blockStart, 1);
+}
+
+void asyncMemoryErase(void) {
     DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, memoryReadCommandHandle, (uintptr_t)NULL);
+    // TODO
+}
 
-    DRV_MEMORY_AsyncRead(memory_appData.drvMemoryHandle, NULL/*&memoryReadCommandHandle*/, &memory_appData.memoryReadWriteBuffer, blockStart, 1);
-    
-    
-    // TODO lift it up
+void asyncMemoryWriteErase(void) {
+    DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, NULL /*memoryReadCommandHandle*/, (uintptr_t)NULL);
 
+//    const uint32_t fat12BootDataAddr = DRV_MEMORY_DEVICE_START_ADDRESS;//__attribute__((space(prog), address(DRV_MEMORY_DEVICE_START_ADDRESS)));
+    DRV_MEMORY_AsyncEraseWrite(memory_appData.drvMemoryHandle, NULL/*&commandHandle*/, (void *)diskImage, 0, 4096 / 256);
+
+    /*if(DRV_MEMORY_COMMAND_HANDLE_INVALID == commandHandle)
+    {
+        // Error handling here
+    }*/
 }
 
 // *****************************************************************************
@@ -178,6 +191,12 @@ void MEMORY_APP_Tasks ( void )
             break;
         }
         
+        case MEMORY_APP_STATE_IDLE:
+        {
+            break;
+        }
+        
+        /* Read */
         case MEMORY_APP_STATE_READY_TO_READ_BLOCK:
         {
             if (memory_appData.blocksToReadAmount) {
@@ -185,11 +204,6 @@ void MEMORY_APP_Tasks ( void )
             };
             memory_appData.state = MEMORY_APP_STATE_IDLE;
             
-            break;
-        }
-        
-        case MEMORY_APP_STATE_IDLE:
-        {
             break;
         }
         
@@ -202,7 +216,38 @@ void MEMORY_APP_Tasks ( void )
             
             break;
         }
-
+        
+        /* Write */
+        case MEMORY_APP_STATE_READY_TO_WRITE_BLOCK:
+        {
+            break;
+        }
+                
+        case MEMORY_APP_STATE_WRITE_BLOCK_READY:
+        {
+            break;
+        }
+            
+        /* Erase */
+        case MEMORY_APP_STATE_READY_TO_ERASE_BLOCK:
+        {
+            break;
+        }
+                        
+        case MEMORY_APP_STATE_ERASE_BLOCK_READY:
+        {
+            break;
+        }
+        
+        case MEMORY_APP_STATE_READY_TO_ERASE_WRITE_BLOCK:
+        {
+            break;
+        }
+        
+        case MEMORY_APP_STATE_ERASE_WRITE_BLOCK_READY:
+        {
+            break;
+        }
 
         /* TODO: implement your application state machine.*/
         case MEMORY_APP_STATE_READY_TO_DEINIT:
@@ -218,8 +263,6 @@ void MEMORY_APP_Tasks ( void )
         {
             break;
         }
-
-        
 
         /* The default state should never be executed. */
         default:

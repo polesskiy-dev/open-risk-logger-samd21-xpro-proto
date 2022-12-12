@@ -35,6 +35,7 @@
 #include <driver/memory/drv_memory.h>
 #include "definitions.h"
 #include "configuration.h"
+#include "diskImage.h"
 
 
 // DOM-IGNORE-BEGIN
@@ -69,9 +70,20 @@ typedef enum
     MEMORY_APP_STATE_INIT=0,
     MEMORY_APP_STATE_SERVICE_TASKS,
     /* TODO: Define states used by the application state machine. */
-    MEMORY_APP_STATE_READY_TO_READ_BLOCK,
     MEMORY_APP_STATE_IDLE,
+            
+    MEMORY_APP_STATE_READY_TO_READ_BLOCK,
     MEMORY_APP_STATE_READ_BLOCK_READY,
+
+    MEMORY_APP_STATE_READY_TO_WRITE_BLOCK,
+    MEMORY_APP_STATE_WRITE_BLOCK_READY,
+            
+    MEMORY_APP_STATE_READY_TO_ERASE_BLOCK,
+    MEMORY_APP_STATE_ERASE_BLOCK_READY,
+            
+    MEMORY_APP_STATE_READY_TO_ERASE_WRITE_BLOCK,
+    MEMORY_APP_STATE_ERASE_WRITE_BLOCK_READY,
+            
     MEMORY_APP_STATE_READY_TO_DEINIT,
     MEMORY_APP_STATE_DEINIT
 
