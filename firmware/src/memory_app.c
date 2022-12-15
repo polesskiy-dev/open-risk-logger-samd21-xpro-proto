@@ -119,8 +119,7 @@ void asyncMemoryErase(void) {
 void asyncMemoryWriteErase(void) {
     DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, NULL /*memoryReadCommandHandle*/, (uintptr_t)NULL);
 
-//    const uint32_t fat12BootDataAddr = DRV_MEMORY_DEVICE_START_ADDRESS;//__attribute__((space(prog), address(DRV_MEMORY_DEVICE_START_ADDRESS)));
-    DRV_MEMORY_AsyncEraseWrite(memory_appData.drvMemoryHandle, NULL/*&commandHandle*/, (void *)diskImage, 0, 4096 / 256);
+    DRV_MEMORY_AsyncEraseWrite(memory_appData.drvMemoryHandle, NULL/*&commandHandle*/, (void *)diskImage, 0, 0x1000 / 0x100);
 
     /*if(DRV_MEMORY_COMMAND_HANDLE_INVALID == commandHandle)
     {

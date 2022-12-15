@@ -19,20 +19,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/97b4ffa5ac27c2d5ee96e26b95cb4b7d14bfa528" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/fe0a9e5b00875a7a50a97fdff298f418838df548" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firmware/src/memory_app.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/memory_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,11 +124,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Makefile Application.all" />
       <item itemvalue="Makefile Application.build" />
@@ -155,6 +142,7 @@
       <updated>1670636247482</updated>
       <workItem from="1670636250626" duration="4121000" />
       <workItem from="1670783802145" duration="6885000" />
+      <workItem from="1671061377598" duration="735000" />
     </task>
     <servers />
   </component>

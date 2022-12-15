@@ -218,6 +218,7 @@
       <itemPath>../src/usb_app.h</itemPath>
       <itemPath>../src/memory_app.h</itemPath>
       <itemPath>../src/diskImage.h</itemPath>
+      <itemPath>../src/queue.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -323,6 +324,7 @@
       <itemPath>../src/usb_app.c</itemPath>
       <itemPath>../src/memory_app.c</itemPath>
       <itemPath>../src/config/default/diskImage.c</itemPath>
+      <itemPath>../src/queue.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
