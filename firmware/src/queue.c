@@ -44,7 +44,7 @@ GLOBAL_QUEUE_OBJECT globalQueue = {{}, 0};
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-void globalQueueEnqueue(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *event) {
+void globalQueueEnqueueEvent(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *event) {
     if (globalQueue->size >= GLOBAL_QUEUE_SIZE) {
         SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s\r\n", "Trying to enqueue to full global queue!");
         return;
@@ -57,7 +57,7 @@ void globalQueueEnqueue(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *ev
     globalQueue->size++;
 }
     
-void globalQueueDequeue(GLOBAL_QUEUE_OBJECT *globalQueue) {
+void globalQueueDequeueEvent(GLOBAL_QUEUE_OBJECT *globalQueue) {
     if (globalQueue->size == 0) {
         SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "%s\r\n", "Trying to dequeue empty queue!");
         return;
@@ -72,7 +72,7 @@ void globalQueueDequeue(GLOBAL_QUEUE_OBJECT *globalQueue) {
     globalQueue->size--;
 }
     
-GLOBAL_QUEUE_EVENT *globalQueuePeek(GLOBAL_QUEUE_OBJECT *globalQueue){
+GLOBAL_QUEUE_EVENT *globalQueuePeekEvent(GLOBAL_QUEUE_OBJECT *globalQueue){
     return &(globalQueue->elements[0]);
 }
 

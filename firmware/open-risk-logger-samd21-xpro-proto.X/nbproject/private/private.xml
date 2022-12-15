@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/queue.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/usb/src/usb_device_msd.c</file>
             <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/memory_app.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/driver/memory/src/drv_memory_local.h</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/memory_app.h</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/driver/memory/src/drv_memory.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/queue.h</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/diskImage.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/usb_app.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/main.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/tasks.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/initialization.c</file>
         </group>
     </open-files>
 </project-private>

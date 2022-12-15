@@ -50,7 +50,14 @@
     Application strings and buffers are be defined outside this structure.
 */
 
-MEMORY_APP_DATA memory_appData;
+MEMORY_APP_DATA memoryAppObj = {
+        .state = MEMORY_APP_STATE_INIT,
+        .drvMemoryHandle = (DRV_HANDLE)NULL,
+        .pagesToProcessAmount = 0,
+        .startPage = 0,
+        .writeBuffer = NULL
+};
+extern GLOBAL_QUEUE_OBJECT globalQueue;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -58,74 +65,13 @@ MEMORY_APP_DATA memory_appData;
 // *****************************************************************************
 // *****************************************************************************
 
-/* TODO:  Add any necessary callback functions.
-*/
+void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE commandHandle, uintptr_t context);
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Local Functions
 // *****************************************************************************
 // *****************************************************************************
-
-
-/* TODO:  Add any necessary local functions.
-*/
-
-//DRV_MEMORY_COMMAND_HANDLE memoryReadCommandHandle( 
-void memoryReadCommandHandle( 
-        DRV_MEMORY_EVENT event,
-        DRV_MEMORY_COMMAND_HANDLE commandHandle,
-        uintptr_t context
-) {
-    switch(event)
-    {
-        case DRV_MEMORY_EVENT_COMMAND_COMPLETE:
-        {
-            memory_appData.state = MEMORY_APP_STATE_READ_BLOCK_READY;
-            break;
-        }
-
-        case DRV_MEMORY_EVENT_COMMAND_ERROR:
-        {
-            memory_appData.state = MEMORY_APP_STATE_IDLE;
-            // Handle Error
-            SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s\r\n", "Memory app DRV_MEMORY_COMMAND_HANDLE_INVALID");
-            break;
-        }
-
-        default:
-        {
-            memory_appData.state = MEMORY_APP_STATE_IDLE;
-            break;
-        }
-    }
-};
-
-void asyncMemoryRead(void) {
-
-    // temporary
-//    uint32_t blockStart = 4 - memory_appData.blocksToReadAmount;
-
-//    DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, memoryReadCommandHandle, (uintptr_t)NULL);
-
-//    DRV_MEMORY_AsyncRead(memory_appData.drvMemoryHandle, NULL/*&memoryReadCommandHandle*/, &memory_appData.memoryReadWriteBuffer, blockStart, 1);
-}
-
-void asyncMemoryErase(void) {
-    DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, memoryReadCommandHandle, (uintptr_t)NULL);
-    // TODO
-}
-
-void asyncMemoryWriteErase(void) {
-    DRV_MEMORY_TransferHandlerSet(memory_appData.drvMemoryHandle, NULL /*memoryReadCommandHandle*/, (uintptr_t)NULL);
-
-    DRV_MEMORY_AsyncEraseWrite(memory_appData.drvMemoryHandle, NULL/*&commandHandle*/, (void *)diskImage, 0, 0x1000 / 0x100);
-
-    /*if(DRV_MEMORY_COMMAND_HANDLE_INVALID == commandHandle)
-    {
-        // Error handling here
-    }*/
-}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -144,7 +90,7 @@ void asyncMemoryWriteErase(void) {
 void MEMORY_APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
-    memory_appData.state = MEMORY_APP_STATE_INIT;
+    memoryAppObj.state = MEMORY_APP_STATE_INIT;
 
     /* TODO: Initialize your application's state machine and other
      * parameters.
@@ -162,116 +108,108 @@ void MEMORY_APP_Initialize ( void )
 
 void MEMORY_APP_Tasks ( void )
 {
-
     /* Check the application's current state. */
-    switch ( memory_appData.state )
+    switch ( memoryAppObj.state )
     {
+
         /* Application's initial state. */
         case MEMORY_APP_STATE_INIT:
         {
-            memory_appData.drvMemoryHandle = DRV_MEMORY_Open(sysObj.drvMemory0, DRV_IO_INTENT_READWRITE| DRV_IO_INTENT_NONBLOCKING);
-            memory_appData.blocksToReadAmount = 4;
-                    
-            // TODO check handle to lett app be initialized
+            // TODO remove it to main
+//            GLOBAL_QUEUE_EVENT bootSectorWrite = {
+//                    .type = FLASH_WRITE_BOOT_SECTOR,
+//                    .payload = {}
+//            };
+//            globalQueueEnqueueEvent(&globalQueue, &bootSectorWrite);
+
             bool appInitialized = true;
 
 
             if (appInitialized)
             {
-                memory_appData.state = MEMORY_APP_STATE_SERVICE_TASKS;
+                memoryAppObj.state = MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
             }
-            break;
+
+            return;
         }
 
-        case MEMORY_APP_STATE_SERVICE_TASKS:
-        {
-            memory_appData.state = MEMORY_APP_STATE_READY_TO_READ_BLOCK;
-            
-            break;
+        case MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT: {
+            if (globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR) {
+                // open driver
+                memoryAppObj.drvMemoryHandle = DRV_MEMORY_Open(sysObj.drvMemory0, DRV_IO_INTENT_READWRITE| DRV_IO_INTENT_NONBLOCKING);
+                // TODO get this values from flash Geometry
+                // set write flash boot sector geometry
+                memoryAppObj.pagesToProcessAmount = FLASH_MEMORY_BOOT_SECTOR_SIZE / DRV_AT25DF_PAGE_SIZE;
+                // set write flash boot sector source
+                memoryAppObj.writeBuffer = (void *)diskImage;
+
+                memoryAppObj.state = MEMORY_APP_STATE_ERASE_WRITE_BLOCK;
+            }
+
+            if (globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR_SUCCESS
+            || globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR_ERROR) {
+                // close memory driver for further use in USB MSD
+                DRV_MEMORY_Close(memoryAppObj.drvMemoryHandle);
+            }
+
+            return;
         }
-        
-        case MEMORY_APP_STATE_IDLE:
-        {
-            break;
-        }
-        
-        /* Read */
-        case MEMORY_APP_STATE_READY_TO_READ_BLOCK:
-        {
-            if (memory_appData.blocksToReadAmount) {
-                asyncMemoryRead();
-            };
-            memory_appData.state = MEMORY_APP_STATE_IDLE;
-            
-            break;
-        }
-        
-        case MEMORY_APP_STATE_READ_BLOCK_READY:
-        {
-            SYS_DEBUG_PRINT(SYS_ERROR_DEBUG, "Block: \r\n %s", memory_appData.memoryReadWriteBuffer);
-            memory_appData.blocksToReadAmount--;
-            
-            memory_appData.state = MEMORY_APP_STATE_SERVICE_TASKS;
-            
-            break;
-        }
-        
-        /* Write */
-        case MEMORY_APP_STATE_READY_TO_WRITE_BLOCK:
-        {
-            break;
-        }
-                
-        case MEMORY_APP_STATE_WRITE_BLOCK_READY:
-        {
-            break;
-        }
-            
-        /* Erase */
-        case MEMORY_APP_STATE_READY_TO_ERASE_BLOCK:
-        {
-            break;
-        }
-                        
-        case MEMORY_APP_STATE_ERASE_BLOCK_READY:
-        {
-            break;
-        }
-        
-        case MEMORY_APP_STATE_READY_TO_ERASE_WRITE_BLOCK:
-        {
-            break;
-        }
-        
-        case MEMORY_APP_STATE_ERASE_WRITE_BLOCK_READY:
-        {
-            break;
+        case MEMORY_APP_STATE_READ_BLOCK: { return; }
+        case MEMORY_APP_STATE_WRITE_BLOCK: { return; }
+        case MEMORY_APP_STATE_ERASE_BLOCK: { return; }
+        case MEMORY_APP_STATE_ERASE_WRITE_BLOCK: {
+            DRV_MEMORY_TransferHandlerSet(memoryAppObj.drvMemoryHandle, eraseWriteTransferHandler, (uintptr_t)NULL);
+            DRV_MEMORY_AsyncEraseWrite(memoryAppObj.drvMemoryHandle, NULL/*&commandHandle*/, memoryAppObj.writeBuffer, memoryAppObj.startPage, memoryAppObj.pagesToProcessAmount);
+
+            memoryAppObj.state = MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
+            return;
         }
 
-        /* TODO: implement your application state machine.*/
-        case MEMORY_APP_STATE_READY_TO_DEINIT:
-        {
-            
-            DRV_MEMORY_Close(memory_appData.drvMemoryHandle);
-            
-            memory_appData.state = MEMORY_APP_STATE_DEINIT;
-            break;
-        }
-        
-        case MEMORY_APP_STATE_DEINIT:
-        {
-            break;
-        }
 
-        /* The default state should never be executed. */
-        default:
-        {
-            /* TODO: Handle error in application's state machine. */
-            break;
-        }
+        /*
+         * TODO
+         * DRV_MEMORY_Close(memory_appData.drvMemoryHandle);
+         */
     }
 }
 
+void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE commandHandle, uintptr_t context) {
+    // event handled
+    globalQueueDequeueEvent(&globalQueue);
+
+    switch(event)
+    {
+        case DRV_MEMORY_EVENT_COMMAND_COMPLETE:
+        {
+            GLOBAL_QUEUE_EVENT bootSectorWriteSuccess = {
+                    .type = FLASH_WRITE_BOOT_SECTOR_SUCCESS,
+                    .payload = {}
+            };
+
+            globalQueueEnqueueEvent(&globalQueue, &bootSectorWriteSuccess);
+            break;
+        }
+
+        case DRV_MEMORY_EVENT_COMMAND_ERROR:
+        {
+            GLOBAL_QUEUE_EVENT bootSectorWriteError = {
+                    .type = FLASH_WRITE_BOOT_SECTOR_ERROR,
+                    .payload = {}
+            };
+
+            globalQueueEnqueueEvent(&globalQueue, &bootSectorWriteError);
+
+            SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s\r\n", "Something goes wrong with writing flash boot sector attempt");
+
+            break;
+        }
+    }
+
+    // clean memory object
+    memoryAppObj.pagesToProcessAmount = 0;
+    memoryAppObj.startPage = 0;
+    memoryAppObj.writeBuffer = NULL;
+};
 
 /*******************************************************************************
  End of File

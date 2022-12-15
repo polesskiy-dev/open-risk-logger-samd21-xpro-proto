@@ -86,22 +86,22 @@ extern "C" {
      * @param[out] globalQueue
      * @param[in] event
      */
-    void globalQueueEnqueue(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *event);
+    void globalQueueEnqueueEvent(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *event);
 
     /**
      * Remove event from head
      * Violating queue ADT convention to simplify event->payload buffer handle,
-     * just invoke globalQueuePeek first
+     * just invoke globalQueuePeekEvent first
      * @param[out] globalQueue
      */
-    void globalQueueDequeue(GLOBAL_QUEUE_OBJECT *globalQueue);
+    void globalQueueDequeueEvent(GLOBAL_QUEUE_OBJECT *globalQueue);
     
     /**
      * Get head event
      * @param[out] globalQueue
      * @return GLOBAL_QUEUE_EVENT *event
      */
-    GLOBAL_QUEUE_EVENT *globalQueuePeek(GLOBAL_QUEUE_OBJECT *globalQueue);
+    GLOBAL_QUEUE_EVENT *globalQueuePeekEvent(GLOBAL_QUEUE_OBJECT *globalQueue);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

@@ -31,12 +31,13 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <system/debug/sys_debug.h>
-#include <driver/memory/drv_memory.h>
-#include "definitions.h"
-#include "configuration.h"
-#include "diskImage.h"
-
+#include "./config/default/definitions.h"
+#include "./config/default/configuration.h"
+#include "./config/default/system/debug/sys_debug.h"
+#include "./config/default/driver/memory/drv_memory.h"
+#include "./config/default/driver/driver_common.h"
+#include "./diskImage.h"
+#include "./queue.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -51,7 +52,9 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-#define MEMORY_READ_WRITE_BUFFER_SIZE   256    
+
+// let's keep all file system related data in first erasable sector
+#define FLASH_MEMORY_BOOT_SECTOR_SIZE DRV_AT25DF_ERASE_BUFFER_SIZE
 
 // *****************************************************************************
 /* Application states
@@ -68,25 +71,13 @@ typedef enum
 {
     /* Application's state machine's initial state. */
     MEMORY_APP_STATE_INIT=0,
-    MEMORY_APP_STATE_SERVICE_TASKS,
-    /* TODO: Define states used by the application state machine. */
-    MEMORY_APP_STATE_IDLE,
-            
-    MEMORY_APP_STATE_READY_TO_READ_BLOCK,
-    MEMORY_APP_STATE_READ_BLOCK_READY,
 
-    MEMORY_APP_STATE_READY_TO_WRITE_BLOCK,
-    MEMORY_APP_STATE_WRITE_BLOCK_READY,
-            
-    MEMORY_APP_STATE_READY_TO_ERASE_BLOCK,
-    MEMORY_APP_STATE_ERASE_BLOCK_READY,
-            
-    MEMORY_APP_STATE_READY_TO_ERASE_WRITE_BLOCK,
-    MEMORY_APP_STATE_ERASE_WRITE_BLOCK_READY,
-            
-    MEMORY_APP_STATE_READY_TO_DEINIT,
-    MEMORY_APP_STATE_DEINIT
+    MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT,
 
+    MEMORY_APP_STATE_READ_BLOCK,
+    MEMORY_APP_STATE_WRITE_BLOCK,
+    MEMORY_APP_STATE_ERASE_BLOCK,
+    MEMORY_APP_STATE_ERASE_WRITE_BLOCK,
 } MEMORY_APP_STATES;
 
 
@@ -107,14 +98,10 @@ typedef struct
 {
     /* The application's current state */
     MEMORY_APP_STATES state;
-
-    /* TODO: Define any additional data used by the application. */
-    uint32_t blocksToReadAmount;
     DRV_HANDLE drvMemoryHandle;
-    
-    // memory read/write buffer
-    uint8_t memoryReadWriteBuffer[MEMORY_READ_WRITE_BUFFER_SIZE];
-    
+    uint8_t pagesToProcessAmount;
+    uint8_t startPage;
+    uint8_t *writeBuffer;
 } MEMORY_APP_DATA;
 
 // *****************************************************************************
