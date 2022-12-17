@@ -34,6 +34,7 @@
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
+extern GLOBAL_QUEUE_EVENT globalQueueObj;
 
 // *****************************************************************************
 /* Application Data
@@ -57,7 +58,7 @@ MEMORY_APP_DATA memoryAppObj = {
         .startPage = 0,
         .writeBuffer = NULL
 };
-extern GLOBAL_QUEUE_OBJECT globalQueue;
+extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -116,11 +117,7 @@ void MEMORY_APP_Tasks ( void )
         case MEMORY_APP_STATE_INIT:
         {
             // TODO remove it to main
-//            GLOBAL_QUEUE_EVENT bootSectorWrite = {
-//                    .type = FLASH_WRITE_BOOT_SECTOR,
-//                    .payload = {}
-//            };
-//            globalQueueEnqueueEvent(&globalQueue, &bootSectorWrite);
+
 
             bool appInitialized = true;
 
@@ -134,7 +131,7 @@ void MEMORY_APP_Tasks ( void )
         }
 
         case MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT: {
-            if (globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR) {
+            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR) {
                 // open driver
                 memoryAppObj.drvMemoryHandle = DRV_MEMORY_Open(sysObj.drvMemory0, DRV_IO_INTENT_READWRITE| DRV_IO_INTENT_NONBLOCKING);
                 // TODO get this values from flash Geometry
@@ -146,8 +143,8 @@ void MEMORY_APP_Tasks ( void )
                 memoryAppObj.state = MEMORY_APP_STATE_ERASE_WRITE_BLOCK;
             }
 
-            if (globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR_SUCCESS
-            || globalQueuePeekEvent(&globalQueue)->type == FLASH_WRITE_BOOT_SECTOR_ERROR) {
+            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_WRITE_BOOT_SECTOR_SUCCESS
+            || globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_WRITE_BOOT_SECTOR_ERROR) {
                 // close memory driver for further use in USB MSD
                 DRV_MEMORY_Close(memoryAppObj.drvMemoryHandle);
             }
@@ -175,7 +172,7 @@ void MEMORY_APP_Tasks ( void )
 
 void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE commandHandle, uintptr_t context) {
     // event handled
-    globalQueueDequeueEvent(&globalQueue);
+    globalQueueDequeueEvent(&globalEventsQueueObj);
 
     switch(event)
     {
@@ -186,7 +183,7 @@ void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE
                     .payload = {}
             };
 
-            globalQueueEnqueueEvent(&globalQueue, &bootSectorWriteSuccess);
+            globalQueueEnqueueEvent(&globalEventsQueueObj, &bootSectorWriteSuccess);
             break;
         }
 
@@ -197,7 +194,7 @@ void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE
                     .payload = {}
             };
 
-            globalQueueEnqueueEvent(&globalQueue, &bootSectorWriteError);
+            globalQueueEnqueueEvent(&globalEventsQueueObj, &bootSectorWriteError);
 
             SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s\r\n", "Something goes wrong with writing flash boot sector attempt");
 

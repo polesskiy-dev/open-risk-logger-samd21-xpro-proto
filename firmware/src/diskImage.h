@@ -77,7 +77,7 @@ extern "C" {
     /*  A brief description of a section can be given directly below the section
         banner.
      */
-    extern const unsigned char diskImage[32768];
+    extern const unsigned char diskImage[4096];
 
 
     // *****************************************************************************

@@ -20,7 +20,15 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/configuration.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/configuration.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/diskImage.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/diskImage.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/diskImage.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/diskImage.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/memory_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/queue.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/queue.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/queue.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +150,7 @@
       <workItem from="1671061377598" duration="2393000" />
       <workItem from="1671064085132" duration="3799000" />
       <workItem from="1671126014289" duration="349000" />
+      <workItem from="1671221991118" duration="6476000" />
     </task>
     <servers />
   </component>

@@ -99,8 +99,6 @@ void SYS_Tasks ( void )
         /* Call Application task USB_APP. */
     USB_APP_Tasks();
 
-
-
 }
 
 /*******************************************************************************

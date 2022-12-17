@@ -153,6 +153,7 @@ const DRV_AT25DF_INIT drvAT25DFInitData =
     .chipSelectPin = DRV_AT25DF_CHIP_SELECT_PIN_IDX
 };
 
+extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 
 // *****************************************************************************
@@ -366,14 +367,28 @@ void SYS_Initialize ( void* data )
 
 
 	/* Initialize USB Driver */ 
-    sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);	
+    sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
 
+    /* Initialize Global events queue */
 
     USB_APP_Initialize();
     MEMORY_APP_Initialize();
+    GLOBAL_QUEUE_Initialize();
 
 
     NVIC_Initialize();
+
+    /*
+     * Initial events
+     */
+
+    // add event to erase & write flash boot sector
+//    GLOBAL_QUEUE_EVENT bootSectorWrite = {
+//            .type = FLASH_ERASE_WRITE_BOOT_SECTOR,
+//            .payload = {}
+//    };
+//    globalQueueEnqueueEvent(&globalEventsQueueObj, &bootSectorWrite);
+
 
     /* MISRAC 2012 deviation block end */
 }

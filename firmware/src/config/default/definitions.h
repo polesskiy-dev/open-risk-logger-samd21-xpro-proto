@@ -74,6 +74,7 @@
 #include "system/debug/sys_debug.h"
 #include "usb_app.h"
 #include "memory_app.h"
+#include "queue.h"
 
 
 
@@ -182,6 +183,7 @@ void SYS_Tasks ( void );
 // *****************************************************************************
 
 // *****************************************************************************
+
 /* System Objects
 
 Summary:
@@ -210,7 +212,6 @@ typedef struct
 
     /* AT25DF Driver Object */
     SYS_MODULE_OBJ drvAT25DF;
-
 
 } SYSTEM_OBJECTS;
 
