@@ -48,13 +48,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0D18A719A1E40A8875895284967F66D0
-- generatedChecksum: AF6B989A47D94001B263AF38BA83A503
+- generatedChecksum: 1119AAC7B49A8936F5CCCE5D771A3FD0
+  logicalPath: ''
+  name: global_state_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 1119AAC7B49A8936F5CCCE5D771A3FD0
+- generatedChecksum: 435BF53C8A1F1E8E2D69FE0F45D22968
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: AF6B989A47D94001B263AF38BA83A503
+  userChecksum: 8849C8075AB6244EFA20E27370AC1F3C
 - generatedChecksum: BDF0505E36437141F292B85921E619A8
   logicalPath: config/default
   name: interrupts.c
@@ -76,13 +83,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 297DF76847205DE83F7A7B467B017DF6
+- generatedChecksum: null
   logicalPath: ''
   name: memory_app.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 297DF76847205DE83F7A7B467B017DF6
+  userChecksum: null
 - generatedChecksum: F1B5513C07FACD20C5E815A721CEF5AF
   logicalPath: config/default/peripheral/clock
   name: plib_clock.c
@@ -139,6 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 64C7B09EBF0E16AC27EFD31B52FDDDF8
+- generatedChecksum: 75C83AA1697B5EFAA25930859E6BB836
+  logicalPath: config/default/system/command
+  name: sys_command.c
+  physicalPath: system/command/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 75C83AA1697B5EFAA25930859E6BB836
 - generatedChecksum: 20C22A19D5DC74DEBFC4CCCA83B6F603
   logicalPath: config/default/system/console
   name: sys_console.c
@@ -195,6 +209,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 02C3C1B519E59992810626BB6098CF56
+- generatedChecksum: 003FBAA52BB0F67321DDAFD98601DC86
+  logicalPath: config/default/system/reset
+  name: sys_reset.c
+  physicalPath: system/reset
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 003FBAA52BB0F67321DDAFD98601DC86
 - generatedChecksum: B68110221BEC42FE6B718139BA64DA52
   logicalPath: config/default/system/time
   name: sys_time.c
@@ -202,13 +223,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B68110221BEC42FE6B718139BA64DA52
-- generatedChecksum: 7484163D21E2D5755B03C25855FFD703
+- generatedChecksum: 166E2D5A695D869AFBE735F79D6D0BA7
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7484163D21E2D5755B03C25855FFD703
+  userChecksum: 1B514DCC3F348FE9D374C56A8DA99D96
 - generatedChecksum: null
   logicalPath: ''
   name: usb_app.c
@@ -349,13 +370,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 52F91AC0727F2311EDA0E3BAA7719A9F
-- generatedChecksum: F6A9F08D8A21D57C9933924002C0F10B
+- generatedChecksum: 46753DA1FD3199A089733257E98FFDC7
   logicalPath: config/default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: F6A9F08D8A21D57C9933924002C0F10B
+  userChecksum: D5725D2ABE8DC7110AC50440A4C1C544
 - generatedChecksum: CCBD23918BE14943EA128B0D552031C5
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: core_cm0plus.h
@@ -377,13 +398,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CB8D4E72D581CDEFB0BB729ADC52D698
-- generatedChecksum: 09E93C0513201935C62E887A0C3B99BE
+- generatedChecksum: F8C5F19B59756B54B69E94CF044DC88C
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 09E93C0513201935C62E887A0C3B99BE
+  userChecksum: 9A9794719C59EE6B634485B061917CAF
 - generatedChecksum: 636DD2FCAC011D9457B3B1813AC63647
   logicalPath: config/default
   name: device.h
@@ -573,6 +594,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: F4A6FB3AE2C9F16BFDD64C082A2622B9
+- generatedChecksum: CFA64F9D2122CACFCD95B45392AF2DF7
+  logicalPath: ''
+  name: global_state_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: CFA64F9D2122CACFCD95B45392AF2DF7
 - generatedChecksum: 04F393E9D1E6EFA7CD5A43CB66752E93
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: hmatrixb.h
@@ -601,13 +629,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D3695DF0A815EAFD08A9202DDE0C5B71
-- generatedChecksum: 2ADDF2ED776BF78321F059C830C34EE8
+- generatedChecksum: null
   logicalPath: ''
   name: memory_app.h
   physicalPath: ../..
   security: NON_SECURE
   type: HEADER
-  userChecksum: 2ADDF2ED776BF78321F059C830C34EE8
+  userChecksum: null
 - generatedChecksum: 47E760D36E42A7B436306A9CB4E72A0E
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: mpu_armv7.h
@@ -888,6 +916,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D5297C2E551718257245686146A5096A
+- generatedChecksum: 712D1407BC82CB6B3C4C44FED4F14D26
+  logicalPath: config/default/system/command
+  name: sys_command.h
+  physicalPath: system/command
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 712D1407BC82CB6B3C4C44FED4F14D26
 - generatedChecksum: 3AE819DFC5376F6E9AD0427596F24644
   logicalPath: config/default/system/console
   name: sys_console.h
@@ -930,6 +965,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 0077CD2365E6F28D76DF1D212FF80059
+- generatedChecksum: 8E43BD17134E69982826F202D0AB42C5
+  logicalPath: config/default/system/reset
+  name: sys_reset.h
+  physicalPath: system/reset
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 8E43BD17134E69982826F202D0AB42C5
 - generatedChecksum: 466D676839280C0E7FC2CC6F78BA6EE9
   logicalPath: config/default/system/time
   name: sys_time.h
@@ -1259,7 +1301,7 @@ settings:
   delimiter: ''
   key: heap-size
   security: NON_SECURE
-  value: '512'
+  value: '1024'
 - append: false
   category: C32-LD
   delimiter: ''

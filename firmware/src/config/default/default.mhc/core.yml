@@ -1298,6 +1298,22 @@ children:
       children:
       - type: Dynamic
         attributes: {id: drv_usbfs_v1, value: 'true'}
+  - type: Setting
+    attributes: {id: XC32_HEAP}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: value}
+        children:
+        - {type: Value, value: '1024'}
+  - type: Integer
+    attributes: {id: XC32_HEAP_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '1024'}
   - type: Boolean
     attributes: {id: XOSC32K_EN32K}
     children:

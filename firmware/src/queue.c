@@ -28,7 +28,7 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-GLOBAL_QUEUE_OBJECT globalQueue = {{}, 0};
+GLOBAL_QUEUE_OBJECT globalEventsQueueObj = {{}, 0};
 
 
 /* ************************************************************************** */
@@ -43,6 +43,9 @@ GLOBAL_QUEUE_OBJECT globalQueue = {{}, 0};
 // Section: Interface Functions                                               */
 /* ************************************************************************** */
 /* ************************************************************************** */
+SYS_MODULE_OBJ GLOBAL_QUEUE_Initialize() {
+    return (SYS_MODULE_OBJ)&globalEventsQueueObj;
+};
 
 void globalQueueEnqueueEvent(GLOBAL_QUEUE_OBJECT *globalQueue, GLOBAL_QUEUE_EVENT *event) {
     if (globalQueue->size >= GLOBAL_QUEUE_SIZE) {

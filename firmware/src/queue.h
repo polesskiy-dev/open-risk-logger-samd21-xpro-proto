@@ -30,6 +30,7 @@
 #include "./config/default/definitions.h"
 #include "./config/default/configuration.h"
 #include "./config/default/system/debug/sys_debug.h"
+#include "./config/default/system/system_module.h"
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
@@ -60,7 +61,7 @@ extern "C" {
         FLASH_ERASE_BOOT_SECTOR = 1,
         FLASH_ERASE_BOOT_SECTOR_SUCCESS,
         FLASH_ERASE_BOOT_SECTOR_ERROR,
-        FLASH_WRITE_BOOT_SECTOR,
+        FLASH_ERASE_WRITE_BOOT_SECTOR,
         FLASH_WRITE_BOOT_SECTOR_SUCCESS,
         FLASH_WRITE_BOOT_SECTOR_ERROR,
     } GLOBAL_QUEUE_EVENT_TYPE;
@@ -80,6 +81,12 @@ extern "C" {
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
+
+    /**
+     * Init global queue
+     * @return SYS_MODULE_OBJ globalQueueObj
+     */
+    SYS_MODULE_OBJ GLOBAL_QUEUE_Initialize();
     
     /**
      * Add event to head

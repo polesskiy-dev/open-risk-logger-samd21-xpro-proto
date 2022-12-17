@@ -125,8 +125,8 @@ extern "C" {
 #define DRV_MEMORY_INDEX_0                   0
 #define DRV_MEMORY_CLIENTS_NUMBER_IDX0       1
 #define DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0    1
-// memory address of FAT32 header (32K), 128R-32K=96K    
-#define DRV_MEMORY_DEVICE_START_ADDRESS      0x18000
+// memory address of FAT12 header (4K), 128K-4K=124K
+#define DRV_MEMORY_DEVICE_START_ADDRESS      0x1F000
 
 /* AT25DF Driver Configuration Options */
 #define DRV_AT25DF_INSTANCES_NUMBER              1
