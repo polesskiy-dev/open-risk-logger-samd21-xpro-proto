@@ -92,7 +92,7 @@ void RTC_Initialize(void)
     }
 
     /* Writing to CTRL register will trigger write-synchronization */
-    RTC_REGS->MODE2.RTC_CTRL = RTC_MODE2_CTRL_MODE(2U) | RTC_MODE2_CTRL_PRESCALER(0x0U) | RTC_MODE2_CTRL_ENABLE_Msk;
+    RTC_REGS->MODE2.RTC_CTRL = RTC_MODE2_CTRL_MODE(2U) | RTC_MODE2_CTRL_PRESCALER(0xAU) | RTC_MODE2_CTRL_ENABLE_Msk;
     while((RTC_REGS->MODE2.RTC_STATUS & RTC_STATUS_SYNCBUSY_Msk) == RTC_STATUS_SYNCBUSY_Msk)
     {
         /* Wait for Write-Synchronization */

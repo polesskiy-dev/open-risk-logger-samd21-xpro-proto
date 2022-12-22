@@ -413,6 +413,8 @@ void SYS_Initialize ( void* data )
 
     NVMCTRL_Initialize( );
 
+    RTC_Initialize();
+
     TC3_TimerInitialize();
 
 	BSP_Initialize();
@@ -420,6 +422,8 @@ void SYS_Initialize ( void* data )
 
 
     SERCOM5_SPI_Initialize();
+
+    EIC_Initialize();
 
 
     /* Initialize I2C0 Driver Instance */
