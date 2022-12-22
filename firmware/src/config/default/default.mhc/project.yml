@@ -1,4 +1,11 @@
 files:
+- generatedChecksum: 613DCE893E2C52101B0AB9BBBA4872D2
+  logicalPath: ''
+  name: accel_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 613DCE893E2C52101B0AB9BBBA4872D2
 - generatedChecksum: 1A81761E8B71DEB8D8FBEA31DBFD4738
   logicalPath: config/default/bsp
   name: bsp.c
@@ -69,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 636A6B6CDA6720B3E1E9C7B5F8CAA41E
+- generatedChecksum: 3790E9634D6E5BE19294F2D255B63D63
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: BA561C1E9C322FC5C69EC90C92CB30CF
+  userChecksum: B71959C14C591D7C021C969F853474EC
 - generatedChecksum: 050B24D13F1B6F973CD72C70282EB3A9
   logicalPath: config/default
   name: interrupts.c
@@ -104,6 +111,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
+- generatedChecksum: EA3B881B45BDD76346675A7B69912428
+  logicalPath: ''
+  name: nfc_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: EA3B881B45BDD76346675A7B69912428
 - generatedChecksum: C1BB4AE8B1D69E7318B8340215A7C4DB
   logicalPath: config/default/peripheral/clock
   name: plib_clock.c
@@ -230,13 +244,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B68110221BEC42FE6B718139BA64DA52
-- generatedChecksum: 4C4AD2F8CABF52308226542075F4CF20
+- generatedChecksum: 56A9C6BE8AE922FF2F9FB9D5C611C5A3
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 4C4AD2F8CABF52308226542075F4CF20
+  userChecksum: 56A9C6BE8AE922FF2F9FB9D5C611C5A3
+- generatedChecksum: ECA51864423113697950CF72C276DA6E
+  logicalPath: ''
+  name: temp_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: ECA51864423113697950CF72C276DA6E
 - generatedChecksum: null
   logicalPath: ''
   name: usb_app.c
@@ -300,6 +321,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1DFF055DE3840598320E91B5EC118AFD
+- generatedChecksum: 3C8DF9128D748ACC8C9BBD9055598C16
+  logicalPath: ''
+  name: accel_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 3C8DF9128D748ACC8C9BBD9055598C16
 - generatedChecksum: A50FCDAAC6148E7609F57041407064B5
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: adc.h
@@ -405,13 +433,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CB8D4E72D581CDEFB0BB729ADC52D698
-- generatedChecksum: 9E74B8F8312780602DF248EE217449DA
+- generatedChecksum: 26CB08DB4053D2208277FFCD19841AE7
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: C31275120B3CC840466A74DFD8169411
+  userChecksum: A11E198CCAD01419E087E85443499875
 - generatedChecksum: 636DD2FCAC011D9457B3B1813AC63647
   logicalPath: config/default
   name: device.h
@@ -678,6 +706,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7A86BDDC36E770B3D447B352AB3ABE30
+- generatedChecksum: A9D56F85ACCC431FAFABC7D0D2154E34
+  logicalPath: ''
+  name: nfc_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: A9D56F85ACCC431FAFABC7D0D2154E34
 - generatedChecksum: 570A6A71EEC062B19FD720EE732B2910
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: nvmctrl.h
@@ -1126,6 +1161,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: A94247343179BCF44C1C90A78E66356A
+- generatedChecksum: EEAEA60014B67F8408101328E041BABB
+  logicalPath: ''
+  name: temp_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: EEAEA60014B67F8408101328E041BABB
 - generatedChecksum: 5A6CE947CB477E5554790DE371B7FBAB
   logicalPath: config/default
   name: toolchain_specifics.h

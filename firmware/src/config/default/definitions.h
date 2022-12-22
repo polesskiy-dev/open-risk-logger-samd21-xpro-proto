@@ -77,6 +77,9 @@
 #include "usb_app.h"
 #include "memory_app.h"
 #include "global_state_app.h"
+#include "nfc_app.h"
+#include "temp_app.h"
+#include "accel_app.h"
 #include "queue.h"
 
 

@@ -78,7 +78,7 @@ void SYS_Tasks ( void )
 
     /* Maintain Device Drivers */
     DRV_MEMORY_Tasks(sysObj.drvMemory0);
-    
+
 
 
     /* Maintain Middleware & Other Libraries */
@@ -99,6 +99,15 @@ void SYS_Tasks ( void )
 
     /* Call Application task GLOBAL_STATE_APP. */
     GLOBAL_STATE_APP_Tasks();
+
+    /* Call Application task NFC_APP. */
+    NFC_APP_Tasks();
+
+    /* Call Application task TEMP_APP. */
+    TEMP_APP_Tasks();
+
+    /* Call Application task ACCEL_APP. */
+    ACCEL_APP_Tasks();
 
 
 

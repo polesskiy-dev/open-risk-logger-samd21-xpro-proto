@@ -448,6 +448,9 @@ void SYS_Initialize ( void* data )
     USB_APP_Initialize();
     MEMORY_APP_Initialize();
     GLOBAL_STATE_APP_Initialize();
+    NFC_APP_Initialize();
+    TEMP_APP_Initialize();
+    ACCEL_APP_Initialize();
     GLOBAL_QUEUE_Initialize();
 
 
