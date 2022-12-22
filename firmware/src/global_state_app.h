@@ -31,7 +31,10 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "configuration.h"
+#include <assert.h>
+#include "./config/default/definitions.h"
+#include "./config/default/configuration.h"
+#include "./config/default/system/debug/sys_debug.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -62,8 +65,8 @@ typedef enum
 {
     /* Application's state machine's initial state. */
     GLOBAL_STATE_APP_STATE_INIT=0,
-    GLOBAL_STATE_APP_STATE_SERVICE_TASKS,
-    /* TODO: Define states used by the application state machine. */
+
+    GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT
 
 } GLOBAL_STATE_APP_STATES;
 
@@ -89,6 +92,11 @@ typedef struct
     /* TODO: Define any additional data used by the application. */
 
 } GLOBAL_STATE_APP_DATA;
+
+typedef struct
+{
+    bool isFlashBootSectorWritten;
+} GLOBAL_STATE;
 
 // *****************************************************************************
 // *****************************************************************************

@@ -34,6 +34,7 @@
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
+extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 // *****************************************************************************
 /* Application Data
@@ -52,24 +53,21 @@
 
 GLOBAL_STATE_APP_DATA global_state_appData;
 
+GLOBAL_STATE globalStateObj = {
+        .isFlashBootSectorWritten = false
+};
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Functions
 // *****************************************************************************
 // *****************************************************************************
 
-/* TODO:  Add any necessary callback functions.
-*/
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Local Functions
 // *****************************************************************************
 // *****************************************************************************
-
-
-/* TODO:  Add any necessary local functions.
-*/
 
 
 // *****************************************************************************
@@ -90,12 +88,6 @@ void GLOBAL_STATE_APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     global_state_appData.state = GLOBAL_STATE_APP_STATE_INIT;
-
-
-
-    /* TODO: Initialize your application's state machine and other
-     * parameters.
-     */
 }
 
 
@@ -122,24 +114,27 @@ void GLOBAL_STATE_APP_Tasks ( void )
             if (appInitialized)
             {
 
-                global_state_appData.state = GLOBAL_STATE_APP_STATE_SERVICE_TASKS;
+                global_state_appData.state = GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
             }
             break;
         }
 
-        case GLOBAL_STATE_APP_STATE_SERVICE_TASKS:
+        case GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT:
         {
+            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_BOOT_SECTOR_SUCCESS) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                globalStateObj.isFlashBootSectorWritten = true;
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_BOOT_SECTOR_ERROR) {
+                SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s \r\n", "Flash boot sector erase/write error event!");
+                __conditional_software_breakpoint(false);
+            }
 
             break;
         }
 
-        /* TODO: implement your application state machine.*/
-
-
         /* The default state should never be executed. */
         default:
         {
-            /* TODO: Handle error in application's state machine. */
             break;
         }
     }
