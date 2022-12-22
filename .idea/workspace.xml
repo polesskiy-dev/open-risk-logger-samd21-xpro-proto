@@ -20,21 +20,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/38b8eb50f34c01ec04bf64b374f6b0e7151577b8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/4b55d0d23805daeaad63d2fbc22cd34657ea3ed3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/9110981d09605d46be160f491eb5a0982bc16a0e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/ff61cdcc9a83194e9b11646fd64b49a8b95cb600" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_memory.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_memory.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/sys_command.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-failure.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-failure.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/global_state_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/global_state_app.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/global_state_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/global_state_app.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +70,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="OCResolveContextSettings">
+    <option name="configuration" value="$PROJECT_DIR$/firmware/src/config/default/tasks.c" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -157,6 +149,7 @@
       <workItem from="1671064085132" duration="3799000" />
       <workItem from="1671126014289" duration="349000" />
       <workItem from="1671221991118" duration="6476000" />
+      <workItem from="1671751247683" duration="658000" />
     </task>
     <servers />
   </component>

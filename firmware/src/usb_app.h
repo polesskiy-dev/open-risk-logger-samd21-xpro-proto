@@ -37,6 +37,7 @@
 #include <system/time/sys_time.h>
 #include <bsp/bsp.h>
 #include "configuration.h"
+#include "definitions.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

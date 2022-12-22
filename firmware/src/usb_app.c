@@ -130,21 +130,12 @@ void USB_APP_Tasks ( void )
 
         case USB_APP_STATE_SERVICE_TASKS:
         {
-            /*
-            char *cmdBufferTail_p = usb_appData.cmdBuffer + strlen(usb_appData.cmdBuffer);
-            // append received chars to CMD buf
-            ssize_t readBytesAmount = SYS_CONSOLE_Read( SYS_CONSOLE_INDEX_0, cmdBufferTail_p, USB_CMD_BUFFER_SIZE);
-            if (readBytesAmount == -1)
-            {
-                SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "Unexpected Console Read error\r\n");
-            }
+            /* Maintain Middleware & Other Libraries */
+            /* USB Device layer tasks routine */
+            USB_DEVICE_Tasks(sysObj.usbDevObject0);
 
-            if (strstr(usb_appData.cmdBuffer, "\n") != NULL) {
-//                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Received CMD: %s %s\r\n", usb_appData.cmdBuffer, strstr(usb_appData.cmdBuffer, "\n"));
-                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Received CMD: %s\r\n", usb_appData.cmdBuffer);
-                memset(usb_appData.cmdBuffer,0,USB_CMD_BUFFER_SIZE);
-            }
-            */
+            /* USB FS Driver Task Routine */
+            DRV_USBFSV1_Tasks(sysObj.drvUSBFSV1Object);
             break;
         }
 

@@ -113,7 +113,6 @@ void GLOBAL_STATE_APP_Tasks ( void )
 
             if (appInitialized)
             {
-
                 global_state_appData.state = GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
             }
             break;
