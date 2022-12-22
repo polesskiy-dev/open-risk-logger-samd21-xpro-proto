@@ -80,6 +80,77 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="DRV_I2C Instance 0 Initialization Data">
+
+/* I2C Client Objects Pool */
+static DRV_I2C_CLIENT_OBJ drvI2C0ClientObjPool[DRV_I2C_CLIENTS_NUMBER_IDX0];
+
+/* I2C Transfer Objects Pool */
+static DRV_I2C_TRANSFER_OBJ drvI2C0TransferObj[DRV_I2C_QUEUE_SIZE_IDX0];
+
+/* I2C PLib Interface Initialization */
+const DRV_I2C_PLIB_INTERFACE drvI2C0PLibAPI = {
+
+    /* I2C PLib Transfer Read Add function */
+    .read = (DRV_I2C_PLIB_READ)SERCOM2_I2C_Read,
+
+    /* I2C PLib Transfer Write Add function */
+    .write = (DRV_I2C_PLIB_WRITE)SERCOM2_I2C_Write,
+
+
+    /* I2C PLib Transfer Write Read Add function */
+    .writeRead = (DRV_I2C_PLIB_WRITE_READ)SERCOM2_I2C_WriteRead,
+
+    /*I2C PLib Transfer Abort function */
+    .transferAbort = (DRV_I2C_PLIB_TRANSFER_ABORT)SERCOM2_I2C_TransferAbort,
+
+    /* I2C PLib Transfer Status function */
+    .errorGet = (DRV_I2C_PLIB_ERROR_GET)SERCOM2_I2C_ErrorGet,
+
+    /* I2C PLib Transfer Setup function */
+    .transferSetup = (DRV_I2C_PLIB_TRANSFER_SETUP)SERCOM2_I2C_TransferSetup,
+
+    /* I2C PLib Callback Register */
+    .callbackRegister = (DRV_I2C_PLIB_CALLBACK_REGISTER)SERCOM2_I2C_CallbackRegister,
+};
+
+
+const DRV_I2C_INTERRUPT_SOURCES drvI2C0InterruptSources =
+{
+    /* Peripheral has single interrupt vector */
+    .isSingleIntSrc                        = true,
+
+    /* Peripheral interrupt line */
+    .intSources.i2cInterrupt             = SERCOM2_IRQn,
+};
+
+/* I2C Driver Initialization Data */
+const DRV_I2C_INIT drvI2C0InitData =
+{
+    /* I2C PLib API */
+    .i2cPlib = &drvI2C0PLibAPI,
+
+    /* I2C Number of clients */
+    .numClients = DRV_I2C_CLIENTS_NUMBER_IDX0,
+
+    /* I2C Client Objects Pool */
+    .clientObjPool = (uintptr_t)&drvI2C0ClientObjPool[0],
+
+    /* I2C TWI Queue Size */
+    .transferObjPoolSize = DRV_I2C_QUEUE_SIZE_IDX0,
+
+    /* I2C Transfer Objects */
+    .transferObjPool = (uintptr_t)&drvI2C0TransferObj[0],
+
+    /* I2C interrupt sources */
+    .interruptSources = &drvI2C0InterruptSources,
+
+    /* I2C Clock Speed */
+    .clockSpeed = DRV_I2C_CLOCK_SPEED_IDX0,
+};
+
+// </editor-fold>
+
 // <editor-fold defaultstate="collapsed" desc="DRV_MEMORY Instance 0 Initialization Data">
 
 static uint8_t gDrvMemory0EraseBuffer[DRV_AT25DF_ERASE_BUFFER_SIZE] CACHE_ALIGN;
@@ -260,15 +331,6 @@ const SYS_TIME_INIT sysTimeInitData =
 };
 
 // </editor-fold>
-
-const SYS_DEBUG_INIT debugInit =
-{
-    .moduleInit = {0},
-    .errorLevel = SYS_DEBUG_GLOBAL_ERROR_LEVEL,
-    .consoleIndex = 0,
-};
-
-
 // <editor-fold defaultstate="collapsed" desc="SYS_CONSOLE Instance 0 Initialization Data">
 
 
@@ -303,6 +365,15 @@ const SYS_CONSOLE_INIT sysConsole0Init =
 
 
 // </editor-fold>
+
+
+const SYS_DEBUG_INIT debugInit =
+{
+    .moduleInit = {0},
+    .errorLevel = SYS_DEBUG_GLOBAL_ERROR_LEVEL,
+    .consoleIndex = 0,
+};
+
 
 
 
@@ -342,26 +413,30 @@ void SYS_Initialize ( void* data )
 
     NVMCTRL_Initialize( );
 
-
-    SERCOM5_SPI_Initialize();
-
     TC3_TimerInitialize();
 
 	BSP_Initialize();
+    SERCOM2_I2C_Initialize();
 
+
+    SERCOM5_SPI_Initialize();
+
+
+    /* Initialize I2C0 Driver Instance */
+    sysObj.drvI2C0 = DRV_I2C_Initialize(DRV_I2C_INDEX_0, (SYS_MODULE_INIT *)&drvI2C0InitData);
     sysObj.drvMemory0 = DRV_MEMORY_Initialize((SYS_MODULE_INDEX)DRV_MEMORY_INDEX_0, (SYS_MODULE_INIT *)&drvMemory0InitData);
 
     sysObj.drvAT25DF = DRV_AT25DF_Initialize(DRV_AT25DF_INDEX, (SYS_MODULE_INIT *)&drvAT25DFInitData);
 
 
     sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
+    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
+
     sysObj.sysDebug = SYS_DEBUG_Initialize(SYS_DEBUG_INDEX_0, (SYS_MODULE_INIT*)&debugInit);
 
 
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
     
   
-
     /* Initialize the USB device layer */
     sysObj.usbDevObject0 = USB_DEVICE_Initialize (USB_DEVICE_INDEX_0 , ( SYS_MODULE_INIT* ) & usbDevInitData);
 
@@ -369,10 +444,10 @@ void SYS_Initialize ( void* data )
 	/* Initialize USB Driver */ 
     sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
 
-    /* Initialize Global events queue */
 
     USB_APP_Initialize();
     MEMORY_APP_Initialize();
+    GLOBAL_STATE_APP_Initialize();
     GLOBAL_QUEUE_Initialize();
 
 

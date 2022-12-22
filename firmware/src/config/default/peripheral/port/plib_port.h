@@ -65,6 +65,22 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*** Macros for ACCEL_INT2 pin ***/
+#define ACCEL_INT2_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 6U)) & 0x01U)
+#define ACCEL_INT2_PIN                  PORT_PIN_PB06
+
+/*** Macros for ACCEL_INT1 pin ***/
+#define ACCEL_INT1_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 7U)) & 0x01U)
+#define ACCEL_INT1_PIN                  PORT_PIN_PB07
+
+/*** Macros for SDA pin ***/
+#define SDA_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 8U)) & 0x01U)
+#define SDA_PIN                  PORT_PIN_PA08
+
+/*** Macros for SCL pin ***/
+#define SCL_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 9U)) & 0x01U)
+#define SCL_PIN                  PORT_PIN_PA09
+
 /*** Macros for FLASH_SPI_SS pin ***/
 #define FLASH_SPI_SS_Set()               (PORT_REGS->GROUP[0].PORT_OUTSET = ((uint32_t)1U << 13U))
 #define FLASH_SPI_SS_Clear()             (PORT_REGS->GROUP[0].PORT_OUTCLR = ((uint32_t)1U << 13U))
@@ -86,6 +102,14 @@
 /*** Macros for FLASH_SPI_MISO pin ***/
 #define FLASH_SPI_MISO_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 16U)) & 0x01U)
 #define FLASH_SPI_MISO_PIN                  PORT_PIN_PB16
+
+/*** Macros for NFC_INT pin ***/
+#define NFC_INT_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 20U)) & 0x01U)
+#define NFC_INT_PIN                  PORT_PIN_PA20
+
+/*** Macros for TEMP_INT pin ***/
+#define TEMP_INT_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 21U)) & 0x01U)
+#define TEMP_INT_PIN                  PORT_PIN_PA21
 
 /*** Macros for FLASH_SPI_MOSI pin ***/
 #define FLASH_SPI_MOSI_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 22U)) & 0x01U)

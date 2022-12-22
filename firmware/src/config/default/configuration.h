@@ -88,6 +88,15 @@ extern "C" {
 #define SYS_TIME_CPU_CLOCK_FREQUENCY                (48000000)
 #define SYS_TIME_COMPARE_UPDATE_EXECUTION_CYCLES    (200)
 
+#define SYS_CONSOLE_INDEX_0                       0
+
+/* RX buffer size has one additional element for the empty spot needed in circular buffer */
+#define SYS_CONSOLE_USB_CDC_RD_BUFFER_SIZE_IDX0    129
+
+/* TX buffer size has one additional element for the empty spot needed in circular buffer */
+#define SYS_CONSOLE_USB_CDC_WR_BUFFER_SIZE_IDX0    129
+
+
 
 #define SYS_DEBUG_ENABLE
 #define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_DEBUG
@@ -102,15 +111,6 @@ extern "C" {
 
 #define SYS_CONSOLE_USB_CDC_READ_WRITE_BUFFER_SIZE 	64
 
-#define SYS_CONSOLE_INDEX_0                       0
-
-/* RX buffer size has one additional element for the empty spot needed in circular buffer */
-#define SYS_CONSOLE_USB_CDC_RD_BUFFER_SIZE_IDX0    129
-
-/* TX buffer size has one additional element for the empty spot needed in circular buffer */
-#define SYS_CONSOLE_USB_CDC_WR_BUFFER_SIZE_IDX0    129
-
-
 
 
 // *****************************************************************************
@@ -118,8 +118,18 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
+/* I2C Driver Instance 0 Configuration Options */
+#define DRV_I2C_INDEX_0                       0
+#define DRV_I2C_CLIENTS_NUMBER_IDX0           1
+#define DRV_I2C_QUEUE_SIZE_IDX0               2
+#define DRV_I2C_CLOCK_SPEED_IDX0              100
+
 /* Memory Driver Global Configuration Options */
 #define DRV_MEMORY_INSTANCES_NUMBER          1
+/* I2C Driver Common Configuration Options */
+#define DRV_I2C_INSTANCES_NUMBER              1
+
+
 
 /* Memory Driver Instance 0 Configuration */
 #define DRV_MEMORY_INDEX_0                   0
@@ -127,6 +137,7 @@ extern "C" {
 #define DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0    1
 // memory address of FAT12 header (4K), 128K-4K=124K
 #define DRV_MEMORY_DEVICE_START_ADDRESS      0x1F000
+
 
 /* AT25DF Driver Configuration Options */
 #define DRV_AT25DF_INSTANCES_NUMBER              1
@@ -169,17 +180,6 @@ extern "C" {
    function driver */
 #define USB_DEVICE_CDC_QUEUE_DEPTH_COMBINED                 3
 
-/* Maximum instances of MSD function driver */
-#define USB_DEVICE_MSD_INSTANCES_NUMBER     1 
-
-#define USB_DEVICE_MSD_NUM_SECTOR_BUFFERS 1
-
-
-/* Number of Logical Units */
-#define USB_DEVICE_MSD_LUNS_NUMBER      1
-
-
-
 /*** USB Driver Configuration ***/
 
 /* Maximum USB driver instances */
@@ -197,6 +197,17 @@ extern "C" {
 
 /* Alignment for buffers that are submitted to USB Driver*/ 
 #define USB_ALIGN  __ALIGNED(CACHE_LINE_SIZE)
+
+/* Maximum instances of MSD function driver */
+#define USB_DEVICE_MSD_INSTANCES_NUMBER     1 
+
+#define USB_DEVICE_MSD_NUM_SECTOR_BUFFERS 1
+
+
+/* Number of Logical Units */
+#define USB_DEVICE_MSD_LUNS_NUMBER      1
+
+
 
 
 

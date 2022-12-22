@@ -10,6 +10,10 @@
             <itemPath>../src/config/default/bsp/bsp.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="driver" projectFiles="true">
+            <logicalFolder name="f4" displayName="i2c" projectFiles="true">
+              <itemPath>../src/config/default/driver/i2c/drv_i2c.h</itemPath>
+              <itemPath>../src/config/default/driver/i2c/drv_i2c_definitions.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f2" displayName="memory" projectFiles="true">
               <itemPath>../src/config/default/driver/memory/src/drv_memory_local.h</itemPath>
               <itemPath>../src/config/default/driver/memory/drv_memory.h</itemPath>
@@ -57,6 +61,10 @@
               <itemPath>../src/config/default/peripheral/port/plib_port.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="sercom" projectFiles="true">
+              <logicalFolder name="f2" displayName="i2c_master" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/sercom/i2c_master/plib_sercom_i2c_master_common.h</itemPath>
+                <itemPath>../src/config/default/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.h</itemPath>
+              </logicalFolder>
               <logicalFolder name="f1" displayName="spi_master" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom5_spi_master.h</itemPath>
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom_spi_master_common.h</itemPath>
@@ -239,6 +247,10 @@
             <itemPath>../src/config/default/bsp/bsp.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f6" displayName="driver" projectFiles="true">
+            <logicalFolder name="f4" displayName="i2c" projectFiles="true">
+              <itemPath>../src/config/default/driver/i2c/src/drv_i2c.c</itemPath>
+              <itemPath>../src/config/default/driver/i2c/src/drv_i2c_local.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f2" displayName="memory" projectFiles="true">
               <itemPath>../src/config/default/driver/memory/src/drv_memory.c</itemPath>
             </logicalFolder>
@@ -274,6 +286,9 @@
               <itemPath>../src/config/default/peripheral/port/plib_port.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="sercom" projectFiles="true">
+              <logicalFolder name="f2" displayName="i2c_master" projectFiles="true">
+                <itemPath>../src/config/default/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c</itemPath>
+              </logicalFolder>
               <logicalFolder name="f1" displayName="spi_master" projectFiles="true">
                 <itemPath>../src/config/default/peripheral/sercom/spi_master/plib_sercom5_spi_master.c</itemPath>
               </logicalFolder>
@@ -349,7 +364,9 @@
         <itemPath>../src/config/default/default.mhc/usb_device_cdc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/usb_device_msd.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sys_debug.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/drv_i2c.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sercom5.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/sercom2.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/BSP_SAM_D21_Xplained_Pro.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/settings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/drv_at25df.yml</itemPath>

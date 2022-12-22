@@ -93,9 +93,9 @@ children:
         - type: Pairs
           children:
           - type: Pair
-            attributes: {description: 'TRUE', value: '5', key: ENABLE_DRV_COMMON}
+            attributes: {description: 'TRUE', value: '6', key: ENABLE_DRV_COMMON}
           - type: Pair
-            attributes: {description: 'TRUE', value: '5', key: ENABLE_SYS_COMMON}
+            attributes: {description: 'TRUE', value: '6', key: ENABLE_SYS_COMMON}
           - type: Pair
             attributes: {description: 'TRUE', value: '1', key: ENABLE_SYS_MEDIA}
           - type: Pair
@@ -214,12 +214,6 @@ children:
   - type: Boolean
     attributes: {id: ENABLE_SYS_RESET}
     children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: readOnly}
-        children:
-        - {type: Value, value: 'false'}
     - type: Values
       children:
       - type: Dynamic
@@ -396,33 +390,6 @@ children:
         attributes: {id: enabled}
         children:
         - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: RESET_DEF}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: File
-    attributes: {id: RESET_HEADER}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
-  - type: File
-    attributes: {id: RESET_MAPPING}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'false'}
   - type: File
     attributes: {id: SYSTEM_COMMON}
     children:

@@ -5,16 +5,16 @@
 4,PA03,,Available,,,,,,NORMAL
 5,PB04,,Available,,,,,,NORMAL
 6,PB05,,Available,,,,,,NORMAL
-9,PB06,,Available,,,,,,NORMAL
-10,PB07,,Available,,,,,,NORMAL
+9,PB06,ACCEL_INT2,EIC_EXTINT6,Digital,High Impedance,n/a,No,No,NORMAL
+10,PB07,ACCEL_INT1,EIC_EXTINT7,Digital,High Impedance,n/a,No,No,NORMAL
 11,PB08,,Available,,,,,,NORMAL
 12,PB09,,Available,,,,,,NORMAL
 13,PA04,,Available,,,,,,NORMAL
 14,PA05,,Available,,,,,,NORMAL
 15,PA06,,Available,,,,,,NORMAL
 16,PA07,,Available,,,,,,NORMAL
-17,PA08,,Available,,,,,,NORMAL
-18,PA09,,Available,,,,,,NORMAL
+17,PA08,SDA,SERCOM2_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
+18,PA09,SCL,SERCOM2_PAD1,Digital,High Impedance,n/a,No,No,NORMAL
 19,PA10,,Available,,,,,,NORMAL
 20,PA11,,Available,,,,,,NORMAL
 23,PB10,,Available,,,,,,NORMAL
@@ -33,8 +33,8 @@
 38,PA19,,Available,,,,,,NORMAL
 39,PB16,FLASH_SPI_MISO,SERCOM5_PAD0,Digital,High Impedance,n/a,No,No,NORMAL
 40,PB17,,Available,,,,,,NORMAL
-41,PA20,,Available,,,,,,NORMAL
-42,PA21,,Available,,,,,,NORMAL
+41,PA20,NFC_INT,EIC_EXTINT4,Digital,High Impedance,n/a,No,No,NORMAL
+42,PA21,TEMP_INT,EIC_EXTINT5,Digital,High Impedance,n/a,No,No,NORMAL
 43,PA22,,Available,,,,,,NORMAL
 44,PA23,,Available,,,,,,NORMAL
 45,PA24,,USB_DM,Digital,High Impedance,n/a,No,No,NORMAL

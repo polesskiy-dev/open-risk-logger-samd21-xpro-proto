@@ -1,24 +1,21 @@
 /*******************************************************************************
- System Tasks File
+  Serial Communication Interface Inter-Integrated Circuit (SERCOM I2C) Library
+  Instance Header File
+
+  Company:
+    Microchip Technology Inc.
 
   File Name:
-    tasks.c
+    plib_sercom2_i2c.h
 
   Summary:
-    This file contains source code necessary to maintain system's polled tasks.
+    SERCOM I2C PLIB Header file
 
   Description:
-    This file contains source code necessary to maintain system's polled tasks.
-    It implements the "SYS_Tasks" function that calls the individual "Tasks"
-    functions for all polled MPLAB Harmony modules in the system.
-
-  Remarks:
-    This file requires access to the systemObjects global data structure that
-    contains the object handles to all MPLAB Harmony module objects executing
-    polled in the system.  These handles are passed into the individual module
-    "Tasks" functions to identify the instance of the module to maintain.
- *******************************************************************************/
-
+    This file defines the interface to the SERCOM I2C peripheral library. This
+    library provides access to and control of the associated peripheral
+    instance.
+*******************************************************************************/
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
@@ -41,71 +38,65 @@
 * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- *******************************************************************************/
+*******************************************************************************/
 // DOM-IGNORE-END
+
+#ifndef PLIB_SERCOM2_I2C_H
+#define PLIB_SERCOM2_I2C_H
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-
-#include "configuration.h"
-#include "definitions.h"
-
-
-
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: System "Tasks" Routine
-// *****************************************************************************
-// *****************************************************************************
-
-/*******************************************************************************
-  Function:
-    void SYS_Tasks ( void )
-
-  Remarks:
-    See prototype in system/common/sys_module.h.
+/* This section lists the other files that are included in this file.
 */
-void SYS_Tasks ( void )
-{
-    /* Maintain system services */
-    SYS_CONSOLE_Tasks(SYS_CONSOLE_INDEX_0);
 
+#include "plib_sercom_i2c_master_common.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus // Provide C++ Compatibility
 
-    /* Maintain Device Drivers */
-    DRV_MEMORY_Tasks(sysObj.drvMemory0);
-    
+    extern "C" {
 
+#endif
+// DOM-IGNORE-END
 
-    /* Maintain Middleware & Other Libraries */
-        /* USB Device layer tasks routine */ 
-    USB_DEVICE_Tasks(sysObj.usbDevObject0);
+// *****************************************************************************
+// *****************************************************************************
+// Section: Interface Routines
+// *****************************************************************************
+// *****************************************************************************
 
-    /* USB FS Driver Task Routine */ 
-    DRV_USBFSV1_Tasks(sysObj.drvUSBFSV1Object);
-
-
-
-    /* Maintain the application's state machine. */
-        /* Call Application task USB_APP. */
-    USB_APP_Tasks();
-
-    /* Call Application task MEMORY_APP. */
-    MEMORY_APP_Tasks();
-
-    /* Call Application task GLOBAL_STATE_APP. */
-    GLOBAL_STATE_APP_Tasks();
-
-
-
-
-}
-
-/*******************************************************************************
- End of File
+/*
+ * The following functions make up the methods (set of possible operations) of
+ * this interface.
  */
 
+void SERCOM2_I2C_Initialize(void);
+
+bool SERCOM2_I2C_Read(uint16_t address, uint8_t* rdData, uint32_t rdLength);
+
+bool SERCOM2_I2C_Write(uint16_t address, uint8_t* wrData, uint32_t wrLength);
+
+bool SERCOM2_I2C_WriteRead(uint16_t address, uint8_t* wrData, uint32_t wrLength, uint8_t* rdData, uint32_t rdLength);
+
+bool SERCOM2_I2C_IsBusy(void);
+
+SERCOM_I2C_ERROR SERCOM2_I2C_ErrorGet(void);
+
+void SERCOM2_I2C_CallbackRegister(SERCOM_I2C_CALLBACK callback, uintptr_t contextHandle);
+
+bool SERCOM2_I2C_TransferSetup(SERCOM_I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq );
+
+
+void SERCOM2_I2C_TransferAbort( void );
+
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+}
+#endif
+// DOM-IGNORE-END
+
+#endif /* PLIB_SERCOM2_I2C_H */
