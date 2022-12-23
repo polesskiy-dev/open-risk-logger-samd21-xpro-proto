@@ -54,7 +54,7 @@ extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 GLOBAL_STATE_APP_DATA global_state_appData;
 
 GLOBAL_STATE globalStateObj = {
-        .isFlashBootSectorWritten = false
+//        .isFlashBootSectorWritten = false
 };
 
 // *****************************************************************************
@@ -113,21 +113,8 @@ void GLOBAL_STATE_APP_Tasks ( void )
 
             if (appInitialized)
             {
-                global_state_appData.state = GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
+//                global_state_appData.state = GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
             }
-            break;
-        }
-
-        case GLOBAL_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT:
-        {
-            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_BOOT_SECTOR_SUCCESS) {
-                globalQueueDequeueEvent(&globalEventsQueueObj);
-                globalStateObj.isFlashBootSectorWritten = true;
-            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_BOOT_SECTOR_ERROR) {
-                SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s \r\n", "Flash boot sector erase/write error event!");
-                __conditional_software_breakpoint(false);
-            }
-
             break;
         }
 

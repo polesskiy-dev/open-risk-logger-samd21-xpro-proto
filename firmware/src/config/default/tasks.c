@@ -74,17 +74,17 @@ void SYS_Tasks ( void )
     /* Maintain system services */
     SYS_CONSOLE_Tasks(SYS_CONSOLE_INDEX_0);
 
-
-
     /* Maintain Device Drivers */
     DRV_MEMORY_Tasks(sysObj.drvMemory0);
 
+
     /* Maintain the application's state machine. */
-        /* Call Application task USB_APP. */
-    USB_APP_Tasks();
 
     /* Call Application task MEMORY_APP. */
     MEMORY_APP_Tasks();
+
+    /* Call Application task USB_APP. */
+    USB_APP_Tasks();
 
     /* Call Application task GLOBAL_STATE_APP. */
     GLOBAL_STATE_APP_Tasks();
@@ -97,10 +97,6 @@ void SYS_Tasks ( void )
 
     /* Call Application task ACCEL_APP. */
     ACCEL_APP_Tasks();
-
-
-
-
 }
 
 /*******************************************************************************

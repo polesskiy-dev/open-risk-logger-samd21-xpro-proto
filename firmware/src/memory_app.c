@@ -116,7 +116,16 @@ void MEMORY_APP_Tasks ( void )
         /* Application's initial state. */
         case MEMORY_APP_STATE_INIT:
         {
-            // TODO remove it to main
+            /*
+             * Initial events
+             */
+
+            // add event to erase & write flash boot sector
+            GLOBAL_QUEUE_EVENT bootSectorWrite = {
+                    .type = FLASH_ERASE_WRITE_BOOT_SECTOR,
+                    .payload = {}
+            };
+            globalQueueEnqueueEvent(&globalEventsQueueObj, &bootSectorWrite);
 
 
             bool appInitialized = true;
@@ -132,9 +141,10 @@ void MEMORY_APP_Tasks ( void )
 
         case MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT: {
             if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR) {
+                SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Start writing FAT boot sector to flash\r\n");
+
                 // open driver
                 memoryAppObj.drvMemoryHandle = DRV_MEMORY_Open(sysObj.drvMemory0, DRV_IO_INTENT_READWRITE| DRV_IO_INTENT_NONBLOCKING);
-                // TODO get this values from flash Geometry
                 // set write flash boot sector geometry
                 memoryAppObj.pagesToProcessAmount = FLASH_MEMORY_BOOT_SECTOR_SIZE / DRV_AT25DF_PAGE_SIZE;
                 // set write flash boot sector source
@@ -143,8 +153,8 @@ void MEMORY_APP_Tasks ( void )
                 memoryAppObj.state = MEMORY_APP_STATE_ERASE_WRITE_BLOCK;
             }
 
-            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_WRITE_BOOT_SECTOR_SUCCESS
-            || globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_WRITE_BOOT_SECTOR_ERROR) {
+            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR_SUCCESS
+            || globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR_ERROR) {
                 // close memory driver for further use in USB MSD
                 DRV_MEMORY_Close(memoryAppObj.drvMemoryHandle);
             }
@@ -158,28 +168,21 @@ void MEMORY_APP_Tasks ( void )
             DRV_MEMORY_TransferHandlerSet(memoryAppObj.drvMemoryHandle, eraseWriteTransferHandler, (uintptr_t)NULL);
             DRV_MEMORY_AsyncEraseWrite(memoryAppObj.drvMemoryHandle, NULL/*&commandHandle*/, memoryAppObj.writeBuffer, memoryAppObj.startPage, memoryAppObj.pagesToProcessAmount);
 
+            globalQueueDequeueEvent(&globalEventsQueueObj);
+            
             memoryAppObj.state = MEMORY_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
             return;
         }
-
-
-        /*
-         * TODO
-         * DRV_MEMORY_Close(memory_appData.drvMemoryHandle);
-         */
     }
 }
 
 void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE commandHandle, uintptr_t context) {
-    // event handled
-    globalQueueDequeueEvent(&globalEventsQueueObj);
-
     switch(event)
     {
         case DRV_MEMORY_EVENT_COMMAND_COMPLETE:
         {
             GLOBAL_QUEUE_EVENT bootSectorWriteSuccess = {
-                    .type = FLASH_WRITE_BOOT_SECTOR_SUCCESS,
+                    .type = FLASH_ERASE_WRITE_BOOT_SECTOR_SUCCESS,
                     .payload = {}
             };
 
@@ -190,7 +193,7 @@ void eraseWriteTransferHandler(DRV_MEMORY_EVENT event, DRV_MEMORY_COMMAND_HANDLE
         case DRV_MEMORY_EVENT_COMMAND_ERROR:
         {
             GLOBAL_QUEUE_EVENT bootSectorWriteError = {
-                    .type = FLASH_WRITE_BOOT_SECTOR_ERROR,
+                    .type = FLASH_ERASE_WRITE_BOOT_SECTOR_ERROR,
                     .payload = {}
             };
 

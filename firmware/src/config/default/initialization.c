@@ -460,16 +460,7 @@ void SYS_Initialize ( void* data )
 
     NVIC_Initialize();
 
-    /*
-     * Initial events
-     */
 
-    // add event to erase & write flash boot sector
-//    GLOBAL_QUEUE_EVENT bootSectorWrite = {
-//            .type = FLASH_ERASE_WRITE_BOOT_SECTOR,
-//            .payload = {}
-//    };
-//    globalQueueEnqueueEvent(&globalEventsQueueObj, &bootSectorWrite);
 
 
     /* MISRAC 2012 deviation block end */

@@ -20,8 +20,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/global_state_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/global_state_app.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/memory_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.h" afterDir="false" />
     </list>
@@ -149,7 +151,7 @@
       <workItem from="1671064085132" duration="3799000" />
       <workItem from="1671126014289" duration="349000" />
       <workItem from="1671221991118" duration="6476000" />
-      <workItem from="1671751247683" duration="658000" />
+      <workItem from="1671751247683" duration="2307000" />
     </task>
     <servers />
   </component>

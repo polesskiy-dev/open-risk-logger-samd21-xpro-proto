@@ -35,6 +35,8 @@
 // *****************************************************************************
 // *****************************************************************************
 
+extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
+
 // *****************************************************************************
 /* Application Data
 
@@ -123,8 +125,22 @@ void USB_APP_Tasks ( void )
             if (appInitialized)
             {
                 SYS_DEBUG_PRINT(SYS_ERROR_INFO, "USB APP started\r\n");
+                usb_appData.state = USB_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT;
+            }
+            break;
+        }
+
+        case USB_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT:
+        {
+            if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR_SUCCESS) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                usb_appData.state = USB_APP_STATE_SERVICE_TASKS;
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == FLASH_ERASE_WRITE_BOOT_SECTOR_ERROR) {
+                SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s \r\n", "Flash boot sector erase/write error event!");
+                __conditional_software_breakpoint(false);
                 usb_appData.state = USB_APP_STATE_SERVICE_TASKS;
             }
+
             break;
         }
 
@@ -139,14 +155,9 @@ void USB_APP_Tasks ( void )
             break;
         }
 
-
-        /* TODO: implement your application state machine.*/
-
-
         /* The default state should never be executed. */
         default:
         {
-            /* TODO: Handle error in application's state machine. */
             break;
         }
     }

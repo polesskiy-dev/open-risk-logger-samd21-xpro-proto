@@ -70,7 +70,7 @@ typedef enum
     /* Application's state machine's initial state. */
     USB_APP_STATE_INIT=0,
     USB_APP_STATE_SERVICE_TASKS,
-    /* TODO: Define states used by the application state machine. */
+    USB_APP_STATE_WAIT_GLOBAL_QUEUE_EVENT
 
 } USB_APP_STATES;
 
