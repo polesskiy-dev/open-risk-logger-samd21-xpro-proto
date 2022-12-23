@@ -20,12 +20,24 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/30f9315a8397b1976bfa164986c35c6ab6213bed" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/.generated_files/flags/default/4465523c3a200ec8b59edc7ec402be0535bfbf19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/HarmonyCore.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_i2c.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_i2c.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_memory.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/drv_memory.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/project.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/sercom2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/default.mhc/sercom2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/definitions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-failure.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-failure.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/harmony-manifest-success.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/global_state_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/global_state_app.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/memory_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/memory_app.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/usb_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/usb_app.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/queue.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +163,9 @@
       <workItem from="1671064085132" duration="3799000" />
       <workItem from="1671126014289" duration="349000" />
       <workItem from="1671221991118" duration="6476000" />
-      <workItem from="1671751247683" duration="2307000" />
+      <workItem from="1671751247683" duration="2974000" />
+      <workItem from="1671818904840" duration="5060000" />
+      <workItem from="1671834781513" duration="586000" />
     </task>
     <servers />
   </component>

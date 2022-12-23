@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 7794B9707AC6166A7805FC3F699008AB
+- generatedChecksum: 8BAFB47E7EFB9ED2ECD46E43D06736DC
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: BAFBE3E9091B4849A0E417CFAC64BB61
+  userChecksum: 98A00CC96F8B9DC97FB2EE5322A023BA
 - generatedChecksum: 6D95CF5C07A0F7D37E57ADF6947DAB8D
   logicalPath: config/default
   name: interrupts.c
@@ -188,6 +188,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D8F4DCB6624A686B38510761A605DC69
+- generatedChecksum: null
+  logicalPath: ''
+  name: sht3x_temp_app.c
+  physicalPath: ../..
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: null
 - generatedChecksum: 64C7B09EBF0E16AC27EFD31B52FDDDF8
   logicalPath: config/default
   name: startup_xc32.c
@@ -258,20 +265,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B68110221BEC42FE6B718139BA64DA52
-- generatedChecksum: 56A9C6BE8AE922FF2F9FB9D5C611C5A3
+- generatedChecksum: 35F9769F624DF0E9343C09CB2146A83A
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 56A9C6BE8AE922FF2F9FB9D5C611C5A3
-- generatedChecksum: null
-  logicalPath: ''
-  name: temp_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
+  userChecksum: 5270B0FEBC6D1FCFDD37EF034E79C787
 - generatedChecksum: null
   logicalPath: ''
   name: usb_app.c
@@ -447,13 +447,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CB8D4E72D581CDEFB0BB729ADC52D698
-- generatedChecksum: 4B81FC189068701BCB5B44AE3082C994
+- generatedChecksum: A4EC3597956D9E6097E11D94C34FD168
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 8311FA9D8F975FC867DCC99287F09C5E
+  userChecksum: EE043B3E0FDF6380ECCDFB4CF88D4C7C
 - generatedChecksum: 636DD2FCAC011D9457B3B1813AC63647
   logicalPath: config/default
   name: device.h
@@ -1014,6 +1014,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D5297C2E551718257245686146A5096A
+- generatedChecksum: null
+  logicalPath: ''
+  name: sht3x_temp_app.h
+  physicalPath: ../..
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: null
 - generatedChecksum: 3AE819DFC5376F6E9AD0427596F24644
   logicalPath: config/default/system/console
   name: sys_console.h
@@ -1189,13 +1196,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: A94247343179BCF44C1C90A78E66356A
-- generatedChecksum: null
-  logicalPath: ''
-  name: temp_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 5A6CE947CB477E5554790DE371B7FBAB
   logicalPath: config/default
   name: toolchain_specifics.h

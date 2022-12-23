@@ -56,8 +56,8 @@
 #include "driver/memory/drv_memory.h"
 #include "peripheral/rtc/plib_rtc.h"
 #include "peripheral/tc/plib_tc3.h"
-#include "system/time/sys_time.h"
 #include "driver/i2c/drv_i2c.h"
+#include "system/time/sys_time.h"
 #include "usb/usb_device_cdc.h"
 #include "usb/usb_cdc.h"
 #include "bsp/bsp.h"
@@ -80,7 +80,7 @@
 #include "memory_app.h"
 #include "global_state_app.h"
 #include "nfc_app.h"
-#include "temp_app.h"
+#include "sht3x_temp_app.h"
 #include "accel_app.h"
 #include "queue.h"
 

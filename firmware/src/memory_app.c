@@ -34,7 +34,8 @@
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
-extern GLOBAL_QUEUE_EVENT globalQueueObj;
+
+extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 // *****************************************************************************
 /* Application Data
@@ -58,7 +59,6 @@ MEMORY_APP_DATA memoryAppObj = {
         .startPage = 0,
         .writeBuffer = NULL
 };
-extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 // *****************************************************************************
 // *****************************************************************************

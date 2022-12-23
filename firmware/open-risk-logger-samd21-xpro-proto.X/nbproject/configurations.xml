@@ -235,8 +235,8 @@
       <itemPath>../src/queue.h</itemPath>
       <itemPath>../src/global_state_app.h</itemPath>
       <itemPath>../src/nfc_app.h</itemPath>
-      <itemPath>../src/temp_app.h</itemPath>
       <itemPath>../src/accel_app.h</itemPath>
+      <itemPath>../src/sht3x_temp_app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -358,8 +358,8 @@
       <itemPath>../src/queue.c</itemPath>
       <itemPath>../src/global_state_app.c</itemPath>
       <itemPath>../src/nfc_app.c</itemPath>
-      <itemPath>../src/temp_app.c</itemPath>
       <itemPath>../src/accel_app.c</itemPath>
+      <itemPath>../src/sht3x_temp_app.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

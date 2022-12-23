@@ -58,9 +58,13 @@ extern "C" {
     typedef uint8_t GLOBAL_QUEUE_EVENT_PAYLOAD[GLOBAL_QUEUE_EVENT_PAYLOAD_SIZE];
 
     typedef enum {
+        // flash
         FLASH_ERASE_WRITE_BOOT_SECTOR = 1,
         FLASH_ERASE_WRITE_BOOT_SECTOR_SUCCESS,
         FLASH_ERASE_WRITE_BOOT_SECTOR_ERROR,
+        // sht3x temperature sensor
+        SHT3X_TEMP_READ_STATUS,
+        SHT3X_TEMP_READ_STATUS_SUCCESS
     } GLOBAL_QUEUE_EVENT_TYPE;
     
     typedef struct {
