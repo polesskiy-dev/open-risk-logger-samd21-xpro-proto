@@ -36,7 +36,8 @@
 // *****************************************************************************
 extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
-static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE] = {0xF3, 0x2D};
+static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE]  = {0xF3, 0x2D};
+static const uint8_t SHT3X_CMD_MEASURE_LPM[SHT3X_CMD_SIZE]      = {0x24, 0x16};
 
 // *****************************************************************************
 /* Application Data
@@ -53,7 +54,12 @@ static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE] = {0xF3, 0x2D};
     Application strings and buffers are be defined outside this structure.
 */
 
-SHT3X_TEMP_APP_DATA sht3x_temp_appData;
+SHT3X_TEMP_APP_DATA sht3x_temp_appData = {
+    .state = SHT3X_TEMP_APP_STATE_INIT,
+    .drvI2CHandle = DRV_I2C_TRANSFER_HANDLE_INVALID,
+    .status = 0,
+    .lastMeasurements = {0,0,0,0,0,0}
+};
 
 // *****************************************************************************
 // *****************************************************************************
@@ -61,13 +67,15 @@ SHT3X_TEMP_APP_DATA sht3x_temp_appData;
 // *****************************************************************************
 // *****************************************************************************
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Application Local Functions
-// *****************************************************************************
-// *****************************************************************************
 /**
- * @brief Handle Status read
+ * @brief Call when sht3x should be ready to read measurements
+ * 
+ * @param context
+ */
+void sht3xIsReadyToRead (uintptr_t context);
+
+/**
+ * @brief Handle Status read transfer
  *
  * @param event
  * @param transferHandle
@@ -78,6 +86,49 @@ void sht3xTempReadStatusTransferEventHandler (
         DRV_I2C_TRANSFER_HANDLE transferHandle,
         uintptr_t context
 );
+
+/**
+ * @brief handle measure transfer
+ *
+ * @param event
+ * @param transferHandle
+ * @param context
+ */
+void sht3xMeasureTransferEventHandler (
+        DRV_I2C_TRANSFER_EVENT event,
+        DRV_I2C_TRANSFER_HANDLE transferHandle,
+        uintptr_t context
+);
+
+/**
+ * @brief handle read measurements transfer
+ *
+ * @param event
+ * @param transferHandle
+ * @param context
+ */
+void sht3xReadMeasurementsTransferEventHandler (
+        DRV_I2C_TRANSFER_EVENT event,
+        DRV_I2C_TRANSFER_HANDLE transferHandle,
+        uintptr_t context
+);
+
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Application Local Functions
+// *****************************************************************************
+// *****************************************************************************
+
+void temporarySht3xScheduleMeasure() {
+    // TODO move to temp alarm:
+    GLOBAL_QUEUE_EVENT sht3xTempMeasureEvent = {
+        .type = SHT3X_TEMP_MEASURE,
+        .payload = {}
+    };
+    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempMeasureEvent);    
+}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -96,8 +147,6 @@ void sht3xTempReadStatusTransferEventHandler (
 void SHT3X_TEMP_APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
-    sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_INIT;
-    sht3x_temp_appData.transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
 }
 
 
@@ -124,13 +173,15 @@ void SHT3X_TEMP_APP_Tasks ( void )
             {
                 sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
             }
-
+            
             // init by status read call
             GLOBAL_QUEUE_EVENT sht3xTempReadStatusEvent = {
                     .type = SHT3X_TEMP_READ_STATUS,
                     .payload = {}
             };
             globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadStatusEvent);
+            
+            SYS_TIME_CallbackRegisterMS(temporarySht3xScheduleMeasure, 0, 2000, SYS_TIME_PERIODIC);
             
             sht3x_temp_appData.state = SHT3X_TEMP_APP_WAIT_GLOBAL_QUEUE_EVENT;
             
@@ -141,11 +192,53 @@ void SHT3X_TEMP_APP_Tasks ( void )
         {
             if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_READ_STATUS) {
                 globalQueueDequeueEvent(&globalEventsQueueObj);
-                sht3xTempReadStatus(&sht3x_temp_appData.status);
+                sht3x_temp_appData.state = SHT3X_TEMP_APP_STATUS_READ;
             } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_READ_STATUS_SUCCESS) {
                 globalQueueDequeueEvent(&globalEventsQueueObj);
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_MEASURE) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                sht3x_temp_appData.state = SHT3X_TEMP_APP_MEASURE;
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_MEASURE_SUCCESS) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                // register timer callback
+                SYS_TIME_CallbackRegisterMS(sht3xIsReadyToRead, 0, SHT3X_MEASURE_TIME_MS, SYS_TIME_SINGLE);
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_READ_MEASUREMENTS) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                sht3x_temp_appData.state = SHT3X_TEMP_APP_READ_MEASUREMENTS;
+            } else if (globalQueuePeekEvent(&globalEventsQueueObj)->type == SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS) {
+                globalQueueDequeueEvent(&globalEventsQueueObj);
+                LED_Off();
+                float t = sht3xGetLastTemperatureC();
+                int32_t rh = sht3xGetLastRelativeHumidityP();
+                SYS_DEBUG_PRINT(SYS_ERROR_INFO, 
+                        "temperature(C)\t%.2f\tr humidity(%)\t%d\r\n",
+                        t,
+                        rh
+                       );
             }
 
+            break;
+        }
+
+        case SHT3X_TEMP_APP_STATUS_READ:
+        {
+            sht3xTempReadStatus(&sht3x_temp_appData.status);
+            sht3x_temp_appData.state = SHT3X_TEMP_APP_WAIT_GLOBAL_QUEUE_EVENT;
+            break;
+        }
+
+        case SHT3X_TEMP_APP_MEASURE:
+        {
+            LED_On();
+            sht3xMeasure();
+            sht3x_temp_appData.state = SHT3X_TEMP_APP_WAIT_GLOBAL_QUEUE_EVENT;
+            break;
+        }
+
+        case SHT3X_TEMP_APP_READ_MEASUREMENTS:
+        {
+            sht3xReadMeasurements();
+            sht3x_temp_appData.state = SHT3X_TEMP_APP_WAIT_GLOBAL_QUEUE_EVENT;
             break;
         }
 
@@ -165,7 +258,6 @@ void SHT3X_TEMP_APP_Tasks ( void )
 }
 
 void sht3xTempReadStatus(uint16_t *status) {
-    /* Add a request to read data from EEPROM. */
     DRV_I2C_TransferEventHandlerSet(
             sht3x_temp_appData.drvI2CHandle,
             sht3xTempReadStatusTransferEventHandler,
@@ -201,6 +293,96 @@ void sht3xTempReadStatusTransferEventHandler (
         sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
     }
 }
+
+void sht3xMeasure() {
+    DRV_I2C_TransferEventHandlerSet(
+            sht3x_temp_appData.drvI2CHandle,
+            sht3xMeasureTransferEventHandler,
+            (uintptr_t)NULL
+    );
+
+    DRV_I2C_WriteTransferAdd(
+            sht3x_temp_appData.drvI2CHandle,
+            SHT3X_I2C_ADDR_DFLT,
+            (void * const)SHT3X_CMD_MEASURE_LPM,
+            SHT3X_CMD_SIZE,
+            &sht3x_temp_appData.transferHandle
+    );
+}
+
+void sht3xMeasureTransferEventHandler (
+        DRV_I2C_TRANSFER_EVENT event,
+        DRV_I2C_TRANSFER_HANDLE transferHandle,
+        uintptr_t context
+) {
+    if (event == DRV_I2C_TRANSFER_EVENT_COMPLETE)
+    {
+        GLOBAL_QUEUE_EVENT sht3xTempMeasureSuccessEvent = {
+                .type = SHT3X_TEMP_MEASURE_SUCCESS,
+                .payload = {}
+        };
+        globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempMeasureSuccessEvent);
+    }
+    else
+    {
+        sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
+    }
+}
+
+void sht3xReadMeasurements() {
+    DRV_I2C_TransferEventHandlerSet(
+            sht3x_temp_appData.drvI2CHandle,
+            sht3xReadMeasurementsTransferEventHandler,
+            (uintptr_t)NULL
+    );
+
+    DRV_I2C_ReadTransferAdd(
+            sht3x_temp_appData.drvI2CHandle,
+            SHT3X_I2C_ADDR_DFLT,
+            sht3x_temp_appData.lastMeasurements,
+            SHT3X_MEASUREMENTS_SIZE,
+            &sht3x_temp_appData.transferHandle
+    );
+}
+
+void sht3xReadMeasurementsTransferEventHandler (
+        DRV_I2C_TRANSFER_EVENT event,
+        DRV_I2C_TRANSFER_HANDLE transferHandle,
+        uintptr_t context
+) {
+    if (event == DRV_I2C_TRANSFER_EVENT_COMPLETE)
+    {
+        GLOBAL_QUEUE_EVENT sht3xTempReadMeasuremensSuccessEvent = {
+                .type = SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS,
+                .payload = {}
+        };
+        globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadMeasuremensSuccessEvent);
+    }
+    else
+    {
+        sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
+    }
+}
+
+void sht3xIsReadyToRead (uintptr_t context) {
+    GLOBAL_QUEUE_EVENT sht3xReadMeasurementsEvent = {
+                    .type = SHT3X_TEMP_READ_MEASUREMENTS,
+                    .payload = {}
+            };
+    
+    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xReadMeasurementsEvent);
+};
+
+float sht3xGetLastTemperatureC() {
+    float tick = (int32_t)(sht3x_temp_appData.lastMeasurements[0]) << 8 | sht3x_temp_appData.lastMeasurements[1];
+    return -45 + 175 * (tick / 0xFFFF);
+};
+
+int32_t sht3xGetLastRelativeHumidityP() {
+    int32_t tick = (int32_t)(sht3x_temp_appData.lastMeasurements[3]) << 8 | sht3x_temp_appData.lastMeasurements[4];
+    return -49 + 347 * (tick / 0xFFFF);
+}
+
 
 /*******************************************************************************
  End of File

@@ -68,8 +68,11 @@ extern "C" {
 #define SHT3X_IS_SYSTEM_RST_DETECT(status) (((status)&0x0010U) != 0U)
 #define SHT3X_IS_LAST_CRC_FAIL(status) (((status)&0x0001U) != 0U)
 
-#define SHT3X_CMD_SIZE      2
-#define SHT3X_STATUS_SIZE   2
+#define SHT3X_CMD_SIZE              2
+#define SHT3X_STATUS_SIZE           2
+#define SHT3X_MEASUREMENTS_SIZE     6
+    
+#define SHT3X_MEASURE_TIME_MS       15     
 
 /**
  * @brief SHT3x measurment mode options (Low, Medium and High rerefresh rates)
@@ -109,6 +112,10 @@ typedef enum
     SHT3X_TEMP_APP_STATE_INIT=0,
     SHT3X_TEMP_APP_WAIT_GLOBAL_QUEUE_EVENT,
 
+    SHT3X_TEMP_APP_STATUS_READ,
+    SHT3X_TEMP_APP_MEASURE,
+    SHT3X_TEMP_APP_READ_MEASUREMENTS,
+
     SHT3X_TEMP_APP_STATE_ERROR,
 } SHT3X_TEMP_APP_STATES;
 
@@ -134,6 +141,7 @@ typedef struct
     DRV_HANDLE drvI2CHandle;
     uint16_t status;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
+    uint8_t lastMeasurements[SHT3X_MEASUREMENTS_SIZE];
 
 } SHT3X_TEMP_APP_DATA;
 
@@ -222,9 +230,41 @@ void SHT3X_TEMP_APP_Tasks( void );
  * If the sensor does not answer or if the answer is not the expected value,
  * the test fails.
  * 
- * @param probeStatus[out] 0 if a sensor was detected
+ * @param status[out] 0 if a sensor was detected
  */
-void sht3xTempReadStatus(uint16_t *probeStatus);
+void sht3xTempReadStatus(uint16_t *status);
+
+/**
+ * @brief Starts a measurement in high precision mode. Use sht3x_read() to read
+ * out the values, once the measurement is done. The duration of the measurement
+ * depends on the sensor in use, please consult the datasheet.
+ */
+void sht3xMeasure();
+
+/**
+ * @brief Reads out the results of a measurement that was previously started by
+ * sht3x_measure(). If the measurement is still in progress, this function
+ * returns an error.
+ * Temperature is returned in [degree Celsius], multiplied by 1000,
+ * and relative humidity in [percent relative humidity], multiplied by 1000.
+ */
+void sht3xReadMeasurements();
+
+/**
+ * @brief get temperature from raw sensor data
+ * Temperature = 175 * S_T / 2^16 - 45
+ * 
+ * @return t in C
+ */
+float sht3xGetLastTemperatureC();
+
+/**
+ * @brief get relative humidity from raw sensor data
+ * Humidity = * 100 * S_RH / 2^16
+ * 
+ * @return h in %
+ */
+int32_t sht3xGetLastRelativeHumidityP();
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
