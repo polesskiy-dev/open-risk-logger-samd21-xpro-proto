@@ -83,7 +83,7 @@ void EIC_Initialize(void)
                               EIC_CONFIG_SENSE1_NONE  |
                               EIC_CONFIG_SENSE2_NONE  |
                               EIC_CONFIG_SENSE3_NONE  |
-                              EIC_CONFIG_SENSE4_HIGH  |
+                              EIC_CONFIG_SENSE4_FALL  |
                               EIC_CONFIG_SENSE5_HIGH  |
                               EIC_CONFIG_SENSE6_HIGH  |
                               EIC_CONFIG_SENSE7_HIGH ;
@@ -99,7 +99,7 @@ void EIC_Initialize(void)
                               EIC_CONFIG_SENSE7_NONE ;
 
     /* External Interrupt enable*/
-    EIC_REGS->EIC_INTENSET = 0xf0;
+    EIC_REGS->EIC_INTENSET = 0x10;
 
     /* Callbacks for enabled interrupts */
     eicCallbackObject[0].eicPinNo = EIC_PIN_MAX;

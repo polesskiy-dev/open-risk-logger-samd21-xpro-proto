@@ -50,7 +50,9 @@
     Application strings and buffers are be defined outside this structure.
 */
 
-NFC_APP_DATA nfc_appData;
+NFC_APP_DATA nfc_appData = {
+    .RFFieldPresence = false
+};
 
 // *****************************************************************************
 // *****************************************************************************
@@ -58,8 +60,12 @@ NFC_APP_DATA nfc_appData;
 // *****************************************************************************
 // *****************************************************************************
 
-/* TODO:  Add any necessary callback functions.
-*/
+/**
+ * A pulse is emitted on GPO, when RF field appears or disappears
+ * @param context
+ * @return 
+ */
+void handleRFFieldChangeInterrupt(uintptr_t context);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -91,11 +97,7 @@ void NFC_APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     nfc_appData.state = NFC_APP_STATE_INIT;
 
-
-
-    /* TODO: Initialize your application's state machine and other
-     * parameters.
-     */
+    EIC_CallbackRegister(EIC_PIN_4, (EIC_CALLBACK)handleRFFieldChangeInterrupt, (uintptr_t)NULL);
 }
 
 
@@ -144,6 +146,11 @@ void NFC_APP_Tasks ( void )
         }
     }
 }
+
+void handleRFFieldChangeInterrupt(uintptr_t context) {
+    nfc_appData.RFFieldPresence = !nfc_appData.RFFieldPresence;
+    SYS_DEBUG_PRINT(SYS_ERROR_INFO, "NFC RF field %i\r\n", nfc_appData.RFFieldPresence);
+};
 
 
 /*******************************************************************************

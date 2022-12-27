@@ -380,7 +380,7 @@ float sht3xGetLastTemperatureC() {
 
 int32_t sht3xGetLastRelativeHumidityP() {
     int32_t tick = (int32_t)(sht3x_temp_appData.lastMeasurements[3]) << 8 | sht3x_temp_appData.lastMeasurements[4];
-    return -49 + 347 * (tick / 0xFFFF);
+    return -49 + 347 * ((float)tick / 0xFFFF);
 }
 
 

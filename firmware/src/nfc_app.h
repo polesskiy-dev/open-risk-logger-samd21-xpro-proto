@@ -31,7 +31,10 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "configuration.h"
+#include "./config/default/definitions.h"
+#include "./config/default/configuration.h"
+#include "./config/default/system/debug/sys_debug.h"
+#include "./config/default/driver/driver_common.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -85,8 +88,7 @@ typedef struct
 {
     /* The application's current state */
     NFC_APP_STATES state;
-
-    /* TODO: Define any additional data used by the application. */
+    bool RFFieldPresence;
 
 } NFC_APP_DATA;
 
