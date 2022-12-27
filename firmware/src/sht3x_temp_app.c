@@ -27,7 +27,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include "sht3x_temp_app.h"
+#include "./sht3x_temp_app.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -67,53 +67,10 @@ SHT3X_TEMP_APP_DATA sht3x_temp_appData = {
 // *****************************************************************************
 // *****************************************************************************
 
-/**
- * @brief Call when sht3x should be ready to read measurements
- * 
- * @param context
- */
-void sht3xIsReadyToRead (uintptr_t context);
-
-/**
- * @brief Handle Status read transfer
- *
- * @param event
- * @param transferHandle
- * @param context
- */
-void sht3xTempReadStatusTransferEventHandler (
+void sht3xTransferEventHandler(
         DRV_I2C_TRANSFER_EVENT event,
         DRV_I2C_TRANSFER_HANDLE transferHandle,
-        uintptr_t context
-);
-
-/**
- * @brief handle measure transfer
- *
- * @param event
- * @param transferHandle
- * @param context
- */
-void sht3xMeasureTransferEventHandler (
-        DRV_I2C_TRANSFER_EVENT event,
-        DRV_I2C_TRANSFER_HANDLE transferHandle,
-        uintptr_t context
-);
-
-/**
- * @brief handle read measurements transfer
- *
- * @param event
- * @param transferHandle
- * @param context
- */
-void sht3xReadMeasurementsTransferEventHandler (
-        DRV_I2C_TRANSFER_EVENT event,
-        DRV_I2C_TRANSFER_HANDLE transferHandle,
-        uintptr_t context
-);
-
-
+        uintptr_t context);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -121,14 +78,11 @@ void sht3xReadMeasurementsTransferEventHandler (
 // *****************************************************************************
 // *****************************************************************************
 
-void temporarySht3xScheduleMeasure() {
-    // TODO move to temp alarm:
-    GLOBAL_QUEUE_EVENT sht3xTempMeasureEvent = {
-        .type = SHT3X_TEMP_MEASURE,
-        .payload = {}
-    };
-    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempMeasureEvent);    
-}
+void sht3xTempReadStatus(uint16_t *status);
+void sht3xMeasure();
+void sht3xIsReadyToRead (uintptr_t context);
+
+void temporarySht3xScheduleMeasure();
 
 // *****************************************************************************
 // *****************************************************************************
@@ -257,11 +211,33 @@ void SHT3X_TEMP_APP_Tasks ( void )
     }
 }
 
+float sht3xGetLastTemperatureC() {
+    float tick = (int32_t)(sht3x_temp_appData.lastMeasurements[0]) << 8 | sht3x_temp_appData.lastMeasurements[1];
+    return -45 + 175 * (tick / 0xFFFF);
+};
+
+int32_t sht3xGetLastRelativeHumidityP() {
+    int32_t tick = (int32_t)(sht3x_temp_appData.lastMeasurements[3]) << 8 | sht3x_temp_appData.lastMeasurements[4];
+    return -49 + 347 * ((float)tick / 0xFFFF);
+}
+
+/**
+ * @brief Detects if a sensor is connected by reading out the ID register.
+ * If the sensor does not answer or if the answer is not the expected value,
+ * the test fails.
+ *
+ * @param status[out] 0 if a sensor was detected
+ */
 void sht3xTempReadStatus(uint16_t *status) {
+    static GLOBAL_QUEUE_EVENT sht3xTempReadStatusSuccessEvent = {
+            .type = SHT3X_TEMP_READ_STATUS_SUCCESS,
+            .payload = {}
+    };
+
     DRV_I2C_TransferEventHandlerSet(
             sht3x_temp_appData.drvI2CHandle,
-            sht3xTempReadStatusTransferEventHandler,
-            (uintptr_t)NULL
+            sht3xTransferEventHandler,
+            (uintptr_t)&sht3xTempReadStatusSuccessEvent
     );
 
     DRV_I2C_WriteReadTransferAdd(
@@ -275,30 +251,21 @@ void sht3xTempReadStatus(uint16_t *status) {
     );
 };
 
-void sht3xTempReadStatusTransferEventHandler (
-        DRV_I2C_TRANSFER_EVENT event,
-        DRV_I2C_TRANSFER_HANDLE transferHandle,
-        uintptr_t context
-) {
-    if (event == DRV_I2C_TRANSFER_EVENT_COMPLETE)
-    {
-        GLOBAL_QUEUE_EVENT sht3xTempReadStatusSuccessEvent = {
-                .type = SHT3X_TEMP_READ_STATUS_SUCCESS,
-                .payload = {}
-        };
-        globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadStatusSuccessEvent);
-    }
-    else
-    {
-        sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
-    }
-}
-
+/**
+ * @brief Starts a measurement in high precision mode. Use sht3x_read() to read
+ * out the values, once the measurement is done. The duration of the measurement
+ * depends on the sensor in use, please consult the datasheet.
+ */
 void sht3xMeasure() {
+    static GLOBAL_QUEUE_EVENT sht3xTempMeasureSuccessEvent = {
+            .type = SHT3X_TEMP_MEASURE_SUCCESS,
+            .payload = {}
+    };
+
     DRV_I2C_TransferEventHandlerSet(
             sht3x_temp_appData.drvI2CHandle,
-            sht3xMeasureTransferEventHandler,
-            (uintptr_t)NULL
+            sht3xTransferEventHandler,
+            (uintptr_t)&sht3xTempMeasureSuccessEvent
     );
 
     DRV_I2C_WriteTransferAdd(
@@ -308,32 +275,21 @@ void sht3xMeasure() {
             SHT3X_CMD_SIZE,
             &sht3x_temp_appData.transferHandle
     );
-}
+};
 
-void sht3xMeasureTransferEventHandler (
-        DRV_I2C_TRANSFER_EVENT event,
-        DRV_I2C_TRANSFER_HANDLE transferHandle,
-        uintptr_t context
-) {
-    if (event == DRV_I2C_TRANSFER_EVENT_COMPLETE)
-    {
-        GLOBAL_QUEUE_EVENT sht3xTempMeasureSuccessEvent = {
-                .type = SHT3X_TEMP_MEASURE_SUCCESS,
-                .payload = {}
-        };
-        globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempMeasureSuccessEvent);
-    }
-    else
-    {
-        sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
-    }
-}
-
+/**
+ * @brief Read results of measurements (usually after 15ms delay)
+ */
 void sht3xReadMeasurements() {
+    static GLOBAL_QUEUE_EVENT sht3xTempReadMeasurementsSuccessEvent = {
+            .type = SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS,
+            .payload = {}
+    };
+
     DRV_I2C_TransferEventHandlerSet(
             sht3x_temp_appData.drvI2CHandle,
-            sht3xReadMeasurementsTransferEventHandler,
-            (uintptr_t)NULL
+            sht3xTransferEventHandler,
+            (uintptr_t)&sht3xTempReadMeasurementsSuccessEvent
     );
 
     DRV_I2C_ReadTransferAdd(
@@ -343,20 +299,37 @@ void sht3xReadMeasurements() {
             SHT3X_MEASUREMENTS_SIZE,
             &sht3x_temp_appData.transferHandle
     );
-}
+};
 
-void sht3xReadMeasurementsTransferEventHandler (
+/**
+ * @brief Call when sht3x should be ready to read measurements
+ *
+ * @param context
+ */
+void sht3xIsReadyToRead (uintptr_t context) {
+    GLOBAL_QUEUE_EVENT sht3xReadMeasurementsEvent = {
+            .type = SHT3X_TEMP_READ_MEASUREMENTS,
+            .payload = {}
+    };
+
+    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xReadMeasurementsEvent);
+};
+
+/**
+ *
+ * @param[in] event
+ * @param[out] transferHandle
+ * @param[in] context - event to emit on success
+ */
+void sht3xTransferEventHandler (
         DRV_I2C_TRANSFER_EVENT event,
         DRV_I2C_TRANSFER_HANDLE transferHandle,
         uintptr_t context
 ) {
     if (event == DRV_I2C_TRANSFER_EVENT_COMPLETE)
     {
-        GLOBAL_QUEUE_EVENT sht3xTempReadMeasuremensSuccessEvent = {
-                .type = SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS,
-                .payload = {}
-        };
-        globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadMeasuremensSuccessEvent);
+        GLOBAL_QUEUE_EVENT *globalQueueEvent = (GLOBAL_QUEUE_EVENT*)context;
+        globalQueueEnqueueEvent(&globalEventsQueueObj, globalQueueEvent);
     }
     else
     {
@@ -364,23 +337,13 @@ void sht3xReadMeasurementsTransferEventHandler (
     }
 }
 
-void sht3xIsReadyToRead (uintptr_t context) {
-    GLOBAL_QUEUE_EVENT sht3xReadMeasurementsEvent = {
-                    .type = SHT3X_TEMP_READ_MEASUREMENTS,
-                    .payload = {}
-            };
-    
-    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xReadMeasurementsEvent);
-};
-
-float sht3xGetLastTemperatureC() {
-    float tick = (int32_t)(sht3x_temp_appData.lastMeasurements[0]) << 8 | sht3x_temp_appData.lastMeasurements[1];
-    return -45 + 175 * (tick / 0xFFFF);
-};
-
-int32_t sht3xGetLastRelativeHumidityP() {
-    int32_t tick = (int32_t)(sht3x_temp_appData.lastMeasurements[3]) << 8 | sht3x_temp_appData.lastMeasurements[4];
-    return -49 + 347 * ((float)tick / 0xFFFF);
+void temporarySht3xScheduleMeasure() {
+    // TODO move to temp alarm:
+    GLOBAL_QUEUE_EVENT sht3xTempMeasureEvent = {
+            .type = SHT3X_TEMP_MEASURE,
+            .payload = {}
+    };
+    globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempMeasureEvent);
 }
 
 

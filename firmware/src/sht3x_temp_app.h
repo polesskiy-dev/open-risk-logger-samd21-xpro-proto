@@ -35,6 +35,7 @@
 #include <stdlib.h>
 #include "./config/default/definitions.h"
 #include "./config/default/configuration.h"
+#include "./config/default/bsp/bsp.h"
 #include "./config/default/system/debug/sys_debug.h"
 #include "./config/default/driver/driver_common.h"
 
@@ -225,21 +226,7 @@ void SHT3X_TEMP_APP_Initialize ( void );
 
 void SHT3X_TEMP_APP_Tasks( void );
 
-/**
- * @brief Detects if a sensor is connected by reading out the ID register.
- * If the sensor does not answer or if the answer is not the expected value,
- * the test fails.
- * 
- * @param status[out] 0 if a sensor was detected
- */
-void sht3xTempReadStatus(uint16_t *status);
 
-/**
- * @brief Starts a measurement in high precision mode. Use sht3x_read() to read
- * out the values, once the measurement is done. The duration of the measurement
- * depends on the sensor in use, please consult the datasheet.
- */
-void sht3xMeasure();
 
 /**
  * @brief Reads out the results of a measurement that was previously started by
