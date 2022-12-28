@@ -122,18 +122,18 @@ void SHT3X_TEMP_APP_Tasks ( void )
         case SHT3X_TEMP_APP_STATE_INIT:
         {
             /* Open the I2C Driver */
-            sht3x_temp_appData.drvI2CHandle = DRV_I2C_Open( DRV_I2C_INDEX_0, DRV_IO_INTENT_READWRITE );
+//            sht3x_temp_appData.drvI2CHandle = DRV_I2C_Open( DRV_I2C_INDEX_0, DRV_IO_INTENT_READWRITE|DRV_IO_INTENT_NONBLOCKING|DRV_IO_INTENT_SHARED );
             if(sht3x_temp_appData.drvI2CHandle == DRV_HANDLE_INVALID)
             {
                 sht3x_temp_appData.state = SHT3X_TEMP_APP_STATE_ERROR;
             }
             
             // init by status read call
-            GLOBAL_QUEUE_EVENT sht3xTempReadStatusEvent = {
-                    .type = SHT3X_TEMP_READ_STATUS,
-                    .payload = {}
-            };
-            globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadStatusEvent);
+//            GLOBAL_QUEUE_EVENT sht3xTempReadStatusEvent = {
+//                    .type = SHT3X_TEMP_READ_STATUS,
+//                    .payload = {}
+//            };
+//            globalQueueEnqueueEvent(&globalEventsQueueObj, &sht3xTempReadStatusEvent);
             
             SYS_TIME_CallbackRegisterMS(temporarySht3xScheduleMeasure, 0, 2000, SYS_TIME_PERIODIC);
             

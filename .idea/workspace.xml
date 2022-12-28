@@ -20,6 +20,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/nfc_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/nfc_app.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/nfc_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/nfc_app.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firmware/src/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/queue.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_temp_app.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_temp_app.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_temp_app.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_temp_app.h" afterDir="false" />
     </list>
@@ -146,7 +152,8 @@
       <workItem from="1671834781513" duration="3505000" />
       <workItem from="1672010700037" duration="115000" />
       <workItem from="1672109558503" duration="102000" />
-      <workItem from="1672109682402" duration="3135000" />
+      <workItem from="1672109682402" duration="4123000" />
+      <workItem from="1672182026227" duration="3220000" />
     </task>
     <servers />
   </component>

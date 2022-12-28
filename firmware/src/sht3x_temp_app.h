@@ -140,8 +140,8 @@ typedef struct
     SHT3X_TEMP_APP_STATES state;
 
     DRV_HANDLE drvI2CHandle;
-    uint16_t status;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
+    uint16_t status;
     uint8_t lastMeasurements[SHT3X_MEASUREMENTS_SIZE];
 
 } SHT3X_TEMP_APP_DATA;

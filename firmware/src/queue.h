@@ -58,17 +58,22 @@ extern "C" {
     typedef uint8_t GLOBAL_QUEUE_EVENT_PAYLOAD[GLOBAL_QUEUE_EVENT_PAYLOAD_SIZE];
 
     typedef enum {
-        // flash
+        // spi flash
         FLASH_ERASE_WRITE_BOOT_SECTOR = 1,
         FLASH_ERASE_WRITE_BOOT_SECTOR_SUCCESS,
         FLASH_ERASE_WRITE_BOOT_SECTOR_ERROR,
+
         // sht3x temperature sensor
         SHT3X_TEMP_READ_STATUS,
         SHT3X_TEMP_READ_STATUS_SUCCESS,
         SHT3X_TEMP_MEASURE,
         SHT3X_TEMP_MEASURE_SUCCESS,
         SHT3X_TEMP_READ_MEASUREMENTS,
-        SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS
+        SHT3X_TEMP_READ_MEASUREMENTS_SUCCESS,
+
+        // NFC
+        NFC_READ_UID,
+        NFC_READ_UID_SUCCESS
     } GLOBAL_QUEUE_EVENT_TYPE;
     
     typedef struct {

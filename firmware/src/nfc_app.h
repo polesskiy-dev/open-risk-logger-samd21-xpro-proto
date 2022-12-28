@@ -35,6 +35,7 @@
 #include "./config/default/configuration.h"
 #include "./config/default/system/debug/sys_debug.h"
 #include "./config/default/driver/driver_common.h"
+#include "./queue.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -49,6 +50,10 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
+#define NFC_UID_SIZE                        8
+#define NFC_CMD_SIZE                        2
+
+#define ST25DV_UID_REG                      0x0018
 
 // *****************************************************************************
 /* Application states
@@ -65,9 +70,12 @@ typedef enum
 {
     /* Application's state machine's initial state. */
     NFC_APP_STATE_INIT=0,
-    NFC_APP_STATE_SERVICE_TASKS,
-    /* TODO: Define states used by the application state machine. */
+    NFC_APP_WAIT_GLOBAL_QUEUE_EVENT,
 
+    NFC_APP_READ_UID,
+    NFC_APP_READ_UID_SUCCESS,
+
+    NFC_APP_STATE_ERROR
 } NFC_APP_STATES;
 
 
@@ -88,8 +96,11 @@ typedef struct
 {
     /* The application's current state */
     NFC_APP_STATES state;
-    bool RFFieldPresence;
 
+    DRV_HANDLE drvI2CHandle;
+    DRV_I2C_TRANSFER_HANDLE transferHandle;
+    bool RFFieldPresence;
+    uint8_t uid[NFC_UID_SIZE];
 } NFC_APP_DATA;
 
 // *****************************************************************************
