@@ -53,7 +53,10 @@ extern "C" {
 #define NFC_UID_SIZE                        8
 #define NFC_CMD_SIZE                        2
 
-#define ST25DV_UID_REG                      0x0018
+#define ST25DV_ADDR_DATA_I2C                0xA6 >> 1
+#define ST25DV_ADDR_SYST_I2C                0xAE >> 1
+
+//#define ST25DV_UID_REG                      0x0018
 
 // *****************************************************************************
 /* Application states

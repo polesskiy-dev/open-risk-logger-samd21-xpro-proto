@@ -37,6 +37,8 @@
 
 extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
+static const uint8_t ST25DV_UID_REG[NFC_CMD_SIZE]  = {0x00, 0x18};
+
 // *****************************************************************************
 /* Application Data
 
@@ -149,15 +151,18 @@ void NFC_APP_Tasks(void) {
                 globalQueueDequeueEvent(&globalEventsQueueObj);
                 nfc_appData.state = NFC_APP_WAIT_GLOBAL_QUEUE_EVENT;
             }
+            break;
         }
 
         case NFC_APP_READ_UID: {
             nfcReadUID(nfc_appData.uid);
             nfc_appData.state = NFC_APP_WAIT_GLOBAL_QUEUE_EVENT;
+            break;
         }
 
         case NFC_APP_STATE_ERROR: {
             SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "%s\r\n", "NFC APP is in ERROR state");
+            break;
         }
 
 
@@ -193,7 +198,7 @@ void nfcReadUID(uint8_t *uid) {
 
     DRV_I2C_WriteReadTransferAdd(
             nfc_appData.drvI2CHandle,
-            SHT3X_I2C_ADDR_DFLT,
+            ST25DV_ADDR_SYST_I2C >> 1,
             (void *const) ST25DV_UID_REG,
             NFC_CMD_SIZE,
             uid,
