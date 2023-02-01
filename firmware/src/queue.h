@@ -73,7 +73,11 @@ extern "C" {
 
         // NFC
         NFC_READ_UID,
-        NFC_READ_UID_SUCCESS
+        NFC_READ_UID_SUCCESS,
+        NFC_PREPARE_MAILBOX,
+        NFC_PREPARE_MAILBOX_SUCCESS,
+        NFC_WRITE_MAILBOX,
+        NFC_WRITE_MAILBOX_SUCCESS
     } GLOBAL_QUEUE_EVENT_TYPE;
     
     typedef struct {
