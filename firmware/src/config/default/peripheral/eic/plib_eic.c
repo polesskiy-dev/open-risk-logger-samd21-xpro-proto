@@ -67,7 +67,7 @@ static EIC_CALLBACK_OBJ    eicCallbackObject[EXTINT_COUNT];
 
 void EIC_Initialize(void)
 {
-    /* Reset all registers in the EIC module to their initial state and
+    /* Reset all sensorRegs in the EIC module to their initial state and
        EIC will be disabled. */
     EIC_REGS->EIC_CTRL |= EIC_CTRL_SWRST_Msk;
 

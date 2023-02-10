@@ -45,7 +45,7 @@
      Function definitions in header files are used to allow 'inlining'.
 
    \li Required Rule 18.4, declaration of union type or object of union type: '{...}'.<br>
-     Unions are used for effective representation of core registers.
+     Unions are used for effective representation of core sensorRegs.
 
    \li Advisory Rule 19.7, Function-like macro defined.<br>
      Function-like macros are used to allow more efficient code.
@@ -158,7 +158,7 @@
   #endif
 #endif
 
-/* IO definitions (access restrictions to peripheral registers) */
+/* IO definitions (access restrictions to peripheral sensorRegs) */
 /**
     \defgroup CMSIS_glob_defs CMSIS Global Defines
 
@@ -604,7 +604,7 @@ typedef struct
 /**
   \ingroup  CMSIS_core_register
   \defgroup CMSIS_CoreDebug       Core Debug Registers (CoreDebug)
-  \brief    Cortex-M0+ Core Debug Registers (DCB registers, SHCSR, and DFSR) are only accessible over DAP and not via processor.
+  \brief    Cortex-M0+ Core Debug Registers (DCB sensorRegs, SHCSR, and DFSR) are only accessible over DAP and not via processor.
             Therefore they are not covered by the Cortex-M0+ header file.
   @{
  */

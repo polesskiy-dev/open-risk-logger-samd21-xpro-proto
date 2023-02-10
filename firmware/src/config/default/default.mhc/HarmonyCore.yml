@@ -12,7 +12,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -25,7 +25,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -38,7 +38,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -51,7 +51,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -64,7 +64,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -77,7 +77,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -90,7 +90,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -103,7 +103,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -116,7 +116,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -129,7 +129,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -142,7 +142,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -155,7 +155,7 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
       - type: String
         attributes: {id: name}
         children:
@@ -322,7 +322,7 @@ children:
       - type: Boolean
         attributes: {id: visible}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
   - type: Menu
     attributes: {id: GEN_APP_TASK_CONF_MENU2}
     children:
@@ -331,7 +331,7 @@ children:
       - type: Boolean
         attributes: {id: visible}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
   - type: Menu
     attributes: {id: GEN_APP_TASK_CONF_MENU3}
     children:
@@ -340,7 +340,7 @@ children:
       - type: Boolean
         attributes: {id: visible}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
   - type: Menu
     attributes: {id: GEN_APP_TASK_CONF_MENU4}
     children:
@@ -349,7 +349,7 @@ children:
       - type: Boolean
         attributes: {id: visible}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
   - type: Menu
     attributes: {id: GEN_APP_TASK_CONF_MENU5}
     children:
@@ -358,28 +358,56 @@ children:
       - type: Boolean
         attributes: {id: visible}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: 'false'}
   - type: Integer
     attributes: {id: GEN_APP_TASK_COUNT}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '6'}
+        attributes: {value: '1'}
   - type: Boolean
     attributes: {id: GEN_APP_TASK_ENABLE_0}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'true'}
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: GEN_APP_TASK_ENABLE_1}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: GEN_APP_TASK_ENABLE_2}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'true'}
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: GEN_APP_TASK_ENABLE_3}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: GEN_APP_TASK_ENABLE_4}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: GEN_APP_TASK_ENABLE_5}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: Menu
     attributes: {id: GEN_APP_TASK_MENU}
     children:

@@ -52,6 +52,7 @@
 
 #include "configuration.h"
 #include "definitions.h"
+#include "sht3x_actor/sht3x_actor.h"
 
 
 
@@ -81,27 +82,7 @@ void SYS_Tasks ( void )
 
 
     /* Maintain the application's state machine. */
-        /* Call Application task USB_APP. */
-    USB_APP_Tasks();
-
-    /* Call Application task MEMORY_APP. */
-    MEMORY_APP_Tasks();
-
-    /* Call Application task GLOBAL_STATE_APP. */
-    GLOBAL_STATE_APP_Tasks();
-
-    /* Call Application task NFC_APP. */
-    NFC_APP_Tasks();
-
-    /* Call Application task SHT3X_TEMP_APP. */
-    SHT3X_TEMP_APP_Tasks();
-
-    /* Call Application task ACCEL_APP. */
-    ACCEL_APP_Tasks();
-
-
-
-
+    SHT3X_ACT_Tasks();
 }
 
 /*******************************************************************************

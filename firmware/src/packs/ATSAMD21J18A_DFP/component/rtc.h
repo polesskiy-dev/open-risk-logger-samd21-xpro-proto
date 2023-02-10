@@ -736,7 +736,7 @@ typedef struct
   __IO  uint8_t                        RTC_MASK;           /**< Offset: 0x1C (R/W  8) MODE2_ALARM Alarm n Mask */
 } rtc_mode2_registers_t;
 
-/** \brief RTC hardware registers */
+/** \brief RTC hardware sensorRegs */
 typedef union
 {  /* Real-Time Counter */
        rtc_mode0_registers_t          MODE0;          /**< 32-bit Counter with Single 32-bit Compare */

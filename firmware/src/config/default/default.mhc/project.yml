@@ -1,11 +1,4 @@
 files:
-- generatedChecksum: null
-  logicalPath: ''
-  name: accel_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
 - generatedChecksum: 1A81761E8B71DEB8D8FBEA31DBFD4738
   logicalPath: config/default/bsp
   name: bsp.c
@@ -69,14 +62,7 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0D18A719A1E40A8875895284967F66D0
-- generatedChecksum: null
-  logicalPath: ''
-  name: global_state_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: 8BAFB47E7EFB9ED2ECD46E43D06736DC
+- generatedChecksum: 42D35723FCD0E00BAC82B08AA1708549
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
@@ -100,20 +86,6 @@ files:
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
-  name: memory_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
-  name: nfc_app.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
@@ -188,13 +160,6 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D8F4DCB6624A686B38510761A605DC69
-- generatedChecksum: null
-  logicalPath: ''
-  name: sht3x_temp_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
 - generatedChecksum: 64C7B09EBF0E16AC27EFD31B52FDDDF8
   logicalPath: config/default
   name: startup_xc32.c
@@ -265,20 +230,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: B68110221BEC42FE6B718139BA64DA52
-- generatedChecksum: 35F9769F624DF0E9343C09CB2146A83A
+- generatedChecksum: B235610CDFF0F57347809A9045187FE5
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
   userChecksum: 5270B0FEBC6D1FCFDD37EF034E79C787
-- generatedChecksum: null
-  logicalPath: ''
-  name: usb_app.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
 - generatedChecksum: BCCEF5B801FFD0CF22D0B454D2F25F1F
   logicalPath: config/default/usb/src
   name: usb_device.c
@@ -335,13 +293,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1DFF055DE3840598320E91B5EC118AFD
-- generatedChecksum: null
-  logicalPath: ''
-  name: accel_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: A50FCDAAC6148E7609F57041407064B5
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: adc.h
@@ -447,7 +398,7 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CB8D4E72D581CDEFB0BB729ADC52D698
-- generatedChecksum: A4EC3597956D9E6097E11D94C34FD168
+- generatedChecksum: 6ACD4D329E56C275C95EF19136BC2015
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
@@ -657,13 +608,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: F4A6FB3AE2C9F16BFDD64C082A2622B9
-- generatedChecksum: null
-  logicalPath: ''
-  name: global_state_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 04F393E9D1E6EFA7CD5A43CB66752E93
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: hmatrixb.h
@@ -692,13 +636,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 9940A34096B31A021525AB6617E21786
-- generatedChecksum: null
-  logicalPath: ''
-  name: memory_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 47E760D36E42A7B436306A9CB4E72A0E
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: mpu_armv7.h
@@ -720,13 +657,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7A86BDDC36E770B3D447B352AB3ABE30
-- generatedChecksum: null
-  logicalPath: ''
-  name: nfc_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 570A6A71EEC062B19FD720EE732B2910
   logicalPath: packs/ATSAMD21J18A_DFP/component
   name: nvmctrl.h
@@ -1014,13 +944,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D5297C2E551718257245686146A5096A
-- generatedChecksum: null
-  logicalPath: ''
-  name: sht3x_temp_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: 3AE819DFC5376F6E9AD0427596F24644
   logicalPath: config/default/system/console
   name: sys_console.h
@@ -1217,13 +1140,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 55CE4B8D13BBEE1BF689ABCC624CCBAD
-- generatedChecksum: null
-  logicalPath: ''
-  name: usb_app.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
 - generatedChecksum: F698C0AF1ADC5A3E18B4832DFEAB8DB0
   logicalPath: config/default/usb
   name: usb_cdc.h

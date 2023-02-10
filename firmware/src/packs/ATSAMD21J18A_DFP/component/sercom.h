@@ -1851,7 +1851,7 @@ typedef struct
   __IO  uint8_t                        SERCOM_DBGCTRL;     /**< Offset: 0x30 (R/W  8) USART_INT Debug Control */
 } sercom_usart_int_registers_t;
 
-/** \brief SERCOM hardware registers */
+/** \brief SERCOM hardware sensorRegs */
 typedef union
 {  /* Serial Communication Interface */
        sercom_i2cm_registers_t        I2CM;           /**< I2C Master Mode */

@@ -907,7 +907,7 @@ bool DRV_AT25DF_GeometryGet(const DRV_HANDLE handle, DRV_AT25DF_GEOMETRY *geomet
 
     // myHandle is the handle returned from DRV_AT25DF_Open API.
 
-    // Client registers an event handler with driver. This is done once
+    // Client sensorRegs an event handler with driver. This is done once
 
     DRV_AT25DF_EventHandlerSet( myHandle, APP_AT25DFTransferEventHandler, (uintptr_t)&myAppObj );
 

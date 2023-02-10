@@ -33,7 +33,7 @@
 
 /* SAMD21J18A definitions
   This file defines all structures and symbols for SAMD21J18A:
-    - registers and bitfields
+    - sensorRegs and bitfields
     - peripheral base address
     - peripheral ID
     - PIO definitions

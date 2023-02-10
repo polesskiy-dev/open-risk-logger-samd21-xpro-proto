@@ -1021,7 +1021,7 @@ void DRV_I2C_WriteReadTransferAdd (
     // myI2CHandle is the handle returned
     // by the DRV_I2C_Open function.
 
-    // Client registers an event handler with driver. This is done once
+    // Client sensorRegs an event handler with driver. This is done once
 
     DRV_I2C_TransferEventHandlerSet( myI2CHandle, APP_I2CTransferEventHandler, (uintptr_t)&myAppObj );
 

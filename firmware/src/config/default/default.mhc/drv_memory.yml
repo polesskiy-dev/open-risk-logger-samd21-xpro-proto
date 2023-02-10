@@ -60,4 +60,4 @@ children:
             children:
             - {type: Value, value: memory}
 - type: ElementPosition
-  attributes: {x: '448', y: '474', id: drv_memory}
+  attributes: {x: '445', y: '477', id: drv_memory}

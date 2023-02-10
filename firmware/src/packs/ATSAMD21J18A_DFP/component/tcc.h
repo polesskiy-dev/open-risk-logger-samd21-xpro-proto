@@ -129,12 +129,12 @@
 #define   TCC_CTRLBCLR_CMD_NONE_Val           _UINT8_(0x0)                                         /* (TCC_CTRLBCLR) No action  */
 #define   TCC_CTRLBCLR_CMD_RETRIGGER_Val      _UINT8_(0x1)                                         /* (TCC_CTRLBCLR) Clear start, restart or retrigger  */
 #define   TCC_CTRLBCLR_CMD_STOP_Val           _UINT8_(0x2)                                         /* (TCC_CTRLBCLR) Force stop  */
-#define   TCC_CTRLBCLR_CMD_UPDATE_Val         _UINT8_(0x3)                                         /* (TCC_CTRLBCLR) Force update of double buffered registers  */
+#define   TCC_CTRLBCLR_CMD_UPDATE_Val         _UINT8_(0x3)                                         /* (TCC_CTRLBCLR) Force update of double buffered sensorRegs  */
 #define   TCC_CTRLBCLR_CMD_READSYNC_Val       _UINT8_(0x4)                                         /* (TCC_CTRLBCLR) Force COUNT read synchronization  */
 #define TCC_CTRLBCLR_CMD_NONE                 (TCC_CTRLBCLR_CMD_NONE_Val << TCC_CTRLBCLR_CMD_Pos)  /* (TCC_CTRLBCLR) No action Position  */
 #define TCC_CTRLBCLR_CMD_RETRIGGER            (TCC_CTRLBCLR_CMD_RETRIGGER_Val << TCC_CTRLBCLR_CMD_Pos) /* (TCC_CTRLBCLR) Clear start, restart or retrigger Position  */
 #define TCC_CTRLBCLR_CMD_STOP                 (TCC_CTRLBCLR_CMD_STOP_Val << TCC_CTRLBCLR_CMD_Pos)  /* (TCC_CTRLBCLR) Force stop Position  */
-#define TCC_CTRLBCLR_CMD_UPDATE               (TCC_CTRLBCLR_CMD_UPDATE_Val << TCC_CTRLBCLR_CMD_Pos) /* (TCC_CTRLBCLR) Force update of double buffered registers Position  */
+#define TCC_CTRLBCLR_CMD_UPDATE               (TCC_CTRLBCLR_CMD_UPDATE_Val << TCC_CTRLBCLR_CMD_Pos) /* (TCC_CTRLBCLR) Force update of double buffered sensorRegs Position  */
 #define TCC_CTRLBCLR_CMD_READSYNC             (TCC_CTRLBCLR_CMD_READSYNC_Val << TCC_CTRLBCLR_CMD_Pos) /* (TCC_CTRLBCLR) Force COUNT read synchronization Position  */
 #define TCC_CTRLBCLR_Msk                      _UINT8_(0xFF)                                        /* (TCC_CTRLBCLR) Register Mask  */
 
@@ -168,12 +168,12 @@
 #define   TCC_CTRLBSET_CMD_NONE_Val           _UINT8_(0x0)                                         /* (TCC_CTRLBSET) No action  */
 #define   TCC_CTRLBSET_CMD_RETRIGGER_Val      _UINT8_(0x1)                                         /* (TCC_CTRLBSET) Clear start, restart or retrigger  */
 #define   TCC_CTRLBSET_CMD_STOP_Val           _UINT8_(0x2)                                         /* (TCC_CTRLBSET) Force stop  */
-#define   TCC_CTRLBSET_CMD_UPDATE_Val         _UINT8_(0x3)                                         /* (TCC_CTRLBSET) Force update of double buffered registers  */
+#define   TCC_CTRLBSET_CMD_UPDATE_Val         _UINT8_(0x3)                                         /* (TCC_CTRLBSET) Force update of double buffered sensorRegs  */
 #define   TCC_CTRLBSET_CMD_READSYNC_Val       _UINT8_(0x4)                                         /* (TCC_CTRLBSET) Force COUNT read synchronization  */
 #define TCC_CTRLBSET_CMD_NONE                 (TCC_CTRLBSET_CMD_NONE_Val << TCC_CTRLBSET_CMD_Pos)  /* (TCC_CTRLBSET) No action Position  */
 #define TCC_CTRLBSET_CMD_RETRIGGER            (TCC_CTRLBSET_CMD_RETRIGGER_Val << TCC_CTRLBSET_CMD_Pos) /* (TCC_CTRLBSET) Clear start, restart or retrigger Position  */
 #define TCC_CTRLBSET_CMD_STOP                 (TCC_CTRLBSET_CMD_STOP_Val << TCC_CTRLBSET_CMD_Pos)  /* (TCC_CTRLBSET) Force stop Position  */
-#define TCC_CTRLBSET_CMD_UPDATE               (TCC_CTRLBSET_CMD_UPDATE_Val << TCC_CTRLBSET_CMD_Pos) /* (TCC_CTRLBSET) Force update of double buffered registers Position  */
+#define TCC_CTRLBSET_CMD_UPDATE               (TCC_CTRLBSET_CMD_UPDATE_Val << TCC_CTRLBSET_CMD_Pos) /* (TCC_CTRLBSET) Force update of double buffered sensorRegs Position  */
 #define TCC_CTRLBSET_CMD_READSYNC             (TCC_CTRLBSET_CMD_READSYNC_Val << TCC_CTRLBSET_CMD_Pos) /* (TCC_CTRLBSET) Force COUNT read synchronization Position  */
 #define TCC_CTRLBSET_Msk                      _UINT8_(0xFF)                                        /* (TCC_CTRLBSET) Register Mask  */
 

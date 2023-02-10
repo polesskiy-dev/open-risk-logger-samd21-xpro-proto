@@ -1208,7 +1208,7 @@ typedef struct
         usb_host_desc_bank_registers_t HOST_DESC_BANK[USB_HOST_DESC_BANK_NUMBER]; /**< Offset: 0x00  */
 } usb_descriptor_host_registers_t;
 
-/** \brief USB_DESCRIPTOR hardware registers */
+/** \brief USB_DESCRIPTOR hardware sensorRegs */
 typedef union
 {  /* Universal Serial Bus */
        usb_descriptor_device_registers_t DEVICE;         /**< USB is Device */
@@ -1280,7 +1280,7 @@ typedef struct
         usb_host_pipe_registers_t      HOST_PIPE[USB_HOST_PIPE_NUMBER]; /**< Offset: 0x100  */
 } usb_host_registers_t;
 
-/** \brief USB hardware registers */
+/** \brief USB hardware sensorRegs */
 typedef union
 {  /* Universal Serial Bus */
        usb_device_registers_t         DEVICE;         /**< USB is Device */
