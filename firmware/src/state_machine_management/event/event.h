@@ -52,8 +52,8 @@ typedef enum {
 } QUEUE_EVENT_SIG;
 
 typedef struct {
-    QUEUE_EVENT_SIG const sig;
-    void *const payload;
+    QUEUE_EVENT_SIG sig;
+    void *payload;
 } QUEUE_EVENT;
 
 bool EVENT_eventcmp(QUEUE_EVENT *e1, QUEUE_EVENT *e2);

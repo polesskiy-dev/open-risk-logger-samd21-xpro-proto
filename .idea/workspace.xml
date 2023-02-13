@@ -20,14 +20,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_fsm.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_fsm.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/event/event.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/event/event.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.h" afterDir="false" />
     </list>
@@ -169,6 +165,7 @@
       <workItem from="1675638519987" duration="877000" />
       <workItem from="1675711695616" duration="51797000" />
       <workItem from="1676127875849" duration="16988000" />
+      <workItem from="1676323451662" duration="5884000" />
     </task>
     <servers />
   </component>

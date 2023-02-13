@@ -43,13 +43,13 @@ typedef enum {
 } SHT3X_STATE;
 
 enum QUEUE_EVENT_SIG_LOOKUP_INDEX {
-    I2C_SIG_TRANSFER_SUCCESS_I = 0,
-    I2C_SIG_TRANSFER_FAIL_I,
+    TRANSFER_SUCCESS = 0,
+    TRANSFER_FAIL,
     I2C_SIG_TRANSFER_MAX_RETRIES_I,
-    SHT3X_SIG_READ_STATUS_I,
-    SHT3X_SIG_MEASURE_I,
-    SHT3X_SIG_READ_MEASURE_I,
-    SHT3X_SIG_ERROR_I,
+    READ_STATUS,
+    MEASURE,
+    READ_MEASURE,
+    ERROR,
     SHT3X_SIG_I_MAX,
 };
 
@@ -57,8 +57,10 @@ typedef struct SHT3X_ACT_OBJ {
     SHT3X_STATE state;
     EVENTS_QUEUE queue;
     DRV_HANDLE drvI2CHandle;
+    DRV_I2C_TRANSFER_HANDLE transferHandle;
     struct {
         uint16_t status;
+        uint8_t measurements[SHT3X_MEASUREMENTS_SIZE];
     } sensorRegs;
 } SHT3X_ACT_OBJ;
 

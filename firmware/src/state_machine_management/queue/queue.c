@@ -1,5 +1,10 @@
 #include "./queue.h"
 
+EVENTS_QUEUE QUEUE_Ctor() {
+    EVENTS_QUEUE newQueue = {};
+    return newQueue;
+};
+
 bool QUEUE_isEmpty(EVENTS_QUEUE *queue) {
     return queue->size == 0;
 };

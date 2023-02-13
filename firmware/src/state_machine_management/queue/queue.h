@@ -31,6 +31,7 @@ typedef struct {
   ssize_t size;
 } EVENTS_QUEUE;
 
+EVENTS_QUEUE QUEUE_Ctor();
 void QUEUE_pushEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent);
 void QUEUE_shiftEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent);
 QUEUE_EVENT QUEUE_unshiftEvent(EVENTS_QUEUE *queue);

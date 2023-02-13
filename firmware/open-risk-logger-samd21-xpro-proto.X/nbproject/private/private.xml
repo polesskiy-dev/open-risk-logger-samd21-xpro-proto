@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/state_machine_management/event/event.h</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/state_machine_management/queue/queue.c</file>
             <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/main.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/driver/i2c/src/drv_i2c.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/tasks.c</file>
             <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/exceptions.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/peripheral/sercom/i2c_master/plib_sercom2_i2c_master.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/initialization.c</file>
             <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_fsm.c</file>
             <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_actor.c</file>
         </group>
