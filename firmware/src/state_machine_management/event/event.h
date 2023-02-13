@@ -21,12 +21,16 @@ extern "C" {
 
 #define EMPTY_EVENT (QUEUE_EVENT) {NO_EVENT, NULL}
 
+#define NO_RETRIES_LEFT        0
+
 typedef enum {
     NO_EVENT                = 0,
 
     // I2C Async Transfer
     I2C_SIG_TRANSFER_SUCCESS,
     I2C_SIG_TRANSFER_FAIL,
+    I2C_SIG_TRANSFER_TIMEOUT,
+    I2C_SIG_TRANSFER_MAX_RETRIES,
 
     // Flash memory
     FLASH_ERASE_BOOT_SECTOR,

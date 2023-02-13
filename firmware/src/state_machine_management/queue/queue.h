@@ -15,7 +15,7 @@
 #include <string.h>
 
 #include "config/default/definitions.h"
-#include "state_machine_management/event/event.h"
+#include "../event/event.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -39,7 +39,7 @@ bool QUEUE_isEmpty(EVENTS_QUEUE *queue);
 bool QUEUE_isFull(EVENTS_QUEUE *queue);
 
 // debug
-void QUEUE_printQueue(EVENTS_QUEUE *queue);
+//void QUEUE_printQueue(EVENTS_QUEUE *queue);
 
 #ifdef	__cplusplus
 }

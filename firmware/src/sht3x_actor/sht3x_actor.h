@@ -32,44 +32,46 @@ extern "C" {
 
 #define SHT3X_MEASURE_TIME_MS       15
 
-#define SHT3X_STATES_MAX     (SHT3X_ST_ERROR - SHT3X_ST_INIT + 1)
-#define SHT3X_EVENTS_MAX     (SHT3X_SIG_ERROR - SHT3X_SIG_READ_STATUS + 1 + I2C_SIG_TRANSFER_FAIL - I2C_SIG_TRANSFER_SUCCESS + 1)
-
 typedef enum {
     SHT3X_ST_INIT = 0,
     SHT3X_ST_IDLE,
     SHT3X_ST_READ_STATUS,
     SHT3X_ST_MEASURE,
     SHT3X_ST_READ_MEASURE,
-    SHT3X_ST_ERROR
+    SHT3X_ST_ERROR,
+    SHT3X_STATES_MAX
 } SHT3X_STATE;
 
-// lookup table for transitions - next state from current state and event signal
-typedef SHT3X_STATE SHT3X_TRANSITIONS_TABLE[SHT3X_STATES_MAX][SHT3X_EVENTS_MAX];
-
-typedef struct {
-    QUEUE_EVENT_SIG (*signals)[SHT3X_EVENTS_MAX];
-    SHT3X_TRANSITIONS_TABLE *table;
-} SHT3X_NEXT_STATE_LOOKUP;
+enum QUEUE_EVENT_SIG_LOOKUP_INDEX {
+    I2C_SIG_TRANSFER_SUCCESS_I = 0,
+    I2C_SIG_TRANSFER_FAIL_I,
+    I2C_SIG_TRANSFER_MAX_RETRIES_I,
+    SHT3X_SIG_READ_STATUS_I,
+    SHT3X_SIG_MEASURE_I,
+    SHT3X_SIG_READ_MEASURE_I,
+    SHT3X_SIG_ERROR_I,
+    SHT3X_SIG_I_MAX,
+};
 
 typedef struct SHT3X_ACT_OBJ {
     SHT3X_STATE state;
     EVENTS_QUEUE queue;
-    SHT3X_NEXT_STATE_LOOKUP nextStateLookup;
     DRV_HANDLE drvI2CHandle;
     struct {
         uint16_t status;
     } sensorRegs;
 } SHT3X_ACT_OBJ;
 
+// traverse through the state
+typedef SHT3X_STATE (SHT3X_STATE_HANDLE_F)(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
+
 void SHT3X_ACT_Initialize(void);
 void SHT3X_ACT_Tasks(void);
 
 void SHT3X_ACT_Dispatch(QUEUE_EVENT event);
 void SHT3X_ACT_HandleQueuedEvent(QUEUE_EVENT event);
-void SHT3X_ACT_StateTransition(SHT3X_STATE state, QUEUE_EVENT event);
 
-SHT3X_NEXT_STATE_LOOKUP SHT3X_ACT_NextStateLookupTableCtor(void);
+void SHT3X_ACT_ProcessEventToNextState(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
 
 // common I2C transfer handler
 void SHT3X_ACT_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);

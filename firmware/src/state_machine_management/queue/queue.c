@@ -14,7 +14,7 @@ void QUEUE_pushEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent) {
         return;
     };
 
-    memcpy(&queue->events[queue->size], &newEvent, sizeof(QUEUE_EVENT));
+    memcpy(&(queue->events[queue->size]), &newEvent, sizeof(QUEUE_EVENT));
     queue->size++;
 }
 
@@ -53,14 +53,14 @@ QUEUE_EVENT QUEUE_unshiftEvent(EVENTS_QUEUE *queue) {
 }
 
 // debug
-void QUEUE_printQueue(EVENTS_QUEUE *queue) {
-    printf("size: %d, head: ", queue->size);
-    EVENT_print(&queue->head);
-    printf("\r\n");
-
-    for (int i = 0; i < queue->size; i++) {
-        EVENT_print(&queue->events[i]);
-        printf("\r\n");
-    }
-    printf("\r\n");
-};
+//void QUEUE_printQueue(EVENTS_QUEUE *queue) {
+//    printf("size: %d, head: ", queue->size);
+//    EVENT_print(&queue->head);
+//    printf("\r\n");
+//
+//    for (int i = 0; i < queue->size; i++) {
+//        EVENT_print(&queue->events[i]);
+//        printf("\r\n");
+//    }
+//    printf("\r\n");
+//};
