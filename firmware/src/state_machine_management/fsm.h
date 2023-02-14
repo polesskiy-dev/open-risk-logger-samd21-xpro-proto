@@ -17,7 +17,21 @@
 }
 #endif
 
-void FSM_NextStateTransition(uint32_t *currState, uint32_t nextState);
+typedef struct {
+    uint8_t state;
+    EVENTS_QUEUE queue;
+} SUPER_ACT_OBJ;
+
+// state handler f
+typedef uint8_t (STATE_HANDLE_F)(SUPER_ACT_OBJ *me, QUEUE_EVENT event);
+
+typedef struct {
+    uint8_t STATES_MAX;
+    uint8_t EVENTS_MAX;
+    QUEUE_EVENT_SIG particularEventsSigs[];
+} TRANSITION_TABLE_DESCRIPTION;
+
+void FSM_ProcessEventToNextState(SUPER_ACT_OBJ *me, QUEUE_EVENT event, TRANSITION_TABLE_DESCRIPTION tableDescription, STATE_HANDLE_F *transitionTable[tableDescription.STATES_MAX][tableDescription.EVENTS_MAX]);
 
 void FSM_Dispatch(EVENTS_QUEUE *queue, QUEUE_EVENT event);
 

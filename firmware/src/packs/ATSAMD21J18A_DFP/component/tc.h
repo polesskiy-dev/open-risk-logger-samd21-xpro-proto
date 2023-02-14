@@ -462,7 +462,7 @@ typedef struct
   __IO  uint32_t                       TC_CC[2];           /**< Offset: 0x18 (R/W  32) COUNT32 Compare/Capture */
 } tc_count32_registers_t;
 
-/** \brief TC hardware sensorRegs */
+/** \brief TC hardware registers */
 typedef union
 {  /* Basic Timer Counter */
        tc_count8_registers_t          COUNT8;         /**< 8-bit Counter Mode */

@@ -13,12 +13,10 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-
 #include "../config/default/configuration.h"
 #include "../config/default/driver/driver_common.h"
 #include "../config/default/definitions.h"
 #include "../state_machine_management/fsm.h"
-
 
 #ifdef	__cplusplus
 extern "C" {
@@ -64,7 +62,7 @@ typedef struct SHT3X_ACT_OBJ {
     } sensorRegs;
 } SHT3X_ACT_OBJ;
 
-// traverse through the state
+// state handler f
 typedef SHT3X_STATE (SHT3X_STATE_HANDLE_F)(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
 
 void SHT3X_ACT_Initialize(void);

@@ -1172,11 +1172,11 @@ uint16_t USB_DEVICE_CDC_ReadPacketSizeGet ( USB_DEVICE_CDC_INDEX iCDC )
     );
 
   Summary:
-    This function sensorRegs a event handler for the specified CDC function
+    This function registers a event handler for the specified CDC function
     driver instance. 
 
   Description:
-    This function sensorRegs a event handler for the specified CDC function
+    This function registers a event handler for the specified CDC function
     driver instance. This function should be called by the client when it
     receives a SET CONFIGURATION event from the device layer. A event handler
     must be registered for function driver to respond to function driver

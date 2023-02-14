@@ -4,7 +4,7 @@
 
 
 project: open-risk-logger-samd21-xpro-proto
-creation_date: 2023-02-07T22:14:36.683+02:00[Europe/Kiev]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2023-02-14T14:14:59.669+02:00[Europe/Kiev]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Mac OS X
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.8.5
@@ -13,6 +13,7 @@ plugin_version: v3.6.4        # if MPLAB X plugin only
 compiler: XC32 (4.10)
 
 modules:
+    - {name: "cryptoauthlib", version: "20221114"}
     - {name: "csp", version: "v3.14.0"}
     - {name: "core", version: "v3.11.1"}
     - {name: "usb", version: "v3.10.0"}

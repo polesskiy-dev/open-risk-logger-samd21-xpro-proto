@@ -830,7 +830,7 @@ bool DRV_MEMORY_SyncErase
     DRV_MEMORY_COMMAND_HANDLE commandHandle;
 
     // memoryHandle is the handle returned by the DRV_MEMORY_Open function.
-    // Client sensorRegs an event handler with driver
+    // Client registers an event handler with driver
 
     // Event is received when the erase-write request is completed.
     void appTransferHandler
@@ -1640,7 +1640,7 @@ DRV_MEMORY_COMMAND_STATUS DRV_MEMORY_CommandStatusGet
     DRV_MEMORY_COMMAND_HANDLE commandHandle;
 
     // memoryHandle is the handle returned by the DRV_MEMORY_Open function.
-    // Client sensorRegs an event handler with driver
+    // Client registers an event handler with driver
 
     void appTransferHandler
     (

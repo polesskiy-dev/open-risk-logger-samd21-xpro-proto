@@ -210,7 +210,7 @@ __STATIC_FORCEINLINE void __TZ_set_STACKSEAL_S (uint32_t* stackTop) {
 
 /* Define macros for porting to both thumb1 and thumb2.
  * For thumb1, use low register (r0-r7), specified by constraint "l"
- * Otherwise, use general sensorRegs, specified by constraint "r" */
+ * Otherwise, use general registers, specified by constraint "r" */
 #if defined (__thumb__) && !defined (__thumb2__)
 #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
 #define __CMSIS_GCC_RW_REG(r) "+l" (r)

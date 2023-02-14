@@ -61,7 +61,6 @@ static void SHT3X_DispatchReadMeasure(uintptr_t context) {
     SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_SIG_READ_MEASURE});;
 }
 
-
 static SHT3X_STATE SHT3X_Idle(SHT3X_ACT_OBJ *me, QUEUE_EVENT event) {
     LED_Off();
 
