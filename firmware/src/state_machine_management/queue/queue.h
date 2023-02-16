@@ -14,7 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "config/default/definitions.h"
+#include "../../config/default/definitions.h"
+#include "../../config/default/system/system_common.h"
 #include "../event/event.h"
 
 #ifdef	__cplusplus

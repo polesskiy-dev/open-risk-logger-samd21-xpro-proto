@@ -43,11 +43,12 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+
 #include "configuration.h"
 #include "definitions.h"
 #include "device.h"
 #include "sht3x_actor/sht3x_actor.h"
-
+#include "nfc_actor/nfc_actor.h"
 
 
 // ****************************************************************************
@@ -450,6 +451,8 @@ void SYS_Initialize ( void* data )
 
 
     SHT3X_ACT_Initialize();
+
+    NFC_ACT_Initialize();
 
 
     NVIC_Initialize();

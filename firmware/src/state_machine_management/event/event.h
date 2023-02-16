@@ -13,24 +13,19 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "../../sht3x_actor/sht3x_events.h"
+#include "../../nfc_actor/nfc_events.h"
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
 
 #define QUEUE_MAX_SIZE 8
 
-#define EMPTY_EVENT (QUEUE_EVENT) {NO_EVENT, NULL}
-
-#define NO_RETRIES_LEFT        0
+#define EMPTY_EVENT ((QUEUE_EVENT) {.sig = NO_EVENT, NULL})
 
 typedef enum {
     NO_EVENT                = 0,
-
-    // I2C Async Transfer
-    I2C_SIG_TRANSFER_SUCCESS,
-    I2C_SIG_TRANSFER_FAIL,
-    I2C_SIG_TRANSFER_TIMEOUT,
-    I2C_SIG_TRANSFER_MAX_RETRIES,
 
     // Flash memory
     FLASH_ERASE_BOOT_SECTOR,
@@ -40,19 +35,23 @@ typedef enum {
     FLASH_WRITE_BOOT_SECTOR_SUCCESS,
     FLASH_WRITE_BOOT_SECTOR_ERROR,
 
-    // Environment sensor
-    SHT3X_SIG_READ_STATUS,
-    SHT3X_SIG_MEASURE,
-    SHT3X_SIG_READ_MEASURE,
-    SHT3X_SIG_ERROR
+    // Global events
+    GLOBAL_SIG_START_I = 0x80, // half of 0xFF
+    // I2C Async Transfer
+    I2C_TRANSFER_SUCCESS,
+    I2C_TRANSFER_FAIL,
+    I2C_TRANSFER_TIMEOUT,
+    I2C_TRANSFER_MAX_RETRIES,
 
-    // Shock sensor
-
-    // NFC
 } QUEUE_EVENT_SIG;
 
 typedef struct {
-    QUEUE_EVENT_SIG sig;
+    union {
+        QUEUE_EVENT_SIG sig;
+        NFC_EVENT_SIG nfcSig;
+        SHT3X_EVENT_SIG sht3xSig;
+        int t;
+    };
     void *payload;
 } QUEUE_EVENT;
 

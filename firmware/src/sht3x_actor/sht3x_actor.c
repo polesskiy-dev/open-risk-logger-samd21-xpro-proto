@@ -1,17 +1,20 @@
 #include "sht3x_actor.h"
 
-SHT3X_ACT_OBJ me = {}; // init in ctor
+extern SHT3X_STATE_HANDLE_F *sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_I_MAX];
+extern QUEUE_EVENT_SIG sht3XParticularEventSigsLookup[SHT3X_SIG_I_MAX];
+
+SHT3X_ACT_OBJ sht3xObj; // init in ctor
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: SHT3X Actor Local Functions
 // *****************************************************************************
 // *****************************************************************************
-static void SHT3X_ACT_Ctor(DRV_HANDLE drvI2CHandle) {
-    me.queue = QUEUE_Ctor();
-    me.state = SHT3X_ST_INIT;
-    me.drvI2CHandle = drvI2CHandle;
-    me.transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
+static void SHT3X_ACT_Ctor(SHT3X_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
+    me->queue = QUEUE_Ctor();
+    me->state = SHT3X_ST_INIT;
+    me->drvI2CHandle = drvI2CHandle;
+    me->transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
 };
 
 static DRV_HANDLE SHT3X_ACT_OpenI2CDriver(void) {
@@ -22,48 +25,55 @@ static DRV_HANDLE SHT3X_ACT_OpenI2CDriver(void) {
     return drvI2CHandle;
 };
 
+static void SHT3X_ACT_HandleQueuedEvent(QUEUE_EVENT event) {
+    FSM_ProcessEventToNextState(
+            (SUPER_ACT_OBJ *) &sht3xObj,
+            event,
+            (TRANSITION_TABLE_DESCRIPTION) {
+                    .STATES_MAX = SHT3X_STATES_MAX,
+                    .EVENTS_MAX = SHT3X_SIG_I_MAX
+            },
+            (STATE_HANDLE_F *(*)[SHT3X_SIG_I_MAX]) sht3xTransitionTable
+    );
+};
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: SHT3X Actor Global Functions
 // *****************************************************************************
 // *****************************************************************************
-
-void SHT3X_ACT_Tasks(void) {
-    if (!QUEUE_isEmpty(&me.queue)) {
-        QUEUE_EVENT newEvent = QUEUE_unshiftEvent(&me.queue);
-        SHT3X_ACT_HandleQueuedEvent(newEvent);
-    }
-}
-
 void SHT3X_ACT_Initialize(void) {
     // open I2C driver, get handler
     DRV_HANDLE drvI2CHandle = SHT3X_ACT_OpenI2CDriver();
 
     // init SHT3X actor object
-    SHT3X_ACT_Ctor(drvI2CHandle);
+    SHT3X_ACT_Ctor(&sht3xObj, drvI2CHandle);
 
     // error on driver opening error
     if (DRV_HANDLE_INVALID == drvI2CHandle) {
-        return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_SIG_ERROR});
+        return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_ERROR});
     };
 
     // set I2C handler @see https://microchip-mplab-harmony.github.io/core/index.html?GUID-C99FBA78-A80D-40EE-B863-E40151E30C73
     DRV_I2C_TransferEventHandlerSet(
-            me.drvI2CHandle,
+            sht3xObj.drvI2CHandle,
             SHT3X_ACT_TransferEventHandler,
-            (uintptr_t) &me
+            (uintptr_t) &sht3xObj
     );
 
     // TODO schedule it by scheduler and/or call in self-test
-    SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_SIG_READ_STATUS});
+    SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_READ_STATUS});
 };
 
-void SHT3X_ACT_HandleQueuedEvent(QUEUE_EVENT event) {
-    SHT3X_ACT_ProcessEventToNextState(&me, event);
-};
+void SHT3X_ACT_Tasks(void) {
+    if (!QUEUE_isEmpty(&sht3xObj.queue)) {
+        QUEUE_EVENT newEvent = QUEUE_unshiftEvent(&sht3xObj.queue);
+        SHT3X_ACT_HandleQueuedEvent(newEvent);
+    }
+}
 
 void SHT3X_ACT_Dispatch(QUEUE_EVENT event) {
-    FSM_Dispatch(&(me.queue), event);
+    FSM_Dispatch(&(sht3xObj.queue), (QUEUE_EVENT) event);
 }
 
 /**
@@ -84,16 +94,16 @@ void SHT3X_ACT_TransferEventHandler(
 
             /* All data from or to the buffer was transferred successfully. */
         case DRV_I2C_TRANSFER_EVENT_COMPLETE:
-            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = I2C_SIG_TRANSFER_SUCCESS});
+            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_TRANSFER_SUCCESS});
 
             /* There was an error while processing the buffer transfer request. */
         case DRV_I2C_TRANSFER_EVENT_ERROR:
-            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = I2C_SIG_TRANSFER_FAIL});
+            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_TRANSFER_FAIL});
 
             /* Transfer Handle given is expired. It means transfer
             is completed but with or without error is not known. */
         case DRV_I2C_TRANSFER_EVENT_HANDLE_EXPIRED:
         case DRV_I2C_TRANSFER_EVENT_HANDLE_INVALID:
-            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_SIG_ERROR});
+            return SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_ERROR});
     };
 };

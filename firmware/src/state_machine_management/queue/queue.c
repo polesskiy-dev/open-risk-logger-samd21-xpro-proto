@@ -1,4 +1,4 @@
-#include "./queue.h"
+#include "queue.h"
 
 EVENTS_QUEUE QUEUE_Ctor() {
     EVENTS_QUEUE newQueue = {};
@@ -15,7 +15,7 @@ bool QUEUE_isFull(EVENTS_QUEUE *queue) {
 
 void QUEUE_pushEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent) {
     if (QUEUE_isFull(queue)) {
-        SYS_ASSERT(false, "Trying push to a full queue!");
+        SYS_ASSERT(false, "__FILE__: Trying push to a full queue!");
         return;
     };
 
@@ -25,7 +25,7 @@ void QUEUE_pushEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent) {
 
 void QUEUE_shiftEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent) {
     if (QUEUE_isFull(queue)) {
-        SYS_ASSERT(false, "Trying shift to a full queue!");
+        SYS_ASSERT(false, "__FILE__:  Trying shift to a full queue!");
         return;
     };
 
@@ -40,7 +40,7 @@ void QUEUE_shiftEvent(EVENTS_QUEUE *queue, QUEUE_EVENT newEvent) {
 
 QUEUE_EVENT QUEUE_unshiftEvent(EVENTS_QUEUE *queue) {
     if (QUEUE_isEmpty(queue)) {
-        SYS_ASSERT(false, "Trying to dequeue an empty queue!");
+        SYS_ASSERT(false, "__FILE__: Trying to dequeue an empty queue!");
         return EMPTY_EVENT;
     }
     uint8_t tailPos = queue->size - 1;
@@ -51,7 +51,7 @@ QUEUE_EVENT QUEUE_unshiftEvent(EVENTS_QUEUE *queue) {
     memcpy(queue->events, queue->events + 1, reducedSize * sizeof(QUEUE_EVENT));
 
     // empty tail
-    memcpy(queue->events + tailPos, &(QUEUE_EVENT) {0, NULL}, sizeof(QUEUE_EVENT));
+    memcpy(queue->events + tailPos, &EMPTY_EVENT, sizeof(QUEUE_EVENT));
 
     queue->size--;
     return prevHead;

@@ -18,6 +18,7 @@
 #include "../config/default/driver/driver_common.h"
 #include "../config/default/definitions.h"
 #include "../state_machine_management/fsm.h"
+#include "./nfc_events.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -89,7 +90,10 @@ typedef struct {
     EVENTS_QUEUE queue;
     DRV_HANDLE drvI2CHandle;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
-    ST25DV_PASSWD pwd;
+    struct {
+        uint8_t uid[NFC_UID_SIZE];
+        ST25DV_PASSWD pwd;
+    } st25dvRegs;
 } NFC_ACT_OBJ;
 
 // state handler f
@@ -99,9 +103,6 @@ void NFC_ACT_Initialize ( void );
 void NFC_ACT_Tasks( void );
 
 void NFC_ACT_Dispatch(QUEUE_EVENT event);
-void NFC_ACT_HandleQueuedEvent(QUEUE_EVENT event);
-
-void NFC_ACT_ProcessEventToNextState(NFC_ACT_OBJ *me, QUEUE_EVENT event);
 
 // common I2C transfer handler
 void NFC_ACT_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);

@@ -245,10 +245,17 @@
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
+    <logicalFolder name="nfc_actor" displayName="nfc_actor" projectFiles="true">
+      <itemPath>../src/nfc_actor/nfc_fsm.c</itemPath>
+      <itemPath>../src/nfc_actor/nfc_actor.h</itemPath>
+      <itemPath>../src/nfc_actor/nfc_actor.c</itemPath>
+      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_events.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="sht3x_actor" displayName="sht3x_actor" projectFiles="true">
       <itemPath>../src/sht3x_actor/sht3x_actor.h</itemPath>
       <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
       <itemPath>../src/sht3x_actor/sht3x_fsm.c</itemPath>
+      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_events.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -650,7 +657,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="1024"/>
+        <property key="heap-size" value="0"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -722,7 +729,7 @@
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
         <property key="firmware.toolpack"
@@ -777,7 +784,7 @@
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
         <property key="firmware.toolpack"

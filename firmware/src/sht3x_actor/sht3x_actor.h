@@ -1,8 +1,7 @@
-/*
- * File:   sht3x_actor.h
- * Author: apolisskyi
- *
- * Created on February 2, 2023, 3:06 AM
+/**
+ * @file    sht3x_actor.h
+ * @author  apolisskyi
+ * @date February 2, 2023
  */
 
 #ifndef SHT3X_ACTOR_H
@@ -17,6 +16,7 @@
 #include "../config/default/driver/driver_common.h"
 #include "../config/default/definitions.h"
 #include "../state_machine_management/fsm.h"
+#include "./sht3x_events.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -30,6 +30,9 @@ extern "C" {
 
 #define SHT3X_MEASURE_TIME_MS       15
 
+/**
+ * @brief sht3x states
+ */
 typedef enum {
     SHT3X_ST_INIT = 0,
     SHT3X_ST_IDLE,
@@ -40,17 +43,10 @@ typedef enum {
     SHT3X_STATES_MAX
 } SHT3X_STATE;
 
-enum QUEUE_EVENT_SIG_LOOKUP_INDEX {
-    TRANSFER_SUCCESS = 0,
-    TRANSFER_FAIL,
-    I2C_SIG_TRANSFER_MAX_RETRIES_I,
-    READ_STATUS,
-    MEASURE,
-    READ_MEASURE,
-    ERROR,
-    SHT3X_SIG_I_MAX,
-};
-
+/**
+ * @brief sht3x environment sensor Actor
+ * @extends SUPER_ACT_OBJ
+ */
 typedef struct SHT3X_ACT_OBJ {
     SHT3X_STATE state;
     EVENTS_QUEUE queue;
@@ -62,16 +58,20 @@ typedef struct SHT3X_ACT_OBJ {
     } sensorRegs;
 } SHT3X_ACT_OBJ;
 
-// state handler f
+/**
+ * @brief State handler function type
+ */
 typedef SHT3X_STATE (SHT3X_STATE_HANDLE_F)(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
 
 void SHT3X_ACT_Initialize(void);
 void SHT3X_ACT_Tasks(void);
 
+/**
+ * @brief Dispatch event to SHT3X_ACT_OBJ queue
+ * @memberof SHT3X_ACT_OBJ
+ * @param event
+ */
 void SHT3X_ACT_Dispatch(QUEUE_EVENT event);
-void SHT3X_ACT_HandleQueuedEvent(QUEUE_EVENT event);
-
-void SHT3X_ACT_ProcessEventToNextState(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
 
 // common I2C transfer handler
 void SHT3X_ACT_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);
