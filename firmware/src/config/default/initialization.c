@@ -43,10 +43,12 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+
 #include "configuration.h"
 #include "definitions.h"
 #include "device.h"
-
+#include "sht3x_actor/sht3x_actor.h"
+#include "nfc_actor/nfc_actor.h"
 
 
 // ****************************************************************************
@@ -224,7 +226,6 @@ const DRV_AT25DF_INIT drvAT25DFInitData =
     .chipSelectPin = DRV_AT25DF_CHIP_SELECT_PIN_IDX
 };
 
-extern GLOBAL_QUEUE_OBJECT globalEventsQueueObj;
 
 
 // *****************************************************************************
@@ -449,13 +450,9 @@ void SYS_Initialize ( void* data )
     sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
 
 
-    USB_APP_Initialize();
-    MEMORY_APP_Initialize();
-    GLOBAL_STATE_APP_Initialize();
-    NFC_APP_Initialize();
-    SHT3X_TEMP_APP_Initialize();
-    ACCEL_APP_Initialize();
-    GLOBAL_QUEUE_Initialize();
+    SHT3X_ACT_Initialize();
+
+    NFC_ACT_Initialize();
 
 
     NVIC_Initialize();

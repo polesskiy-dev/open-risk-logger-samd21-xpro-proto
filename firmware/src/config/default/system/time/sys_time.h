@@ -629,7 +629,7 @@ SYS_TIME_HANDLE SYS_TIME_CallbackRegisterUS ( SYS_TIME_CALLBACK callback, uintpt
         requested number of milliseconds has expired (either once or repeatedly).
 
    Description:
-        Creates a timer object and registers a function with it to be called back
+        Creates a timer object and sensorRegs a function with it to be called back
         when the requested delay (specified in milliseconds) has completed.  The
         caller must identify if the timer should call the function once or repeatedly
         every time the given delay period expires.

@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/queue.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_app.c</file>
-            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/queue.h</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_fsm.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_actor.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/state_machine_management/queue/queue.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_events.h</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/driver/memory/src/drv_memory.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_actor.h</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_actor.c</file>
+            <file>file:/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/config/default/configuration.h</file>
         </group>
     </open-files>
 </project-private>

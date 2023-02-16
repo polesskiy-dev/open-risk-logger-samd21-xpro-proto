@@ -39,6 +39,11 @@
             <itemPath>../src/config/default/driver/driver.h</itemPath>
             <itemPath>../src/config/default/driver/driver_common.h</itemPath>
           </logicalFolder>
+          <logicalFolder name="f7" displayName="library" projectFiles="true">
+            <logicalFolder name="f1" displayName="cryptoauthlib" projectFiles="true">
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_config.h</itemPath>
+            </logicalFolder>
+          </logicalFolder>
           <logicalFolder name="f6" displayName="osal" projectFiles="true">
             <itemPath>../src/config/default/osal/osal.h</itemPath>
             <itemPath>../src/config/default/osal/osal_definitions.h</itemPath>
@@ -229,14 +234,7 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
-      <itemPath>../src/usb_app.h</itemPath>
-      <itemPath>../src/memory_app.h</itemPath>
       <itemPath>../src/diskImage.h</itemPath>
-      <itemPath>../src/queue.h</itemPath>
-      <itemPath>../src/global_state_app.h</itemPath>
-      <itemPath>../src/nfc_app.h</itemPath>
-      <itemPath>../src/accel_app.h</itemPath>
-      <itemPath>../src/sht3x_temp_app.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -246,6 +244,18 @@
           <itemPath>../src/config/default/ATSAMD21J18A.ld</itemPath>
         </logicalFolder>
       </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="nfc_actor" displayName="nfc_actor" projectFiles="true">
+      <itemPath>../src/nfc_actor/nfc_fsm.c</itemPath>
+      <itemPath>../src/nfc_actor/nfc_actor.h</itemPath>
+      <itemPath>../src/nfc_actor/nfc_actor.c</itemPath>
+      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_events.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="sht3x_actor" displayName="sht3x_actor" projectFiles="true">
+      <itemPath>../src/sht3x_actor/sht3x_actor.h</itemPath>
+      <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
+      <itemPath>../src/sht3x_actor/sht3x_fsm.c</itemPath>
+      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_events.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -276,6 +286,124 @@
                   <itemPath>../src/config/default/driver/usb/usbfsv1/src/drv_usbfsv1_device.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="f7" displayName="library" projectFiles="true">
+            <logicalFolder name="f1" displayName="cryptoauthlib" projectFiles="true">
+              <logicalFolder name="f4" displayName="atcacert" projectFiles="true">
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_client.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_host_hw.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_date.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_pem.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_der.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_def.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_host_sw.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_host_hw.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_client.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_pem.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_date.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_check_config.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_der.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_host_sw.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/atcacert/atcacert_def.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f5" displayName="calib" projectFiles="true">
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_info.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_random.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_verify.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_privwrite.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_execution.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_read.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_sign.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_selftest.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_nonce.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_hmac.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_command.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_aes_gcm.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_sha.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_ecdh.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_helpers.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_basic.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_config_check.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_kdf.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_gendig.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_secureboot.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_lock.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_write.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_genkey.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_execution.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_counter.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_derivekey.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_mac.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_checkmac.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_updateextra.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_command.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_aes_gcm.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_aes.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_basic.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f2" displayName="crypto" projectFiles="true">
+                <logicalFolder name="f1" displayName="hashes" projectFiles="true">
+                  <itemPath>../src/config/default/library/cryptoauthlib/crypto/hashes/sha2_routines.h</itemPath>
+                  <itemPath>../src/config/default/library/cryptoauthlib/crypto/hashes/sha1_routines.c</itemPath>
+                  <itemPath>../src/config/default/library/cryptoauthlib/crypto/hashes/sha2_routines.c</itemPath>
+                  <itemPath>../src/config/default/library/cryptoauthlib/crypto/hashes/sha1_routines.h</itemPath>
+                </logicalFolder>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/crypto_config_check.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_sw_sha1.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_pbkdf2.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_pad.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_sw_sha2.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_sw_sha1.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes_cbc.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes_ctr.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes_cmac.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes_ccm.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_sw_sha2.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_hw_aes_cbcmac.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/crypto/atca_crypto_sw.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f1" displayName="hal" projectFiles="true">
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/ATECC608_0.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/atca_hal.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/atca_hal.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/hal_i2c_harmony.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/hal_harmony_init.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/hal_gpio_harmony.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/hal/hal_cortex_m_delay.c</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f6" displayName="host" projectFiles="true">
+                <itemPath>../src/config/default/library/cryptoauthlib/host/atca_host_config_check.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/host/atca_host.c</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/host/atca_host.h</itemPath>
+              </logicalFolder>
+              <logicalFolder name="f3" displayName="jwt" projectFiles="true">
+                <itemPath>../src/config/default/library/cryptoauthlib/jwt/atca_jwt.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/jwt/atca_jwt.c</itemPath>
+              </logicalFolder>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_cfgs.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_helpers.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_debug.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_basic.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_compiler.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_iface.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_devtypes.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_utils_sizes.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_status.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_device.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_config_check.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_helpers.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_cfgs.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/cryptoauthlib.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_bool.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_basic.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_debug.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_iface.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_device.c</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_version.h</itemPath>
+              <itemPath>../src/config/default/library/cryptoauthlib/atca_platform.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f1" displayName="peripheral" projectFiles="true">
@@ -352,14 +480,21 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/main.c</itemPath>
-      <itemPath>../src/usb_app.c</itemPath>
-      <itemPath>../src/memory_app.c</itemPath>
       <itemPath>../src/config/default/diskImage.c</itemPath>
-      <itemPath>../src/queue.c</itemPath>
-      <itemPath>../src/global_state_app.c</itemPath>
-      <itemPath>../src/nfc_app.c</itemPath>
-      <itemPath>../src/accel_app.c</itemPath>
-      <itemPath>../src/sht3x_temp_app.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="state_machine_management"
+                   displayName="state_machine_management"
+                   projectFiles="true">
+      <logicalFolder name="event" displayName="event" projectFiles="true">
+        <itemPath>../src/state_machine_management/event/event.h</itemPath>
+        <itemPath>../src/state_machine_management/event/event.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="queue" displayName="queue" projectFiles="true">
+        <itemPath>../src/state_machine_management/queue/queue.c</itemPath>
+        <itemPath>../src/state_machine_management/queue/queue.h</itemPath>
+      </logicalFolder>
+      <itemPath>../src/state_machine_management/fsm.c</itemPath>
+      <itemPath>../src/state_machine_management/fsm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -374,9 +509,11 @@
         <itemPath>../src/config/default/default.mhc/project.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/cryptoauthlib.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/sys_time.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/rtc.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/usb_device.yml</itemPath>
+        <itemPath>../src/config/default/default.mhc/atecc608.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/evsys.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/nvmctrl.yml</itemPath>
         <itemPath>../src/config/default/default.mhc/drv_memory.yml</itemPath>
@@ -453,7 +590,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/default;../src/packs/ATSAMD21J18A_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
+                  value="../src;../src/config/default;../src/config/default/library/cryptoauthlib;../src/config/default/library/cryptoauthlib/crypto;../src/config/default/library/cryptoauthlib/pkcs11;../src/packs/ATSAMD21J18A_DFP;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -471,6 +608,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wno-switch"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
@@ -519,7 +657,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="1024"/>
+        <property key="heap-size" value="0"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -646,7 +784,7 @@
         <property key="communication.speed" value="2.000"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
         <property key="firmware.toolpack"

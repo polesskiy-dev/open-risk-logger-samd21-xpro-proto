@@ -76,13 +76,7 @@
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_usb_cdc_definitions.h"
 #include "driver/spi_flash/at25df/drv_at25df.h"
-#include "usb_app.h"
-#include "memory_app.h"
-#include "global_state_app.h"
-#include "nfc_app.h"
-#include "sht3x_temp_app.h"
-#include "accel_app.h"
-#include "queue.h"
+#include "system/system.h"
 
 
 
