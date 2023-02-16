@@ -19,26 +19,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0a1b4-3c21-4dcf-95a0-c9d03cccd181" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_events.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_events.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Doxyfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-default.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-genesis.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/configurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/initialization.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/config/default/tasks.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_actor.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_actor.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_actor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_fsm.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/nfc_actor/nfc_fsm.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_actor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_fsm.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/sht3x_actor/sht3x_fsm.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/event/event.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/event/event.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/fsm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.c" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/src/state_machine_management/queue/queue.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
