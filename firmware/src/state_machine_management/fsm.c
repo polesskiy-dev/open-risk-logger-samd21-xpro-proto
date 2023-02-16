@@ -17,6 +17,9 @@ void FSM_ProcessEventToNextState(
     // if no handler for queue event just ignore event
     if (NULL == nextStateHandler) return;
 
+    // invoke next state handler - actually process the state, get next state
     uint8_t nextState = (*nextStateHandler)(me, event);
+
+    // set next state to Actor object
     me->state = nextState;
 };
