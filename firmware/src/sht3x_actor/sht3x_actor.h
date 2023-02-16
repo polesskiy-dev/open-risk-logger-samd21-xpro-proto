@@ -60,20 +60,41 @@ typedef struct SHT3X_ACT_OBJ {
 
 /**
  * @brief State handler function type
+ * @memberof SHT3X_ACT_OBJ
  */
 typedef SHT3X_STATE (SHT3X_STATE_HANDLE_F)(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
 
+/**
+ * @brief Initialize and construct actor, should be called before tasks
+ * @memberof SHT3X_ACT_OBJ
+ */
 void SHT3X_ACT_Initialize(void);
+
+/**
+ * @brief Perform Actor tasks, mainly listen for events and process them
+ * @memberof SHT3X_ACT_OBJ
+ */
 void SHT3X_ACT_Tasks(void);
 
 /**
  * @brief Dispatch event to SHT3X_ACT_OBJ queue
  * @memberof SHT3X_ACT_OBJ
- * @param event
+ * @param event[in]
  */
 void SHT3X_ACT_Dispatch(QUEUE_EVENT event);
 
-// common I2C transfer handler
+/**
+ * @brief Callback for I2C ISR on success/error transfer.
+ *
+ * Required by Harmony framework drivers approach.
+ * On success/error transfer ISR should dispatch appropriate event to Actor's queue
+ *
+ * @see https://microchip-mplab-harmony.github.io/core/index.html?GUID-95F7ABE3-6864-4FC9-B11B-97B31ACF683C
+ * @memberof SHT3X_ACT_OBJ
+ * @param event[in]             transfer event
+ * @param transferHandle[in]    marks appropriate Actor to associate callback with
+ * @param context[in]           should be ptr to Actor, mostly unused
+ */
 void SHT3X_ACT_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);
 
 

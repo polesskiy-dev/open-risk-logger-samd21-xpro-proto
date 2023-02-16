@@ -80,7 +80,7 @@ void SHT3X_ACT_Dispatch(QUEUE_EVENT event) {
  * @see https://microchip-mplab-harmony.github.io/core/index.html?GUID-95F7ABE3-6864-4FC9-B11B-97B31ACF683C
  * @param[in] event
  * @param[out] transferHandle
- * @param[in] context - event to emit on success
+ * @param[in] context
  */
 void SHT3X_ACT_TransferEventHandler(
         DRV_I2C_TRANSFER_EVENT event,

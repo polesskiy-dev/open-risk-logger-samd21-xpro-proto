@@ -63,6 +63,9 @@ extern "C" {
 #define ST25DV_MB_CTRL_DYN_CURRENTMSG_FIELD  0x3F
 #define ST25DV_MB_CTRL_DYN_CURRENTMSG_MASK   0xC0
 
+/**
+* @brief nfc states
+*/
 typedef enum {
     NFC_ST_INIT = 0,
     NFC_ST_IDLE,
@@ -85,6 +88,10 @@ typedef union {
     uint8_t transferBuf[NFC_CMD_SIZE + ST25DV_MAX_MAILBOX_LENGTH];
 } ST25DV_PASSWD;
 
+/**
+ * @brief NFC ST25DV Actor
+ * @extends SUPER_ACT_OBJ
+ */
 typedef struct {
     NFC_STATE state;
     EVENTS_QUEUE queue;
@@ -96,15 +103,43 @@ typedef struct {
     } st25dvRegs;
 } NFC_ACT_OBJ;
 
-// state handler f
+/**
+ * @brief State handler function type
+ * @memberof NFC_ACT_OBJ
+ */
 typedef NFC_STATE (NFC_STATE_HANDLE_F)(NFC_ACT_OBJ *me, QUEUE_EVENT event);
 
+/**
+ * @brief Initialize and construct actor, should be called before tasks
+ * @memberof NFC_ACT_OBJ
+ */
 void NFC_ACT_Initialize ( void );
+
+/**
+ * @brief Perform Actor tasks, mainly listen for events and process them
+ * @memberof NFC_ACT_OBJ
+ */
 void NFC_ACT_Tasks( void );
 
+/**
+ * @brief Dispatch event to NFC_ACT_OBJ queue
+ * @memberof NFC_ACT_OBJ
+ * @param event[in]
+ */
 void NFC_ACT_Dispatch(QUEUE_EVENT event);
 
-// common I2C transfer handler
+/**
+ * @brief Callback for I2C ISR on success/error transfer.
+ *
+ * Required by Harmony framework drivers approach.
+ * On success/error transfer ISR should dispatch appropriate event to Actor's queue
+ *
+ * @see https://microchip-mplab-harmony.github.io/core/index.html?GUID-95F7ABE3-6864-4FC9-B11B-97B31ACF683C
+ * @memberof NFC_ACT_OBJ
+ * @param event[in]             transfer event
+ * @param transferHandle[in]    marks appropriate Actor to associate callback with
+ * @param context[in]           should be ptr to Actor, mostly unused
+ */
 void NFC_ACT_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);
 
 #ifdef	__cplusplus
