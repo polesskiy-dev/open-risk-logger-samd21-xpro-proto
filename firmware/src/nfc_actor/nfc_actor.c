@@ -15,6 +15,7 @@ static void NFC_ACT_Ctor(NFC_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
     me->state = NFC_ST_INIT;
     me->drvI2CHandle = drvI2CHandle;
     me->transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
+    me->retriesLeft = NFC_TRANSFER_RETRIES_MAX;
 };
 
 static DRV_HANDLE NFC_ACT_OpenI2CDriver(void) {

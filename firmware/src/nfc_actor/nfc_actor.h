@@ -24,9 +24,12 @@
 extern "C" {
 #endif
 
-#define NFC_UID_SIZE                        8
-#define NFC_CMD_SIZE                        2
-#define ST25DV_MAX_MAILBOX_LENGTH           256
+#define NO_RETRIES_LEFT                     0
+#define NFC_TRANSFER_RETRIES_MAX            0x08
+
+#define NFC_UID_SIZE                        0x08
+#define NFC_CMD_SIZE                        0x02
+#define ST25DV_MAX_MAILBOX_LENGTH           0x100
 
 #define ST25DV_ADDR_DATA_I2C                0xA6 >> 1
 #define ST25DV_ADDR_SYST_I2C                0xAE >> 1
@@ -83,9 +86,7 @@ typedef union {
         uint32_t MsbPasswd;
         uint32_t LsbPasswd;
     };
-    bool RFFieldPresence;
     uint8_t pwd[2 * sizeof (uint32_t)];
-    uint8_t transferBuf[NFC_CMD_SIZE + ST25DV_MAX_MAILBOX_LENGTH];
 } ST25DV_PASSWD;
 
 /**
@@ -97,6 +98,15 @@ typedef struct {
     EVENTS_QUEUE queue;
     DRV_HANDLE drvI2CHandle;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
+    uint8_t retriesLeft;
+    bool RFFieldPresence;
+    union {
+        uint8_t raw[NFC_CMD_SIZE + ST25DV_MAX_MAILBOX_LENGTH];
+        struct {
+            uint16_t cmd;
+            uint8_t mailbox[ST25DV_MAX_MAILBOX_LENGTH];
+        };
+    } transferBuf;
     struct {
         uint8_t uid[NFC_UID_SIZE];
         ST25DV_PASSWD pwd;

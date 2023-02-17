@@ -451,7 +451,6 @@ void SYS_Initialize ( void* data )
 
 
     SHT3X_ACT_Initialize();
-
     NFC_ACT_Initialize();
 
 
