@@ -10,8 +10,7 @@ SHT3X_ACT_OBJ sht3xObj; // init in ctor
 // *****************************************************************************
 // *****************************************************************************
 SHT3X_ACT_OBJ *SHT3X_ACT_Ctor(SHT3X_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
-    me->queue = QUEUE_Ctor();
-    me->state = SHT3X_ST_INIT;
+    SUPER_ACT_Ctor(&me->super, SHT3X_ST_INIT);
     me->drvI2CHandle = drvI2CHandle;
     me->transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
 

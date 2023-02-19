@@ -38,6 +38,13 @@ typedef struct {
 } TRANSITION_TABLE_DESCRIPTION;
 
 /**
+ * @brief Base Actor constructor
+ * @param me
+ * @param state
+ */
+void SUPER_ACT_Ctor(SUPER_ACT_OBJ *me, uint8_t state);
+
+/**
  * @brief Invoke state handler f from transitions table by current state and event: [state][event] => f(event)
  * @memberof SUPER_ACT_OBJ
  *

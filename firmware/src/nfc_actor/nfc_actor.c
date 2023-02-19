@@ -11,8 +11,7 @@ NFC_ACT_OBJ nfcObj; // init in ctor
 // *****************************************************************************
 
 static void NFC_ACT_Ctor(NFC_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
-    me->queue = QUEUE_Ctor();
-    me->state = NFC_ST_INIT;
+    SUPER_ACT_Ctor(&me->super, NFC_ST_INIT);
     me->drvI2CHandle = drvI2CHandle;
     me->transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
     me->retriesLeft = NFC_TRANSFER_RETRIES_MAX;

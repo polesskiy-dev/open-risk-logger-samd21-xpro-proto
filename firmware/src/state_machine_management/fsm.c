@@ -1,5 +1,10 @@
 #include "fsm.h"
 
+void SUPER_ACT_Ctor(SUPER_ACT_OBJ *me, uint8_t state) {
+    me->state = state;
+    me->queue = QUEUE_Ctor();
+};
+
 void FSM_Dispatch(EVENTS_QUEUE *queue, QUEUE_EVENT event) {
     QUEUE_pushEvent(queue, event);
 };

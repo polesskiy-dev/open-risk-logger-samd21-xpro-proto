@@ -48,8 +48,7 @@ typedef enum {
  * @extends SUPER_ACT_OBJ
  */
 typedef struct SHT3X_ACT_OBJ {
-    SHT3X_STATE state;
-    EVENTS_QUEUE queue;
+    SUPER_ACT_OBJ super;
     DRV_HANDLE drvI2CHandle;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
     struct {

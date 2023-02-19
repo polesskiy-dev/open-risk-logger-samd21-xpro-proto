@@ -24,6 +24,10 @@ extern "C" {
 extern SHT3X_ACT_OBJ sht3XActObj;
 extern NFC_ACT_OBJ nfcActObj;
 
+typedef enum {
+    GLOBAL_MEDIATOR_ST_INTI = 0
+} GLOBAL_MEDIATOR_STATES;
+
 typedef struct {
     SHT3X_ACT_OBJ sht3x;
     NFC_ACT_OBJ nfc;

@@ -94,8 +94,7 @@ typedef union {
  * @extends SUPER_ACT_OBJ
  */
 typedef struct {
-    NFC_STATE state;
-    EVENTS_QUEUE queue;
+    SUPER_ACT_OBJ super;
     DRV_HANDLE drvI2CHandle;
     DRV_I2C_TRANSFER_HANDLE transferHandle;
     uint8_t retriesLeft;
