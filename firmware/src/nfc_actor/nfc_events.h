@@ -2,8 +2,6 @@
 * @file nfc_events.h 
 * @author apolisskyi
 * @date 16.02.2023
-*
-* @bried
 */
 
 #ifndef NFC_EVENTS_H

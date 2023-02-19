@@ -49,6 +49,7 @@
 #include "device.h"
 #include "sht3x_actor/sht3x_actor.h"
 #include "nfc_actor/nfc_actor.h"
+#include "global_mediator/global_mediator.h"
 
 
 // ****************************************************************************
@@ -452,6 +453,8 @@ void SYS_Initialize ( void* data )
 
     SHT3X_ACT_Initialize();
     NFC_ACT_Initialize();
+
+    GLOBAL_MEDIATOR_Initialize();
 
 
     NVIC_Initialize();

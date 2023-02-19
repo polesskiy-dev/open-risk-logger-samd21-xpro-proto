@@ -1,7 +1,6 @@
 #include "sht3x_actor.h"
 
 extern SHT3X_STATE_HANDLE_F *sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_I_MAX];
-extern QUEUE_EVENT_SIG sht3XParticularEventSigsLookup[SHT3X_SIG_I_MAX];
 
 SHT3X_ACT_OBJ sht3xObj; // init in ctor
 
@@ -10,11 +9,13 @@ SHT3X_ACT_OBJ sht3xObj; // init in ctor
 // Section: SHT3X Actor Local Functions
 // *****************************************************************************
 // *****************************************************************************
-static void SHT3X_ACT_Ctor(SHT3X_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
+SHT3X_ACT_OBJ *SHT3X_ACT_Ctor(SHT3X_ACT_OBJ *me, DRV_HANDLE drvI2CHandle) {
     me->queue = QUEUE_Ctor();
     me->state = SHT3X_ST_INIT;
     me->drvI2CHandle = drvI2CHandle;
     me->transferHandle = DRV_I2C_TRANSFER_HANDLE_INVALID;
+
+    return &sht3xObj;
 };
 
 static DRV_HANDLE SHT3X_ACT_OpenI2CDriver(void) {

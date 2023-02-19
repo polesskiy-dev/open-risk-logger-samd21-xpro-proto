@@ -1,11 +1,11 @@
-/*
- * File:   nfc_actor.h
- * Author: apolisskyi
- *
- * Created on February 14, 2023, 3:00 AM
- */
+/**
+* @file nfc_actor.h
+* @author apolisskyi
+* @date 16.02.2023
+*
+* @bried NFC ST25DV Actor declarations
+*/
 
-// TODO rename to _APP_
 #ifndef NFC_ACTOR_H
 #define NFC_ACTOR_H
 

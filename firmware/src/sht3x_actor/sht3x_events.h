@@ -2,8 +2,6 @@
 * @file sht3x_events.h 
 * @author apolisskyi
 * @date 16.02.2023
-*
-* @bried
 */
 
 #ifndef SHT3X_EVENTS_H
