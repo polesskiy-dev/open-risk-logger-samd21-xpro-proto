@@ -251,6 +251,18 @@
       <itemPath>../src/nfc_actor/nfc_actor.c</itemPath>
       <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_events.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="sam-rtc-utils"
+                   displayName="sam-rtc-utils"
+                   projectFiles="true">
+      <logicalFolder name=".github" displayName=".github" projectFiles="true">
+        <logicalFolder name="workflows" displayName="workflows" projectFiles="true">
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils/src/sam-rtc-utils.h</itemPath>
+        <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils/src/sam-rtc-utils.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="sht3x_actor" displayName="sht3x_actor" projectFiles="true">
       <itemPath>../src/sht3x_actor/sht3x_actor.h</itemPath>
       <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
@@ -536,6 +548,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
+    <Elem>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
