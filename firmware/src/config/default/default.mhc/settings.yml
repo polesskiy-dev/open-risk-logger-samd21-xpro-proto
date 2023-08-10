@@ -5,7 +5,7 @@ frameworkPath: ../../Harmony3
 processor: ATSAMD21J18A
 projectName: open-risk-logger-samd21-xpro-proto
 settings:
-  PackageFilter: touch_host_driver;touch_apps;crypto;crypto_apps_large_hash;dev_packs;net;csp_apps_sam_d5x_e5x;bootloader_apps_spi;core;bootloader_apps_usb;usb_apps_device;touch;bootloader_apps_sdcard;bootloader_apps_uart;bootloader;ethercat;bootloader_apps_sam_d20;crypto_apps_speed_test;csp_apps_sam_d21_da1;bsp;quick_docs;reference_apps;usb;bootloader_apps_serial_memory;bootloader_apps_ethernet;cryptoauthlib;wireless_wifi;csp;cryptoauthlib_apps;harmony-services;usb_apps_multi_controller;wireless_apps_winc1500;crypto_apps_encrypt_decrypt;aws_cloud
+  PackageFilter: crypto;dev_packs;core;bootloader;bsp;quick_docs;usb;cryptoauthlib;csp;harmony-services
   FORCE_OPTIMIZATION: 'false'
   GENERATE_BACKUP: 'true'
   TRUSTZONE: 'false'

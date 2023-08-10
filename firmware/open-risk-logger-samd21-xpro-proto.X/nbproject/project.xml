@@ -15,6 +15,7 @@
             <sourceRootList>
                 <sourceRootElem>../src</sourceRootElem>
                 <sourceRootElem>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils</sourceRootElem>
+                <sourceRootElem>../../libraries</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

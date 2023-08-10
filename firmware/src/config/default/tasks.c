@@ -53,8 +53,7 @@
 #include "configuration.h"
 #include "definitions.h"
 #include "sht3x_actor/sht3x_actor.h"
-#include "nfc_actor/nfc_actor.h"
-#include "global_mediator/global_mediator.h"
+//#include "nfc_actor/nfc_actor.h"
 
 
 
@@ -84,10 +83,10 @@ void SYS_Tasks ( void )
 
 
     /* Maintain the application's state machine. */
-    SHT3X_ACT_Tasks();
-    NFC_ACT_Tasks();
+//    SHT3X_ACT_Tasks();
+//    NFC_ACT_Tasks();
 
-    GLOBAL_MEDIATOR_Tasks();
+//    GLOBAL_MEDIATOR_Tasks();
 }
 
 /*******************************************************************************

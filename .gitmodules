@@ -4,3 +4,6 @@
 [submodule "libraries/sam-rtc-utils"]
 	path = libraries/sam-rtc-utils
 	url = https://github.com/polesskiy-dev/sam-rtc-utils
+[submodule "libraries/active-object-fsm"]
+	path = libraries/active-object-fsm
+	url = https://github.com/polesskiy-dev/active-object-fsm.git

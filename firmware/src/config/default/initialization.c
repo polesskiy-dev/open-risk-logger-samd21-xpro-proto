@@ -48,8 +48,8 @@
 #include "definitions.h"
 #include "device.h"
 #include "sht3x_actor/sht3x_actor.h"
-#include "nfc_actor/nfc_actor.h"
-#include "global_mediator/global_mediator.h"
+//#include "nfc_actor/nfc_actor.h"
+
 
 
 // ****************************************************************************
@@ -451,10 +451,8 @@ void SYS_Initialize ( void* data )
     sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
 
 
-    SHT3X_ACT_Initialize();
-    NFC_ACT_Initialize();
-
-    GLOBAL_MEDIATOR_Initialize();
+//    SHT3X_ACT_Initialize();
+//    NFC_ACT_Initialize();
 
 
     NVIC_Initialize();

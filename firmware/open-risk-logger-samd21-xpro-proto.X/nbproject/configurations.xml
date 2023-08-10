@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="global" displayName="global" projectFiles="true">
+      <itemPath>../src/global/global-defs.c</itemPath>
+      <itemPath>../src/global/global-defs.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -236,6 +240,78 @@
       </logicalFolder>
       <itemPath>../src/diskImage.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="libraries" displayName="libraries" projectFiles="true">
+      <logicalFolder name="active-object-fsm"
+                     displayName="active-object-fsm"
+                     projectFiles="true">
+        <logicalFolder name=".github" displayName=".github" projectFiles="true">
+          <logicalFolder name="workflows" displayName="workflows" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="docs" displayName="docs" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="libraries" displayName="libraries" projectFiles="true">
+          <logicalFolder name="Unity" displayName="Unity" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <logicalFolder name="active-object"
+                         displayName="active-object"
+                         projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/active-object/active-object.h</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active-object/active-object.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="event" displayName="event" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/event/event.h</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/event/event.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="fsm" displayName="fsm" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.h</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="queue" displayName="queue" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/queue/queue.c</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/queue/queue.h</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="doxygen-awesome-css"
+                     displayName="doxygen-awesome-css"
+                     projectFiles="true">
+        <logicalFolder name=".github" displayName=".github" projectFiles="true">
+          <logicalFolder name="workflows" displayName="workflows" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="docs" displayName="docs" projectFiles="true">
+          <logicalFolder name="img" displayName="img" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="doxygen-custom"
+                       displayName="doxygen-custom"
+                       projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="img" displayName="img" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="include" displayName="include" projectFiles="true">
+          <logicalFolder name="MyLibrary" displayName="MyLibrary" projectFiles="true">
+            <itemPath>../../libraries/doxygen-awesome-css/include/MyLibrary/example.hpp</itemPath>
+            <itemPath>../../libraries/doxygen-awesome-css/include/MyLibrary/subclass-example.hpp</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="sam-rtc-utils"
+                     displayName="sam-rtc-utils"
+                     projectFiles="true">
+        <logicalFolder name=".github" displayName=".github" projectFiles="true">
+          <logicalFolder name="workflows" displayName="workflows" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <itemPath>../../libraries/sam-rtc-utils/src/sam-rtc-utils.h</itemPath>
+          <itemPath>../../libraries/sam-rtc-utils/src/sam-rtc-utils.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
@@ -245,29 +321,10 @@
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
-    <logicalFolder name="nfc_actor" displayName="nfc_actor" projectFiles="true">
-      <itemPath>../src/nfc_actor/nfc_fsm.c</itemPath>
-      <itemPath>../src/nfc_actor/nfc_actor.h</itemPath>
-      <itemPath>../src/nfc_actor/nfc_actor.c</itemPath>
-      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/nfc_actor/nfc_events.h</itemPath>
-    </logicalFolder>
-    <logicalFolder name="sam-rtc-utils"
-                   displayName="sam-rtc-utils"
-                   projectFiles="true">
-      <logicalFolder name=".github" displayName=".github" projectFiles="true">
-        <logicalFolder name="workflows" displayName="workflows" projectFiles="true">
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils/src/sam-rtc-utils.h</itemPath>
-        <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils/src/sam-rtc-utils.c</itemPath>
-      </logicalFolder>
-    </logicalFolder>
     <logicalFolder name="sht3x_actor" displayName="sht3x_actor" projectFiles="true">
       <itemPath>../src/sht3x_actor/sht3x_actor.h</itemPath>
-      <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
       <itemPath>../src/sht3x_actor/sht3x_fsm.c</itemPath>
-      <itemPath>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/firmware/src/sht3x_actor/sht3x_events.h</itemPath>
+      <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -494,20 +551,6 @@
       <itemPath>../src/main.c</itemPath>
       <itemPath>../src/config/default/diskImage.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="state_machine_management"
-                   displayName="state_machine_management"
-                   projectFiles="true">
-      <logicalFolder name="event" displayName="event" projectFiles="true">
-        <itemPath>../src/state_machine_management/event/event.h</itemPath>
-        <itemPath>../src/state_machine_management/event/event.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="queue" displayName="queue" projectFiles="true">
-        <itemPath>../src/state_machine_management/queue/queue.c</itemPath>
-        <itemPath>../src/state_machine_management/queue/queue.h</itemPath>
-      </logicalFolder>
-      <itemPath>../src/state_machine_management/fsm.c</itemPath>
-      <itemPath>../src/state_machine_management/fsm.h</itemPath>
-    </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
@@ -549,6 +592,7 @@
   <sourceRootList>
     <Elem>../src</Elem>
     <Elem>/Users/apolisskyi/projects/open-risk-logger-samd21-xpro-proto/libraries/sam-rtc-utils</Elem>
+    <Elem>../../libraries</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -560,7 +604,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>EdbgTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.30</languageToolchainVersion>
         <platform>4</platform>
       </toolsSet>
       <packs>
