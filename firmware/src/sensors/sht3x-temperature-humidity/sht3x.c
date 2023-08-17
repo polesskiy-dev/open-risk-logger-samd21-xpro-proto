@@ -21,18 +21,6 @@ static DRV_HANDLE _openI2CDriver(void) {
     return drvI2CHandle;
 };
 
-//static void SHT3X_ACT_HandleQueuedEvent(QUEUE_EVENT event) {
-//    FSM_ProcessEventToNextState(
-//            (SUPER_ACT_OBJ *) &sht3xObj,
-//            event,
-//            (TRANSITION_TABLE_DESCRIPTION) {
-//                    .STATES_MAX = SHT3X_STATES_MAX,
-//                    .EVENTS_MAX = SHT3X_SIG_I_MAX
-//            },
-//            (STATE_HANDLE_F *(*)[SHT3X_SIG_I_MAX]) sht3xTransitionTable
-//    );
-//};
-
 /** SHT3X Global Functions */
 
 void SHT3X_Initialize(void) {

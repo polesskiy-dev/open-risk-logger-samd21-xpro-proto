@@ -17,7 +17,7 @@
 #include "../../config/default/definitions.h"
 #include "../../global/global-defs.h"
 #include "../../../../libraries/active-object-fsm/src/active-object/active_object.h"
-//#include "../../../../libraries/active-object-fsm/src/fsm/fsm.h"
+#include "../../../../libraries/active-object-fsm/src/fsm/fsm.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -74,6 +74,7 @@ typedef struct {
 } SHT3X_AO_TFields;
 
 DECLARE_ACTIVE_OBJECT(SHT3X_AO, SHT3X_TEvent, SHT3X_STATE, SHT3X_AO_TFields, SHT3X_QUEUE_MAX_CAPACITY);
+DECLARE_FSM(SHT3X_AO, SHT3X_TEvent, SHT3X_STATE, SHT3X_SIG_MAX, SHT3X_STATES_MAX);
 
 /* Microchip Harmony 3 specific */
 

@@ -1,25 +1,30 @@
-#include "sht3x.h"
+#include "./sht3x.h"
+#include "../../../../libraries/active-object-fsm/src/fsm/fsm_impl.h"
+
+FSM_IMPLEMENTATION(SHT3X_AO, SHT3X_TEvent, SHT3X_STATE, SHT3X_SIG_MAX, SHT3X_STATES_MAX);
 
 /* sht3x-temperature-humidity commands registers */
-//static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE] =    {0xF3, 0x2D};
+static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE] =    {0xF3, 0x2D};
 //static const uint8_t SHT3X_CMD_MEASURE_LPM[SHT3X_CMD_SIZE] =        {0x24, 0x16};
 
 /* Event handlers f prototypes */
-//static SHT3X_STATE SHT3X_Idle(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
-//static SHT3X_STATE SHT3X_ReadStatus(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+static SHT3X_STATE _idle(SHT3X_AO *const sht3xObj, SHT3X_TEvent event);
+static SHT3X_STATE _readStatus(SHT3X_AO *const sht3xObj, SHT3X_TEvent event);
 //static SHT3X_STATE SHT3X_Measure(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
 //static SHT3X_STATE SHT3X_ReadMeasure(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
 //static SHT3X_STATE SHT3X_Error(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
 
 /* state transitions table, [state][event] => state handler f pointer */
-//SHT3X_EVENT_HANDLER_F *sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_MAX] = {
+SHT3X_TEvent_HANDLE_F sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_MAX] = {
+        [SHT3X_ST_IDLE]={[SHT3X_READ_STATUS]=&_readStatus},
 //        [SHT3X_ST_INIT]=                {[SHT3X_READ_STATUS]=&SHT3X_ReadStatus, [SHT3X_MEASURE]=&SHT3X_Measure, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_IDLE]=                {[SHT3X_READ_STATUS]=&SHT3X_ReadStatus, [SHT3X_MEASURE]=&SHT3X_Measure, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_READ_STATUS]=         {[SHT3X_TRANSFER_SUCCESS]=&SHT3X_Idle, [SHT3X_TRANSFER_FAIL]=&SHT3X_Error, [SHT3X_ERROR]=&SHT3X_Error},
+        [SHT3X_ST_READ_STATUS]={[SHT3X_TRANSFER_SUCCESS]=&_idle},
 //        [SHT3X_ST_MEASURE]=             {[SHT3X_TRANSFER_SUCCESS]=NULL, [SHT3X_TRANSFER_FAIL]=&SHT3X_Error, [SHT3X_READ_MEASURE]=&SHT3X_ReadMeasure, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_READ_MEASURE]=        {[SHT3X_TRANSFER_SUCCESS]=&SHT3X_Idle, [SHT3X_TRANSFER_FAIL]=&SHT3X_Error, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_ERROR]=               {[SHT3X_ERROR]=&SHT3X_Error}
-//};
+};
 
 ///*static void SHT3X_TempDispatchMeasure(uintptr_t context) {
 //    SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_MEASURE});;
@@ -28,47 +33,46 @@
 //static void SHT3X_DispatchReadMeasure(uintptr_t context) {
 //    SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_READ_MEASURE});;
 //}
-//
-//static SHT3X_STATE SHT3X_Idle(SHT3X_ACT_OBJ *me, QUEUE_EVENT event) {
-//    LED_Off();
-//
-//    // TODO remove it
-//    // temporary schedule measurement
-////    SYS_TIME_CallbackRegisterMS(
-////            SHT3X_TempDispatchMeasure,
-////            (uintptr_t) NULL,
-////            1000,
-////            SYS_TIME_SINGLE
-////    );
-//
-//    return SHT3X_ST_IDLE;
-//};
-//
-///**
-// * @brief Handle read sensor status
-// * Detects if a sensor is connected by reading out the ID register.
-// * If the sensor does not answer or if the answer is not the expected value,
-// * the test fails.
-// */
-//static SHT3X_STATE SHT3X_ReadStatus(SHT3X_ACT_OBJ *me, QUEUE_EVENT event) {
-//    DRV_I2C_WriteReadTransferAdd(
-//            me->drvI2CHandle,
-//            SHT3X_I2C_ADDR_DFLT,
-//            (void *) &SHT3X_CMD_READ_STATUS_REG,
-//            SHT3X_CMD_SIZE,
-//            &(me->sensorRegs.status),
-//            SHT3X_STATUS_REG_SIZE,
-//            &(me->transferHandle)
+
+static SHT3X_STATE _idle(SHT3X_AO *const sht3xObj, SHT3X_TEvent event) {
+    LED_Off();
+
+        // temporary schedule measurement
+//    SYS_TIME_CallbackRegisterMS(
+//            SHT3X_TempDispatchMeasure,
+//            (uintptr_t) NULL,
+//            1000,
+//            SYS_TIME_SINGLE
 //    );
-//
-//    // error on i2c transfer queuing
-//    if (DRV_I2C_TRANSFER_HANDLE_INVALID == me->transferHandle) {
-//        SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sht3xSig = SHT3X_ERROR});
-//    };
-//
-//    return SHT3X_ST_READ_STATUS;
-//};
-//
+
+    return SHT3X_ST_IDLE;
+};
+
+/**
+ * @brief Handle read sensor status
+ * Detects if a sensor is connected by reading out the ID register.
+ * If the sensor does not answer or if the answer is not the expected value,
+ * the test fails.
+ */
+static SHT3X_STATE _readStatus(SHT3X_AO *const sht3xObj, SHT3X_TEvent event) {
+    DRV_I2C_WriteReadTransferAdd(
+            sht3xObj->fields.drvI2CHandle,
+            SHT3X_I2C_ADDR_DFLT,
+            (void *) &SHT3X_CMD_READ_STATUS_REG,
+            SHT3X_CMD_SIZE,
+            &(sht3xObj->fields.sensorRegs.status),
+            SHT3X_STATUS_REG_SIZE,
+            &(sht3xObj->fields.transferHandle)
+    );
+
+    // error on i2c transfer queuing
+    if (DRV_I2C_TRANSFER_HANDLE_INVALID == sht3xObj->fields.transferHandle) {
+        SHT3X_AO_Dispatch(sht3xObj, (SHT3X_TEvent) {.sig = SHT3X_ERROR});
+    };
+
+    return SHT3X_ST_READ_STATUS;
+};
+
 ///**
 // * @brief Handle measure state
 // * Starts a measurement in high precision mode. Use sht3x_read() to read
