@@ -47,8 +47,8 @@
 #include "configuration.h"
 #include "definitions.h"
 #include "device.h"
-#include "sht3x_actor/sht3x_actor.h"
-//#include "nfc_actor/nfc_actor.h"
+#include "sensors/sht3x-temperature-humidity/sht3x.h"
+//#include "nfc/nfc.h"
 
 
 
@@ -94,63 +94,63 @@ static DRV_I2C_TRANSFER_OBJ drvI2C0TransferObj[DRV_I2C_QUEUE_SIZE_IDX0];
 /* I2C PLib Interface Initialization */
 const DRV_I2C_PLIB_INTERFACE drvI2C0PLibAPI = {
 
-    /* I2C PLib Transfer Read Add function */
-    .read = (DRV_I2C_PLIB_READ)SERCOM2_I2C_Read,
+        /* I2C PLib Transfer Read Add function */
+        .read = (DRV_I2C_PLIB_READ) SERCOM2_I2C_Read,
 
-    /* I2C PLib Transfer Write Add function */
-    .write = (DRV_I2C_PLIB_WRITE)SERCOM2_I2C_Write,
+        /* I2C PLib Transfer Write Add function */
+        .write = (DRV_I2C_PLIB_WRITE) SERCOM2_I2C_Write,
 
 
-    /* I2C PLib Transfer Write Read Add function */
-    .writeRead = (DRV_I2C_PLIB_WRITE_READ)SERCOM2_I2C_WriteRead,
+        /* I2C PLib Transfer Write Read Add function */
+        .writeRead = (DRV_I2C_PLIB_WRITE_READ) SERCOM2_I2C_WriteRead,
 
-    /*I2C PLib Transfer Abort function */
-    .transferAbort = (DRV_I2C_PLIB_TRANSFER_ABORT)SERCOM2_I2C_TransferAbort,
+        /*I2C PLib Transfer Abort function */
+        .transferAbort = (DRV_I2C_PLIB_TRANSFER_ABORT) SERCOM2_I2C_TransferAbort,
 
-    /* I2C PLib Transfer Status function */
-    .errorGet = (DRV_I2C_PLIB_ERROR_GET)SERCOM2_I2C_ErrorGet,
+        /* I2C PLib Transfer Status function */
+        .errorGet = (DRV_I2C_PLIB_ERROR_GET) SERCOM2_I2C_ErrorGet,
 
-    /* I2C PLib Transfer Setup function */
-    .transferSetup = (DRV_I2C_PLIB_TRANSFER_SETUP)SERCOM2_I2C_TransferSetup,
+        /* I2C PLib Transfer Setup function */
+        .transferSetup = (DRV_I2C_PLIB_TRANSFER_SETUP) SERCOM2_I2C_TransferSetup,
 
-    /* I2C PLib Callback Register */
-    .callbackRegister = (DRV_I2C_PLIB_CALLBACK_REGISTER)SERCOM2_I2C_CallbackRegister,
+        /* I2C PLib Callback Register */
+        .callbackRegister = (DRV_I2C_PLIB_CALLBACK_REGISTER) SERCOM2_I2C_CallbackRegister,
 };
 
 
 const DRV_I2C_INTERRUPT_SOURCES drvI2C0InterruptSources =
-{
-    /* Peripheral has single interrupt vector */
-    .isSingleIntSrc                        = true,
+        {
+                /* Peripheral has single interrupt vector */
+                .isSingleIntSrc                        = true,
 
-    /* Peripheral interrupt line */
-    .intSources.i2cInterrupt             = SERCOM2_IRQn,
-};
+                /* Peripheral interrupt line */
+                .intSources.i2cInterrupt             = SERCOM2_IRQn,
+        };
 
 /* I2C Driver Initialization Data */
 const DRV_I2C_INIT drvI2C0InitData =
-{
-    /* I2C PLib API */
-    .i2cPlib = &drvI2C0PLibAPI,
+        {
+                /* I2C PLib API */
+                .i2cPlib = &drvI2C0PLibAPI,
 
-    /* I2C Number of clients */
-    .numClients = DRV_I2C_CLIENTS_NUMBER_IDX0,
+                /* I2C Number of clients */
+                .numClients = DRV_I2C_CLIENTS_NUMBER_IDX0,
 
-    /* I2C Client Objects Pool */
-    .clientObjPool = (uintptr_t)&drvI2C0ClientObjPool[0],
+                /* I2C Client Objects Pool */
+                .clientObjPool = (uintptr_t) & drvI2C0ClientObjPool[0],
 
-    /* I2C TWI Queue Size */
-    .transferObjPoolSize = DRV_I2C_QUEUE_SIZE_IDX0,
+                /* I2C TWI Queue Size */
+                .transferObjPoolSize = DRV_I2C_QUEUE_SIZE_IDX0,
 
-    /* I2C Transfer Objects */
-    .transferObjPool = (uintptr_t)&drvI2C0TransferObj[0],
+                /* I2C Transfer Objects */
+                .transferObjPool = (uintptr_t) & drvI2C0TransferObj[0],
 
-    /* I2C interrupt sources */
-    .interruptSources = &drvI2C0InterruptSources,
+                /* I2C interrupt sources */
+                .interruptSources = &drvI2C0InterruptSources,
 
-    /* I2C Clock Speed */
-    .clockSpeed = DRV_I2C_CLOCK_SPEED_IDX0,
-};
+                /* I2C Clock Speed */
+                .clockSpeed = DRV_I2C_CLOCK_SPEED_IDX0,
+        };
 
 // </editor-fold>
 
@@ -163,69 +163,69 @@ static DRV_MEMORY_CLIENT_OBJECT gDrvMemory0ClientObject[DRV_MEMORY_CLIENTS_NUMBE
 static DRV_MEMORY_BUFFER_OBJECT gDrvMemory0BufferObject[DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0];
 
 const DRV_MEMORY_DEVICE_INTERFACE drvMemory0DeviceAPI = {
-    .Open               = DRV_AT25DF_Open,
-    .Close              = DRV_AT25DF_Close,
-    .Status             = DRV_AT25DF_Status,
-    .SectorErase        = DRV_AT25DF_SectorErase,
-    .Read               = DRV_AT25DF_Read,
-    .PageWrite          = DRV_AT25DF_PageWrite,
-    .EventHandlerSet    = NULL,
-    .GeometryGet        = (DRV_MEMORY_DEVICE_GEOMETRY_GET)DRV_AT25DF_GeometryGet,
-    .TransferStatusGet  = (DRV_MEMORY_DEVICE_TRANSFER_STATUS_GET)DRV_AT25DF_TransferStatusGet
+        .Open               = DRV_AT25DF_Open,
+        .Close              = DRV_AT25DF_Close,
+        .Status             = DRV_AT25DF_Status,
+        .SectorErase        = DRV_AT25DF_SectorErase,
+        .Read               = DRV_AT25DF_Read,
+        .PageWrite          = DRV_AT25DF_PageWrite,
+        .EventHandlerSet    = NULL,
+        .GeometryGet        = (DRV_MEMORY_DEVICE_GEOMETRY_GET) DRV_AT25DF_GeometryGet,
+        .TransferStatusGet  = (DRV_MEMORY_DEVICE_TRANSFER_STATUS_GET) DRV_AT25DF_TransferStatusGet
 };
 
 const DRV_MEMORY_INIT drvMemory0InitData =
-{
-    .memDevIndex                = DRV_AT25DF_INDEX,
-    .memoryDevice               = &drvMemory0DeviceAPI,
-    .isMemDevInterruptEnabled   = false,
-    .isFsEnabled                = false,
-    .ewBuffer                   = &gDrvMemory0EraseBuffer[0],
-    .clientObjPool              = (uintptr_t)&gDrvMemory0ClientObject[0],
-    .bufferObj                  = (uintptr_t)&gDrvMemory0BufferObject[0],
-    .queueSize                  = DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0,
-    .nClientsMax                = DRV_MEMORY_CLIENTS_NUMBER_IDX0
-};
+        {
+                .memDevIndex                = DRV_AT25DF_INDEX,
+                .memoryDevice               = &drvMemory0DeviceAPI,
+                .isMemDevInterruptEnabled   = false,
+                .isFsEnabled                = false,
+                .ewBuffer                   = &gDrvMemory0EraseBuffer[0],
+                .clientObjPool              = (uintptr_t) & gDrvMemory0ClientObject[0],
+                .bufferObj                  = (uintptr_t) & gDrvMemory0BufferObject[0],
+                .queueSize                  = DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0,
+                .nClientsMax                = DRV_MEMORY_CLIENTS_NUMBER_IDX0
+        };
 
 // </editor-fold>
 /* SPI PLIB Interface Initialization for AT25DF Driver */
 const DRV_AT25DF_PLIB_INTERFACE drvAT25DFPlibAPI = {
 
-    /* SPI PLIB WriteRead function */
-    .writeRead = (DRV_AT25DF_PLIB_WRITE_READ)SERCOM5_SPI_WriteRead,
+        /* SPI PLIB WriteRead function */
+        .writeRead = (DRV_AT25DF_PLIB_WRITE_READ) SERCOM5_SPI_WriteRead,
 
-    /* SPI PLIB Write function */
-    .write = (DRV_AT25DF_PLIB_WRITE)SERCOM5_SPI_Write,
+        /* SPI PLIB Write function */
+        .write = (DRV_AT25DF_PLIB_WRITE) SERCOM5_SPI_Write,
 
-    /* SPI PLIB Read function */
-    .read = (DRV_AT25DF_PLIB_READ)SERCOM5_SPI_Read,
+        /* SPI PLIB Read function */
+        .read = (DRV_AT25DF_PLIB_READ) SERCOM5_SPI_Read,
 
-    /* SPI PLIB Transfer Status function */
-    .isBusy = (DRV_AT25DF_PLIB_IS_BUSY)SERCOM5_SPI_IsBusy,
+        /* SPI PLIB Transfer Status function */
+        .isBusy = (DRV_AT25DF_PLIB_IS_BUSY) SERCOM5_SPI_IsBusy,
 
-    /* SPI PLIB Callback Register */
-    .callbackRegister = (DRV_AT25DF_PLIB_CALLBACK_REGISTER)SERCOM5_SPI_CallbackRegister,
+        /* SPI PLIB Callback Register */
+        .callbackRegister = (DRV_AT25DF_PLIB_CALLBACK_REGISTER) SERCOM5_SPI_CallbackRegister,
 };
 
 /* AT25DF Driver Initialization Data */
 const DRV_AT25DF_INIT drvAT25DFInitData =
-{
-    /* SPI PLIB API  interface*/
-    .spiPlib = &drvAT25DFPlibAPI,
+        {
+                /* SPI PLIB API  interface*/
+                .spiPlib = &drvAT25DFPlibAPI,
 
-    /* AT25DF Number of clients */
-    .numClients = DRV_AT25DF_CLIENTS_NUMBER_IDX,
+                /* AT25DF Number of clients */
+                .numClients = DRV_AT25DF_CLIENTS_NUMBER_IDX,
 
-    /* FLASH Page Size in bytes */
-    .pageSize = DRV_AT25DF_PAGE_SIZE,
+                /* FLASH Page Size in bytes */
+                .pageSize = DRV_AT25DF_PAGE_SIZE,
 
-    /* Total size of the FLASH in bytes */
-    .flashSize = DRV_AT25DF_FLASH_SIZE,
+                /* Total size of the FLASH in bytes */
+                .flashSize = DRV_AT25DF_FLASH_SIZE,
 
-    .blockStartAddress = 0x0,
+                .blockStartAddress = 0x0,
 
-    .chipSelectPin = DRV_AT25DF_CHIP_SELECT_PIN_IDX
-};
+                .chipSelectPin = DRV_AT25DF_CHIP_SELECT_PIN_IDX
+        };
 
 
 
@@ -245,7 +245,7 @@ SYSTEM_OBJECTS sysObj;
 /******************************************************
  * USB Driver Initialization
  ******************************************************/
- 
+
 /*  When designing a Self-powered USB Device, the application should make sure
     that USB_DEVICE_Attach() function is called only when VBUS is actively powered.
 	Therefore, the firmware needs some means to detect when the Host is powering 
@@ -264,47 +264,45 @@ SYSTEM_OBJECTS sysObj;
 		   Provide a custom name to the pin.
         2) Select the USB Driver Component in MHC Project Graph and enable the  
 		   "Enable VBUS Sense" Check-box.     
-        3) Specify the custom name of the VBUS SENSE pin in the "VBUS SENSE Pin Name" box.  */ 
-static DRV_USB_VBUS_LEVEL DRV_USBFSV1_VBUS_Comparator(void)
-{
+        3) Specify the custom name of the VBUS SENSE pin in the "VBUS SENSE Pin Name" box.  */
+static DRV_USB_VBUS_LEVEL DRV_USBFSV1_VBUS_Comparator(void) {
     DRV_USB_VBUS_LEVEL retVal = DRV_USB_VBUS_LEVEL_INVALID;
-    
-    if(true == USB_VBUS_SENSE_Get())
-    {
+
+    if (true == USB_VBUS_SENSE_Get()) {
         retVal = DRV_USB_VBUS_LEVEL_VALID;
     }
-	return (retVal);
+    return (retVal);
 
 }
 
 
 const DRV_USBFSV1_INIT drvUSBInit =
-{
-    /* Interrupt Source for USB module */ 
-    .interruptSource = USB_IRQn,
+        {
+                /* Interrupt Source for USB module */
+                .interruptSource = USB_IRQn,
 
-    /* System module initialization */
-    .moduleInit = {0},
+                /* System module initialization */
+                .moduleInit = {0},
 
-    /* USB Controller to operate as USB Device */
-    .operationMode = DRV_USBFSV1_OPMODE_DEVICE,
+                /* USB Controller to operate as USB Device */
+                .operationMode = DRV_USBFSV1_OPMODE_DEVICE,
 
-    /* USB Full Speed Operation */
-	.operationSpeed = USB_SPEED_FULL,
-    
-    /* Stop in idle */
-    .runInStandby = true,
+                /* USB Full Speed Operation */
+                .operationSpeed = USB_SPEED_FULL,
 
-    /* Suspend in sleep */
-    .suspendInSleep = false,
+                /* Stop in idle */
+                .runInStandby = true,
 
-    /* Identifies peripheral (PLIB-level) ID */
-    .usbID = USB_REGS,
-	
-    /* Function to check for VBus */
-    .vbusComparator = DRV_USBFSV1_VBUS_Comparator
-	
-};
+                /* Suspend in sleep */
+                .suspendInSleep = false,
+
+                /* Identifies peripheral (PLIB-level) ID */
+                .usbID = USB_REGS,
+
+                /* Function to check for VBus */
+                .vbusComparator = DRV_USBFSV1_VBUS_Comparator
+
+        };
 
 
 
@@ -317,20 +315,20 @@ const DRV_USBFSV1_INIT drvUSBInit =
 // <editor-fold defaultstate="collapsed" desc="SYS_TIME Initialization Data">
 
 const SYS_TIME_PLIB_INTERFACE sysTimePlibAPI = {
-    .timerCallbackSet = (SYS_TIME_PLIB_CALLBACK_REGISTER)TC3_TimerCallbackRegister,
-    .timerStart = (SYS_TIME_PLIB_START)TC3_TimerStart,
-    .timerStop = (SYS_TIME_PLIB_STOP)TC3_TimerStop,
-    .timerFrequencyGet = (SYS_TIME_PLIB_FREQUENCY_GET)TC3_TimerFrequencyGet,
-    .timerPeriodSet = (SYS_TIME_PLIB_PERIOD_SET)TC3_Timer16bitPeriodSet,
-    .timerCompareSet = (SYS_TIME_PLIB_COMPARE_SET)TC3_Timer16bitCompareSet,
-    .timerCounterGet = (SYS_TIME_PLIB_COUNTER_GET)TC3_Timer16bitCounterGet,
+        .timerCallbackSet = (SYS_TIME_PLIB_CALLBACK_REGISTER) TC3_TimerCallbackRegister,
+        .timerStart = (SYS_TIME_PLIB_START) TC3_TimerStart,
+        .timerStop = (SYS_TIME_PLIB_STOP) TC3_TimerStop,
+        .timerFrequencyGet = (SYS_TIME_PLIB_FREQUENCY_GET) TC3_TimerFrequencyGet,
+        .timerPeriodSet = (SYS_TIME_PLIB_PERIOD_SET) TC3_Timer16bitPeriodSet,
+        .timerCompareSet = (SYS_TIME_PLIB_COMPARE_SET) TC3_Timer16bitCompareSet,
+        .timerCounterGet = (SYS_TIME_PLIB_COUNTER_GET) TC3_Timer16bitCounterGet,
 };
 
 const SYS_TIME_INIT sysTimeInitData =
-{
-    .timePlib = &sysTimePlibAPI,
-    .hwTimerIntNum = TC3_IRQn,
-};
+        {
+                .timePlib = &sysTimePlibAPI,
+                .hwTimerIntNum = TC3_IRQn,
+        };
 
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="SYS_CONSOLE Instance 0 Initialization Data">
@@ -348,33 +346,33 @@ static uint8_t sysConsole0USBCdcWrRingBuffer[SYS_CONSOLE_USB_CDC_WR_BUFFER_SIZE_
 extern const SYS_CONSOLE_DEV_DESC sysConsoleUSBCdcDevDesc;
 
 const SYS_CONSOLE_USB_CDC_INIT_DATA sysConsole0USBCdcInitData =
-{
-	.cdcInstanceIndex			= 0,
-	.cdcReadBuffer				= sysConsole0USBCdcRdBuffer,
-	.cdcWriteBuffer				= sysConsole0USBCdcWrBuffer,
-    .consoleReadBuffer 			= sysConsole0USBCdcRdRingBuffer,
-    .consoleWriteBuffer 		= sysConsole0USBCdcWrRingBuffer,
-    .consoleReadBufferSize 		= SYS_CONSOLE_USB_CDC_RD_BUFFER_SIZE_IDX0,
-    .consoleWriteBufferSize 	= SYS_CONSOLE_USB_CDC_WR_BUFFER_SIZE_IDX0,
-};
+        {
+                .cdcInstanceIndex            = 0,
+                .cdcReadBuffer                = sysConsole0USBCdcRdBuffer,
+                .cdcWriteBuffer                = sysConsole0USBCdcWrBuffer,
+                .consoleReadBuffer            = sysConsole0USBCdcRdRingBuffer,
+                .consoleWriteBuffer        = sysConsole0USBCdcWrRingBuffer,
+                .consoleReadBufferSize        = SYS_CONSOLE_USB_CDC_RD_BUFFER_SIZE_IDX0,
+                .consoleWriteBufferSize    = SYS_CONSOLE_USB_CDC_WR_BUFFER_SIZE_IDX0,
+        };
 
 const SYS_CONSOLE_INIT sysConsole0Init =
-{
-    .deviceInitData = (const void*)&sysConsole0USBCdcInitData,
-    .consDevDesc = &sysConsoleUSBCdcDevDesc,
-    .deviceIndex = 0,
-};
+        {
+                .deviceInitData = (const void *) &sysConsole0USBCdcInitData,
+                .consDevDesc = &sysConsoleUSBCdcDevDesc,
+                .deviceIndex = 0,
+        };
 
 
 // </editor-fold>
 
 
 const SYS_DEBUG_INIT debugInit =
-{
-    .moduleInit = {0},
-    .errorLevel = SYS_DEBUG_GLOBAL_ERROR_LEVEL,
-    .consoleIndex = 0,
-};
+        {
+                .moduleInit = {0},
+                .errorLevel = SYS_DEBUG_GLOBAL_ERROR_LEVEL,
+                .consoleIndex = 0,
+        };
 
 
 
@@ -398,28 +396,25 @@ const SYS_DEBUG_INIT debugInit =
   Remarks:
  */
 
-void SYS_Initialize ( void* data )
-{
+void SYS_Initialize(void *data) {
     /* MISRAC 2012 deviation block start */
     /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
     NVMCTRL_REGS->NVMCTRL_CTRLB = NVMCTRL_CTRLB_RWS(3UL);
 
-  
+
     PORT_Initialize();
 
     CLOCK_Initialize();
 
 
-
-
-    NVMCTRL_Initialize( );
+    NVMCTRL_Initialize();
 
     RTC_Initialize();
 
     TC3_TimerInitialize();
 
-	BSP_Initialize();
+    BSP_Initialize();
     SERCOM2_I2C_Initialize();
 
 
@@ -429,36 +424,37 @@ void SYS_Initialize ( void* data )
 
 
     /* Initialize I2C0 Driver Instance */
-    sysObj.drvI2C0 = DRV_I2C_Initialize(DRV_I2C_INDEX_0, (SYS_MODULE_INIT *)&drvI2C0InitData);
-    sysObj.drvMemory0 = DRV_MEMORY_Initialize((SYS_MODULE_INDEX)DRV_MEMORY_INDEX_0, (SYS_MODULE_INIT *)&drvMemory0InitData);
+    sysObj.drvI2C0 = DRV_I2C_Initialize(DRV_I2C_INDEX_0, (SYS_MODULE_INIT * ) & drvI2C0InitData);
+    sysObj.drvMemory0 = DRV_MEMORY_Initialize((SYS_MODULE_INDEX) DRV_MEMORY_INDEX_0,
+                                              (SYS_MODULE_INIT * ) & drvMemory0InitData);
 
-    sysObj.drvAT25DF = DRV_AT25DF_Initialize(DRV_AT25DF_INDEX, (SYS_MODULE_INIT *)&drvAT25DFInitData);
-
-
-    sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
-
-    sysObj.sysDebug = SYS_DEBUG_Initialize(SYS_DEBUG_INDEX_0, (SYS_MODULE_INIT*)&debugInit);
+    sysObj.drvAT25DF = DRV_AT25DF_Initialize(DRV_AT25DF_INDEX, (SYS_MODULE_INIT * ) & drvAT25DFInitData);
 
 
-    
-  
+    sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT * ) & sysTimeInitData);
+    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT * ) & sysConsole0Init);
+
+    sysObj.sysDebug = SYS_DEBUG_Initialize(SYS_DEBUG_INDEX_0, (SYS_MODULE_INIT * ) & debugInit);
+
+
+
+
     /* Initialize the USB device layer */
-    sysObj.usbDevObject0 = USB_DEVICE_Initialize (USB_DEVICE_INDEX_0 , ( SYS_MODULE_INIT* ) & usbDevInitData);
+    sysObj.usbDevObject0 = USB_DEVICE_Initialize(USB_DEVICE_INDEX_0, (SYS_MODULE_INIT * ) & usbDevInitData);
 
 
-	/* Initialize USB Driver */ 
-    sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT *) &drvUSBInit);
+    /* Initialize USB Driver */
+    sysObj.drvUSBFSV1Object = DRV_USBFSV1_Initialize(DRV_USBFSV1_INDEX_0, (SYS_MODULE_INIT * ) & drvUSBInit);
 
+    /* Initialize sensors */
 
-//    SHT3X_ACT_Initialize();
+    SHT3X_Initialize();
+
+    /* Initialize NFC */
 //    NFC_ACT_Initialize();
 
 
     NVIC_Initialize();
-
-
-
 
     /* MISRAC 2012 deviation block end */
 }

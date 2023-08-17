@@ -1,22 +1,18 @@
-//#include "sht3x_actor.h"
-//
-//// sht3x commands registers
+#include "sht3x.h"
+
+/* sht3x-temperature-humidity commands registers */
 //static const uint8_t SHT3X_CMD_READ_STATUS_REG[SHT3X_CMD_SIZE] =    {0xF3, 0x2D};
 //static const uint8_t SHT3X_CMD_MEASURE_LPM[SHT3X_CMD_SIZE] =        {0x24, 0x16};
-//
-//// State handlers f prototypes
-//static SHT3X_STATE SHT3X_Idle(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
-//
-//static SHT3X_STATE SHT3X_ReadStatus(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
-//
-//static SHT3X_STATE SHT3X_Measure(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
-//
-//static SHT3X_STATE SHT3X_ReadMeasure(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
-//
-//static SHT3X_STATE SHT3X_Error(SHT3X_ACT_OBJ *me, QUEUE_EVENT event);
-//
-//// state transitions table, [state][event] => state handler f pointer
-//SHT3X_STATE_HANDLE_F *sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_I_MAX] = {
+
+/* Event handlers f prototypes */
+//static SHT3X_STATE SHT3X_Idle(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+//static SHT3X_STATE SHT3X_ReadStatus(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+//static SHT3X_STATE SHT3X_Measure(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+//static SHT3X_STATE SHT3X_ReadMeasure(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+//static SHT3X_STATE SHT3X_Error(SHT3X_AO *sht3xObj, SHT3X_EVENT event);
+
+/* state transitions table, [state][event] => state handler f pointer */
+//SHT3X_EVENT_HANDLER_F *sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_MAX] = {
 //        [SHT3X_ST_INIT]=                {[SHT3X_READ_STATUS]=&SHT3X_ReadStatus, [SHT3X_MEASURE]=&SHT3X_Measure, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_IDLE]=                {[SHT3X_READ_STATUS]=&SHT3X_ReadStatus, [SHT3X_MEASURE]=&SHT3X_Measure, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_READ_STATUS]=         {[SHT3X_TRANSFER_SUCCESS]=&SHT3X_Idle, [SHT3X_TRANSFER_FAIL]=&SHT3X_Error, [SHT3X_ERROR]=&SHT3X_Error},
@@ -24,7 +20,7 @@
 //        [SHT3X_ST_READ_MEASURE]=        {[SHT3X_TRANSFER_SUCCESS]=&SHT3X_Idle, [SHT3X_TRANSFER_FAIL]=&SHT3X_Error, [SHT3X_ERROR]=&SHT3X_Error},
 //        [SHT3X_ST_ERROR]=               {[SHT3X_ERROR]=&SHT3X_Error}
 //};
-//
+
 ///*static void SHT3X_TempDispatchMeasure(uintptr_t context) {
 //    SHT3X_ACT_Dispatch((QUEUE_EVENT) {.sig = SHT3X_MEASURE});;
 //}*/
@@ -96,7 +92,7 @@
 //    };
 //
 //
-//    // schedule measurement read cause sht3x sensor needs some time to measure temperature/humidity
+//    // schedule measurement read cause sht3x-temperature-humidity sensor needs some time to measure temperature/humidity
 //    SYS_TIME_CallbackRegisterMS(
 //            SHT3X_DispatchReadMeasure,
 //            (uintptr_t) NULL,

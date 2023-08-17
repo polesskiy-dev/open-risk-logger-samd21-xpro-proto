@@ -251,6 +251,10 @@
         <logicalFolder name="docs" displayName="docs" projectFiles="true">
         </logicalFolder>
         <logicalFolder name="libraries" displayName="libraries" projectFiles="true">
+          <logicalFolder name="doxygen-awesome-css"
+                         displayName="doxygen-awesome-css"
+                         projectFiles="true">
+          </logicalFolder>
           <logicalFolder name="Unity" displayName="Unity" projectFiles="true">
           </logicalFolder>
         </logicalFolder>
@@ -258,18 +262,17 @@
           <logicalFolder name="active-object"
                          displayName="active-object"
                          projectFiles="true">
-            <itemPath>../../libraries/active-object-fsm/src/active-object/active-object.h</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/active-object/active-object.c</itemPath>
-          </logicalFolder>
-          <logicalFolder name="event" displayName="event" projectFiles="true">
-            <itemPath>../../libraries/active-object-fsm/src/event/event.h</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/event/event.c</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object.c</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object_impl.h</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object.h</itemPath>
           </logicalFolder>
           <logicalFolder name="fsm" displayName="fsm" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/fsm/fsm_impl.h</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.h</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.c</itemPath>
           </logicalFolder>
           <logicalFolder name="queue" displayName="queue" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/queue/queue_impl.h</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/queue/queue.c</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/queue/queue.h</itemPath>
           </logicalFolder>
@@ -321,10 +324,20 @@
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
-    <logicalFolder name="sht3x_actor" displayName="sht3x_actor" projectFiles="true">
-      <itemPath>../src/sht3x_actor/sht3x_actor.h</itemPath>
-      <itemPath>../src/sht3x_actor/sht3x_fsm.c</itemPath>
-      <itemPath>../src/sht3x_actor/sht3x_actor.c</itemPath>
+    <logicalFolder name="nfc" displayName="nfc" projectFiles="true">
+      <itemPath>../src/nfc/nfc_fsm.c</itemPath>
+      <itemPath>../src/nfc/nfc_actor.h</itemPath>
+      <itemPath>../src/nfc/nfc_events.h</itemPath>
+      <itemPath>../src/nfc/nfc_actor.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="sensors" displayName="sensors" projectFiles="true">
+      <logicalFolder name="sht3x-temperature-humidity"
+                     displayName="sht3x-temperature-humidity"
+                     projectFiles="true">
+        <itemPath>../src/sensors/sht3x-temperature-humidity/sht3x.h</itemPath>
+        <itemPath>../src/sensors/sht3x-temperature-humidity/sht3x.c</itemPath>
+        <itemPath>../src/sensors/sht3x-temperature-humidity/sht3x_fsm.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"

@@ -1,5 +1,5 @@
 ///**
-//* @file nfc_actor.h
+//* @file nfc.h
 //* @author apolisskyi
 //* @date 16.02.2023
 //*

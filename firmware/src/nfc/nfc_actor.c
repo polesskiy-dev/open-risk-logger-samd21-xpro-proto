@@ -1,4 +1,4 @@
-//#include "nfc_actor.h"
+//#include "nfc.h"
 //
 //extern NFC_STATE_HANDLE_F *nfcTransitionTable[NFC_STATES_MAX][NFC_SIG_I_MAX];
 //
