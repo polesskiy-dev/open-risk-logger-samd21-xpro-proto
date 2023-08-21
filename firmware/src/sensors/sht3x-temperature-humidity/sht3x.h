@@ -76,6 +76,16 @@ typedef struct {
 DECLARE_ACTIVE_OBJECT(SHT3X_AO, SHT3X_TEvent, SHT3X_STATE, SHT3X_AO_TFields, SHT3X_QUEUE_MAX_CAPACITY);
 DECLARE_FSM(SHT3X_AO, SHT3X_TEvent, SHT3X_STATE, SHT3X_SIG_MAX, SHT3X_STATES_MAX);
 
+/**
+ * @brief Process SHT3X_AO queue head event through transition table: f(event) -> state
+ * @param sht3xObj
+ * @param event
+ * @return next state
+ */
+SHT3X_STATE SHT3X_ProcessEventToNextState(SHT3X_AO *const sht3xObj, SHT3X_TEvent event);
+
+void SHT3X_HasEmptyQueueHandler(SHT3X_AO *const sht3xObj);
+
 /* Microchip Harmony 3 specific */
 
 /**

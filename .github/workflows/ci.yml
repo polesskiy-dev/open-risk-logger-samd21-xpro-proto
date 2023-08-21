@@ -11,7 +11,7 @@ env:
   MPLABX_VERSION: v6.10
 
 jobs:
-  install-compiler:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - name: Environment info
@@ -32,6 +32,10 @@ jobs:
         run: mv ./config/Makefile-ci-default.mk ./firmware/open-risk-logger-samd21-xpro-proto.X/nbproject/Makefile-local-default.mk
       - name: Compile project Makefile
         run: cd ./firmware/open-risk-logger-samd21-xpro-proto.X && make
+  # deploy-hex:
+    # needs: [compile]
+    # runs-on: ubuntu-latest
+#    steps:
 #  test:
 #    needs: [install-compiler]
 #  compile:

@@ -21,6 +21,10 @@ static DRV_HANDLE _openI2CDriver(void) {
     return drvI2CHandle;
 };
 
+void SHT3X_HasEmptyQueueHandler(SHT3X_AO *const sht3xObj) {
+    __builtin_nop();
+};
+
 /** SHT3X Global Functions */
 
 void SHT3X_Initialize(void) {
@@ -54,11 +58,8 @@ void SHT3X_Initialize(void) {
 };
 
 void SHT3X_Tasks(void) {
-//    if (!QUEUE_isEmpty(&sht3xObj.queue)) {
-//        QUEUE_EVENT newEvent = QUEUE_unshiftEvent(&sht3xObj.queue);
-//        SHT3X_ACT_HandleQueuedEvent(newEvent);
-//    }
-}
+    SHT3X_AO_ProcessQueue(&sht3xObj, SHT3X_ProcessEventToNextState, SHT3X_AO_basicTransitionToNextState, SHT3X_HasEmptyQueueHandler);
+};
 
 /**
  * @see https://microchip-mplab-harmony.github.io/core/index.html?GUID-95F7ABE3-6864-4FC9-B11B-97B31ACF683C

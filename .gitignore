@@ -1,4 +1,7 @@
 /firmware/open-risk-logger-samd21-xpro-proto.X/dist/
 /firmware/open-risk-logger-samd21-xpro-proto.X/build/
+/firmware/open-risk-logger-samd21-xpro-proto.X/debug/
+
 .idea/
-html
+
+html/
