@@ -51,9 +51,9 @@
 #include "peripheral/nvmctrl/plib_nvmctrl.h"
 #include "usb/usb_device_msd.h"
 #include "usb/usb_msd.h"
+#include "driver/memory/drv_memory.h"
 #include "usb/usb_chapter_9.h"
 #include "usb/usb_device.h"
-#include "driver/memory/drv_memory.h"
 #include "peripheral/rtc/plib_rtc.h"
 #include "peripheral/tc/plib_tc3.h"
 #include "driver/i2c/drv_i2c.h"
@@ -76,8 +76,8 @@
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_usb_cdc_definitions.h"
 #include "driver/spi_flash/at25df/drv_at25df.h"
-#include "system/system.h"
 
+#include "../../sensors/sht3x-temperature-humidity/sht3x.h"
 
 
 // DOM-IGNORE-BEGIN
@@ -87,6 +87,12 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* Device Information */
+#define DEVICE_NAME			 "ATSAMD21J18A"
+#define DEVICE_ARCH			 "CORTEX-M0PLUS"
+#define DEVICE_FAMILY		 "SAMD"
+#define DEVICE_SERIES		 "SAMD21"
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 48000000

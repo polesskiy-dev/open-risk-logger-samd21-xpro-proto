@@ -15,6 +15,14 @@ $ git submodule init && git submodule update --remote # install submodules
 `libraries` are managing by [Git submodules feature](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 add example: `git submodule add https://github.com/polesskiy-dev/active-object-fsm.git libraries/active-object-fsm`
 
+## Debug
+Inside `__DEBUG` should be placed debug related functionality i.e. `SYS_DEBUG_PRINT(SYS_ERROR_INFO, fmt, ...)`
+
+To open terminal you can use i.e. `minicom`:
+```
+minicom --device /dev/tty.usbmodem1234567890121 --baudrate 115200
+```
+
 ## Unit tests [WIP]
 [UNIT TESTING FOR C](http://www.throwtheswitch.org/unity)
 
@@ -25,10 +33,11 @@ add example: `git submodule add https://github.com/polesskiy-dev/active-object-f
 - file names
     - snake_case
 - variables
-    - MODULE_camelCase for module global variables
+    - Module_camelCase for module global variables
     - camelCase for local variables
 - functions
-    - MODULE_PascalCase for module public functions
+    - Module_PascalCase for module public functions
+    - MODULE_PascalCase from Harmony libraries
     - _camelCase for module private functions
 - types
     - UPPER_CASE_T for macros types

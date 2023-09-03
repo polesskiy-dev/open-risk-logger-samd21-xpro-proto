@@ -523,6 +523,15 @@ children:
         children:
         - {type: Value, value: 'true'}
   - type: File
+    attributes: {id: CAL_FILE_SRC_93}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
     attributes: {id: CAL_FILE_SRC_HAL_I2C}
     children:
     - type: Attributes

@@ -100,10 +100,9 @@ USB_DEVICE_MSD_MEDIA_INIT_DATA USB_ALIGN  msdMediaInit0[1] =
             DRV_MEMORY_Close,
             DRV_MEMORY_GeometryGet,
             DRV_MEMORY_AsyncRead,
-//            DRV_MEMORY_AsyncEraseWrite, // in gen code there's AsyncWrite
-            DRV_MEMORY_AsyncWrite,
+            DRV_MEMORY_AsyncEraseWrite,
             DRV_MEMORY_IsWriteProtected,
-            DRV_MEMORY_TransferHandlerSet, // in gen code there's EventHandlerSet
+            DRV_MEMORY_TransferHandlerSet,
             NULL
         }
     },

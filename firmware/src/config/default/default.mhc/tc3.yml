@@ -26,7 +26,7 @@ children:
       - type: String
         attributes: {id: text}
         children:
-        - {type: Value, value: '**** Compare Period is 732.421875 us ****'}
+        - {type: Value, value: '**** Waveform Period is 762.939453125 us ****'}
   - type: Integer
     attributes: {id: TC_FREQUENCY}
     children:
@@ -82,7 +82,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tc3, value: '32'}
+        attributes: {id: tc3, value: '31'}
   - type: Float
     attributes: {id: TC_TIMER_TIME_MS}
     children:

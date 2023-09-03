@@ -3,5 +3,6 @@
 /firmware/open-risk-logger-samd21-xpro-proto.X/debug/
 
 .idea/
+.vscode/
 
 html/

@@ -158,7 +158,7 @@
   #endif
 #endif
 
-/* IO definitions (access restrictions to peripheral sensorRegs) */
+/* IO definitions (access restrictions to peripheral registers) */
 /**
     \defgroup CMSIS_glob_defs CMSIS Global Defines
 
@@ -604,7 +604,7 @@ typedef struct
 /**
   \ingroup  CMSIS_core_register
   \defgroup CMSIS_CoreDebug       Core Debug Registers (CoreDebug)
-  \brief    Cortex-M0+ Core Debug Registers (DCB sensorRegs, SHCSR, and DFSR) are only accessible over DAP and not via processor.
+  \brief    Cortex-M0+ Core Debug Registers (DCB registers, SHCSR, and DFSR) are only accessible over DAP and not via processor.
             Therefore they are not covered by the Cortex-M0+ header file.
   @{
  */

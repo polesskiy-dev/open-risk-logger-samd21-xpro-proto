@@ -52,8 +52,7 @@
 
 #include "configuration.h"
 #include "definitions.h"
-#include "sensors/sht3x-temperature-humidity/sht3x.h"
-//#include "nfc/nfc.h"
+#include "sys_tasks.h"
 
 
 
@@ -82,11 +81,20 @@ void SYS_Tasks ( void )
     DRV_MEMORY_Tasks(sysObj.drvMemory0);
 
 
-    /* Maintain the application's state machine. */
-    SHT3X_Tasks();
-//    NFC_ACT_Tasks();
 
-//    GLOBAL_MEDIATOR_Tasks();
+    /* Maintain Middleware & Other Libraries */
+        /* USB Device layer tasks routine */ 
+    USB_DEVICE_Tasks(sysObj.usbDevObject0);
+
+    /* USB FS Driver Task Routine */ 
+    DRV_USBFSV1_Tasks(sysObj.drvUSBFSV1Object);
+
+
+
+    /* Maintain the application's state machine. */
+    
+    SHT3X_Tasks();
+
 }
 
 /*******************************************************************************

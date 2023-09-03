@@ -145,6 +145,7 @@
           <itemPath>../src/config/default/device.h</itemPath>
           <itemPath>../src/config/default/user.h</itemPath>
           <itemPath>../src/config/default/configuration.h</itemPath>
+          <itemPath>../src/config/default/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="packs" projectFiles="true">
@@ -259,22 +260,19 @@
           </logicalFolder>
         </logicalFolder>
         <logicalFolder name="src" displayName="src" projectFiles="true">
-          <logicalFolder name="active-object"
-                         displayName="active-object"
+          <logicalFolder name="active_object"
+                         displayName="active_object"
                          projectFiles="true">
-            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object.c</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object_impl.h</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/active-object/active_object.h</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active_object/active_object.c</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/active_object/active_object.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="event_queue" displayName="event_queue" projectFiles="true">
+            <itemPath>../../libraries/active-object-fsm/src/event_queue/event_queue.c</itemPath>
+            <itemPath>../../libraries/active-object-fsm/src/event_queue/event_queue.h</itemPath>
           </logicalFolder>
           <logicalFolder name="fsm" displayName="fsm" projectFiles="true">
-            <itemPath>../../libraries/active-object-fsm/src/fsm/fsm_impl.h</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.h</itemPath>
             <itemPath>../../libraries/active-object-fsm/src/fsm/fsm.c</itemPath>
-          </logicalFolder>
-          <logicalFolder name="queue" displayName="queue" projectFiles="true">
-            <itemPath>../../libraries/active-object-fsm/src/queue/queue_impl.h</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/queue/queue.c</itemPath>
-            <itemPath>../../libraries/active-object-fsm/src/queue/queue.h</itemPath>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
@@ -424,6 +422,7 @@
                 <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_aes_gcm.h</itemPath>
                 <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_aes.c</itemPath>
                 <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_basic.h</itemPath>
+                <itemPath>../src/config/default/library/cryptoauthlib/calib/calib_delete.c</itemPath>
               </logicalFolder>
               <logicalFolder name="f2" displayName="crypto" projectFiles="true">
                 <logicalFolder name="f1" displayName="hashes" projectFiles="true">
@@ -727,7 +726,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="0"/>
+        <property key="heap-size" value="1024"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>

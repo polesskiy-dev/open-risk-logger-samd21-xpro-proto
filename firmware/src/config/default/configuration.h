@@ -99,17 +99,17 @@ extern "C" {
 
 
 #define SYS_DEBUG_ENABLE
-#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_DEBUG
+#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_INFO
 #define SYS_DEBUG_BUFFER_DMA_READY
 #define SYS_DEBUG_USE_CONSOLE
 
 
-#define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			0
-#define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		1
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
+#define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			(1U)
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			(0U)
+#define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		(1U)
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(200U)
 
-#define SYS_CONSOLE_USB_CDC_READ_WRITE_BUFFER_SIZE 	64
+#define SYS_CONSOLE_USB_CDC_READ_WRITE_BUFFER_SIZE 	(64)
 
 
 
@@ -125,19 +125,18 @@ extern "C" {
 #define DRV_I2C_CLOCK_SPEED_IDX0              100
 
 /* Memory Driver Global Configuration Options */
-#define DRV_MEMORY_INSTANCES_NUMBER          1
+#define DRV_MEMORY_INSTANCES_NUMBER          (1U)
 /* I2C Driver Common Configuration Options */
-#define DRV_I2C_INSTANCES_NUMBER              1
+#define DRV_I2C_INSTANCES_NUMBER              (1U)
 
 
 
 /* Memory Driver Instance 0 Configuration */
 #define DRV_MEMORY_INDEX_0                   0
 #define DRV_MEMORY_CLIENTS_NUMBER_IDX0       1
-#define DRV_MEMORY_BUFFER_QUEUE_SIZE_IDX0    1
+#define DRV_MEMORY_BUF_Q_SIZE_IDX0    1
 // memory address of FAT12 header (4K), 128K-4K=124K
 #define DRV_MEMORY_DEVICE_START_ADDRESS      0x1F000
-
 
 /* AT25DF Driver Configuration Options */
 #define DRV_AT25DF_INSTANCES_NUMBER              1

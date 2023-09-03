@@ -5,32 +5,8 @@ children:
 - type: Symbols
   children:
   - type: Integer
-    attributes: {id: ERASE_BUFFER_SIZE}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
-  - type: Comment
-    attributes: {id: ERASE_COMMENT}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
-  - type: Integer
     attributes: {id: MEMORY_MEDIA_SIZE}
     children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
     - type: Values
       children:
       - type: User
@@ -42,29 +18,5 @@ children:
       children:
       - type: Dynamic
         attributes: {id: nvmctrl, value: '1'}
-  - type: String
-    attributes: {id: START_ADDRESS}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'false'}
-- type: Attachments
-  children:
-  - type: DirectCapability
-    attributes: {id: NVMCTRL_MEMORY}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: targetComponentID}
-        children:
-        - {type: Value, value: drv_memory_0}
-      - type: String
-        attributes: {id: targetAttachmentID}
-        children:
-        - {type: Value, value: drv_memory_MEMORY_dependency}
 - type: ElementPosition
   attributes: {x: '20', y: '20', id: nvmctrl}
