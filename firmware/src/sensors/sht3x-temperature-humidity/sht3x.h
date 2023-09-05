@@ -1,5 +1,5 @@
 /**
- * @file    sht3x-temperature-humidity.h
+ * @file    sht3x.h
  * @author  apolisskyi
  * @date February 2, 2023
  */
@@ -25,6 +25,7 @@ extern "C" {
 #endif
 
 /**
+ * @brief SHT3x Active Object Type
  * @extends TActiveObject
 */
 typedef struct {
@@ -37,11 +38,15 @@ typedef struct {
     } sensorRegs;
 } TSHT3xActiveObject;
 
-/** @brief Initialize and construct actor, should be called before tasks */
+/** 
+ * @brief Initialize and construct actor, should be called before tasks 
+ * @memberof TSHT3xActiveObject
+ */
 void SHT3X_Initialize(void);
 
 /* Microchip Harmony 3 specific */
 
+/** @brief Perform Actor tasks, mainly listen for events and process them */
 void SHT3X_Tasks(void);
 
 /**
@@ -56,14 +61,6 @@ void SHT3X_Tasks(void);
  * @param context[in]           should be ptr to Actor, mostly unused
  */
 void SHT3X_TransferEventHandler(DRV_I2C_TRANSFER_EVENT event, DRV_I2C_TRANSFER_HANDLE transferHandle, uintptr_t context);
-
-// /**
-//  * @brief Process SHT3X_AO queue head event through transition table: f(event) -> state
-//  * @param sht3xObj
-//  * @param event
-//  * @return next state
-//  */
-// SHT3X_STATE SHT3X_ProcessEventToNextState(SHT3X_AO *const sht3xObj, SHT3X_TEvent event);
 
 #ifdef	__cplusplus
 }

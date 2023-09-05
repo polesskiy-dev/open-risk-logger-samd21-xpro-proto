@@ -25,7 +25,7 @@ static inline void _dispatchErrorOnInvalidTransfer(TSHT3xActiveObject *const sht
 };
 
 /* states */
-const TState statesList[SHT3X_STATES_MAX] = { 
+const TState sht3xStatesList[SHT3X_STATES_MAX] = { 
     [SHT3X_NO_STATE]          = {.name = SHT3X_NO_STATE},
     [SHT3X_ST_INIT]           = {.name = SHT3X_ST_INIT},
     [SHT3X_ST_IDLE]           = {.name = SHT3X_ST_IDLE},
@@ -56,7 +56,7 @@ static const TState* _idle(TActiveObject *const sht3xAO, TEvent event) {
             SYS_TIME_SINGLE
     );
 
-    return &(statesList[SHT3X_ST_IDLE]);
+    return &(sht3xStatesList[SHT3X_ST_IDLE]);
 };
 
 /**
@@ -78,7 +78,7 @@ static const TState* _readStatus(TActiveObject *const AO, TEvent event) {
 
     _dispatchErrorOnInvalidTransfer(sht3xAO);
 
-    return &(statesList[SHT3X_ST_READ_STATUS]);
+    return &(sht3xStatesList[SHT3X_ST_READ_STATUS]);
 };
 
 /**
@@ -109,7 +109,7 @@ static const TState* _measure(TActiveObject *const AO, TEvent event) {
             SYS_TIME_SINGLE
     );
 
-    return &(statesList[SHT3X_ST_MEASURE]);
+    return &(sht3xStatesList[SHT3X_ST_MEASURE]);
 };
 
 /**
@@ -128,10 +128,10 @@ static const TState* _readMeasurements(TActiveObject *const AO, TEvent event) {
 
     _dispatchErrorOnInvalidTransfer(sht3xAO);
 
-    return &(statesList[SHT3X_ST_READ_MEASURE]);
+    return &(sht3xStatesList[SHT3X_ST_READ_MEASURE]);
 };
 
-static const TState* _error(TActiveObject *const AO, TEvent event) { return &(statesList[SHT3X_ST_ERROR]); };
+static const TState* _error(TActiveObject *const AO, TEvent event) { return &(sht3xStatesList[SHT3X_ST_ERROR]); };
 
 static void _dispatchReadMeasurements(uintptr_t context){
     ActiveObject_Dispatch(&sht3xAO.super,  (TEvent){.sig = SHT3X_READ_MEASURE});

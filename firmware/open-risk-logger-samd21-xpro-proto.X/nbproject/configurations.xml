@@ -323,10 +323,10 @@
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="nfc" displayName="nfc" projectFiles="true">
+      <itemPath>../src/nfc/nfc.config.h</itemPath>
+      <itemPath>../src/nfc/nfc.h</itemPath>
       <itemPath>../src/nfc/nfc_fsm.c</itemPath>
-      <itemPath>../src/nfc/nfc_actor.h</itemPath>
-      <itemPath>../src/nfc/nfc_events.h</itemPath>
-      <itemPath>../src/nfc/nfc_actor.c</itemPath>
+      <itemPath>../src/nfc/nfc.c</itemPath>
     </logicalFolder>
     <logicalFolder name="sensors" displayName="sensors" projectFiles="true">
       <logicalFolder name="sht3x-temperature-humidity"

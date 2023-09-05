@@ -1,7 +1,7 @@
 #include "./sht3x.h"
 
 #ifdef __DEBUG
-    const char *const debugStateNames[SHT3X_STATES_MAX] = {
+    static const char *const _debugStateNames[SHT3X_STATES_MAX] = {
         [SHT3X_NO_STATE] = "SHT3X_NO_STATE",
         [SHT3X_ST_INIT] = "SHT3X_ST_INIT",
         [SHT3X_ST_IDLE] = "SHT3X_ST_IDLE",
@@ -11,7 +11,7 @@
         [SHT3X_ST_ERROR] = "SHT3X_ST_ERROR"
     };
     
-    const char *const debugEventSignals[SHT3X_SIG_MAX] = {
+    static const char *const _debugEventSignals[SHT3X_SIG_MAX] = {
         [SHT3X_NO_EVENT] = "SHT3X_NO_EVENT",
         [SHT3X_TRANSFER_SUCCESS] = "SHT3X_TRANSFER_SUCCESS",
         [SHT3X_TRANSFER_FAIL] = "SHT3X_TRANSFER_FAIL",
@@ -22,9 +22,9 @@
     };
 #endif
 
-extern const TState statesList[SHT3X_STATES_MAX];
+extern const TState sht3xStatesList[SHT3X_STATES_MAX];
 extern const TEventHandler sht3xTransitionTable[SHT3X_STATES_MAX][SHT3X_SIG_MAX];
-TEvent events[SHT3X_QUEUE_MAX_CAPACITY];
+static TEvent events[SHT3X_QUEUE_MAX_CAPACITY];
 
 /** @brief sht3x environment sensor Active Object */
 TSHT3xActiveObject sht3xAO;
@@ -38,17 +38,12 @@ static DRV_HANDLE _openI2CDriver(void) {
     return drvI2CHandle;
 };
 
-
-void SHT3X_HasEmptyQueueHandler(TSHT3xActiveObject *const sht3xAO) {
-    __builtin_nop();
-};
-
 /** SHT3X Global Functions */
 
 void SHT3X_Initialize(void) {
     // init super AO
     ActiveObject_Initialize(&sht3xAO.super, SHT3X_AO_ID, events, SHT3X_QUEUE_MAX_CAPACITY);
-    sht3xAO.super.state = &statesList[SHT3X_ST_INIT];
+    sht3xAO.super.state = &sht3xStatesList[SHT3X_ST_INIT];
 
     // open I2C driver, get handler
     DRV_HANDLE drvI2CHandle = _openI2CDriver();
@@ -79,12 +74,12 @@ void SHT3X_Tasks(void) {
     const TEvent event = ActiveObject_ProcessQueue(&sht3xAO.super);
     if (SHT3X_NO_EVENT == event.sig) return;
     
-    const TState *nextState = FSM_ProcessEventToNextState(&sht3xAO.super, event, SHT3X_STATES_MAX, SHT3X_SIG_MAX, statesList, sht3xTransitionTable);
+    const TState *nextState = FSM_ProcessEventToNextState(&sht3xAO.super, event, SHT3X_STATES_MAX, SHT3X_SIG_MAX, sht3xStatesList, sht3xTransitionTable);
     
     #ifdef __DEBUG
         SHT3X_SIG sig = event.sig;
         SHT3X_STATE name = nextState->name;
-        SYS_DEBUG_PRINT(SYS_ERROR_INFO, "Event: %s, Next State: %s\r\n", debugEventSignals[sig], debugStateNames[name]);
+        SYS_DEBUG_PRINT(SYS_ERROR_INFO, "SHT3x Event: %s, Next State: %s\r\n", _debugEventSignals[sig], _debugStateNames[name]);
     #endif
     
     if (FSM_IsValidState(nextState)) FSM_TraverseNextState(&sht3xAO.super, nextState);
